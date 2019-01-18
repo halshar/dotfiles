@@ -1,0 +1,37 @@
+set number
+set tabstop=4
+set autoindent
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'dikiaap/minimalist'
+Plugin 'vim-airline/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'powerline/powerline'
+Plugin 'valloric/youcompleteme'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'raimondi/delimitmate'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+"Minimalist Color Scheme
+
+set t_Co=256
+syntax on
+colorscheme minimalist
+
+let g:airline_theme='minimalist'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+"NERDTREE key mapping.
+:map <C-n> :NERDTree
