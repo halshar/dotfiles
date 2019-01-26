@@ -19,6 +19,8 @@ Plugin 'valloric/youcompleteme'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'raimondi/delimitmate'
+Plugin 'nvie/vim-flake8'
+Plugin 'ntpeters/vim-better-whitespace'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
