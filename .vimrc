@@ -1,6 +1,7 @@
 set number
 set tabstop=4
 set autoindent
+set hidden
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -26,7 +27,6 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 "Minimalist Color Scheme
-
 set t_Co=256
 syntax on
 colorscheme minimalist
@@ -37,3 +37,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 "NERDTREE key mapping.
 :map <C-n> :NERDTree
+
+"Better Whitespace
+let g:better_whitespace_enabled = 1
+"let g:strip_whitespace_on_save = 1
+
+
