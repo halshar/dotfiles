@@ -8,11 +8,14 @@ set clipboard=unnamed
 vnoremap < <gv
 vnoremap > >gv
 
+"Useful settings
+set history=700
+set undolevels=700
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin indent on
 syntax on
-
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
