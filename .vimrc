@@ -10,6 +10,8 @@ vnoremap > >gv
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+filetype plugin indent on
+syntax on
 
 
 set rtp+=~/.vim/bundle/Vundle.vim
