@@ -4,6 +4,10 @@ set autoindent
 set hidden
 set clipboard=unnamed
 
+"easier moving of code blocks
+vnoremap < <gv
+vnoremap > >gv
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
