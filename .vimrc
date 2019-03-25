@@ -7,6 +7,7 @@ set expandtab
 set autoindent
 set hidden
 set clipboard=unnamed
+set encoding=utf-8
 
 "easier moving of code blocks
 vnoremap < <gv
@@ -37,6 +38,8 @@ Plugin 'ryanoasis/vim-devicons'
 Plugin 'raimondi/delimitmate'
 Plugin 'nvie/vim-flake8'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -57,3 +60,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:better_whitespace_enabled = 1
 "let g:strip_whitespace_on_save = 1
 
+"Make your code look pretty.
+let python_highlight_all=1
+syntax on
+
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
