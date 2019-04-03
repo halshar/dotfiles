@@ -69,3 +69,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+
+"Spell-check set to F6
+map <F6> :setlocal spell! spelllang=en_us<CR>
