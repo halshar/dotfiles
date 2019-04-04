@@ -4,7 +4,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'dikiaap/minimalist'
+"Plugin 'dikiaap/minimalist'
+Plugin 'joshdick/onedark.vim'
+"Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -80,13 +82,19 @@ call vundle#end()
     set undolevels=700
 
 " Minimalist Color Scheme
-    set t_Co=256
-    syntax on
-    colorscheme minimalist
-    let g:airline_theme='minimalist'
-    let g:airline_powerline_fonts = 1
-    let g:airline#extensions#tabline#enabled = 1
+"    set t_Co=256
+"    syntax on
+"    colorscheme minimalist
+"    let g:airline_theme='minimalist'
+"    let g:airline_powerline_fonts = 1
+"    let g:airline#extensions#tabline#enabled = 1
 
+" Onedark Color Scheme
+    syntax on
+    colorscheme onedark
+    let g:onedark_hide_endofbuffer=1
+    let g:onedark_termcolors=256
+    let g:airline_theme='onedark'
 " NERDTREE key mapping.
     :map <C-n> :NERDTree
 
