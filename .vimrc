@@ -1,26 +1,4 @@
-set number
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
-set autoindent
-set hidden
-set clipboard=unnamed
-set encoding=utf-8
-
-"easier moving of code blocks
-vnoremap < <gv
-vnoremap > >gv
-
-"Useful settings
-set history=700
-set undolevels=700
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-filetype plugin indent on
-syntax on
+let mapleader = " "
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -35,41 +13,86 @@ Plugin 'powerline/powerline'
 Plugin 'valloric/youcompleteme'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'raimondi/delimitmate'
+"Plugin 'raimondi/delimitmate'
 Plugin 'nvie/vim-flake8'
 Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'vim-scripts/indentpython.vim'
+"Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'junegunn/goyo.vim'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
 
-"Minimalist Color Scheme
-set t_Co=256
-syntax on
-colorscheme minimalist
+" Some basics:
+    set nocompatible
+    filetype plugin on
+    syntax on
+    set encoding=utf-8
+    set clipboard=unnamed
+    set ruler
+    set autoindent
+    set showmatch
+    set nobackup
+    set cursorline
+    set wildmenu
+    set lazyredraw
+    set number
 
-let g:airline_theme='minimalist'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+" Edit setting:
+    set tabstop=4 " number of visual spcaes per TAB
+    set softtabstop=4 "number of spaces in the TAB when editing
+    set expandtab " tabs are spaces
 
-"NERDTREE key mapping.
-:map <C-n> :NERDTree
+" Search settings
+    set showmatch " highlight matching [{()}]
+    set incsearch " search as characters are entered
 
-"Better Whitespace
-let g:better_whitespace_enabled = 1
-"let g:strip_whitespace_on_save = 1
+" Enable autocompletion:
+    set wildmode=longest,list,full
 
-"Make your code look pretty.
-let python_highlight_all=1
-syntax on
+" Disable automatic commenting on newline:
+    autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-"split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Goyo plugin makes text more readable when writing prose:
+    map <leader>f : Goyo \| set linebreak<CR>
 
+" Spell-check set to <leader>0:
+    map <leader>o :setlocal spell! spelllang=en_us<CR>
 
-"Spell-check set to F6
-map <F6> :setlocal spell! spelllang=en_us<CR>
+" Splits open at the bottom and right:
+    set splitbelow splitright
+
+" Shortcutting spell navigation:
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+
+" Copy selected text to system clipboard:
+    vnoremap <C-c> "*Y :let @+=@*<CR>
+    map <C-p> "+P
+
+" Easier moving of code blocks
+    vnoremap < <gv
+    vnoremap > >gv
+
+" Useful settings
+    set history=700
+    set undolevels=700
+
+" Minimalist Color Scheme
+    set t_Co=256
+    syntax on
+    colorscheme minimalist
+    let g:airline_theme='minimalist'
+    let g:airline_powerline_fonts = 1
+    let g:airline#extensions#tabline#enabled = 1
+
+" NERDTREE key mapping.
+    :map <C-n> :NERDTree
+
+" Better Whitespace
+    let g:better_whitespace_enabled = 1
+    "let g:strip_whitespace_on_save = 1
+
+" Make your code look pretty.
+    let python_highlight_all=1
