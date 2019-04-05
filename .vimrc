@@ -8,6 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'joshdick/onedark.vim'
 "Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -37,7 +38,7 @@ call vundle#end()
     set cursorline
     set wildmenu
     set lazyredraw
-    set number
+    set number relativenumber
 
 " Edit setting:
     set tabstop=4 " number of visual spcaes per TAB
@@ -95,6 +96,14 @@ call vundle#end()
     let g:onedark_hide_endofbuffer=1
     let g:onedark_termcolors=256
     let g:airline_theme='onedark'
+
+" Vim-devicons
+    let g:WebDevIconsUnicodeDecorateFolderNodes=1
+
+" Vim-airline
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#left_alt_sep = '|'
+
 " NERDTREE key mapping.
     :map <C-n> :NERDTree
 
