@@ -5,7 +5,6 @@ ZSH_THEME="agnoster"
 
 plugins=(
   git
-  zsh-autosuggestions
   postgres
   django
 )
