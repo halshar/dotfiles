@@ -56,10 +56,13 @@ call vundle#end()
     autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Goyo plugin makes text more readable when writing prose:
-    map <leader>f : Goyo \| set linebreak<CR>
+    map <leader>g : Goyo \| set linebreak<CR>
 
 " Spell-check set to <leader>0:
-    map <leader>o :setlocal spell! spelllang=en_us<CR>
+    map <leader>s :setlocal spell! spelllang=en_us<CR>
+
+" Save with leader + w.
+    nnoremap <leader>w :w<CR>
 
 " Splits open at the bottom and right:
     set splitbelow splitright
@@ -69,6 +72,9 @@ call vundle#end()
     map <C-j> <C-w>j
     map <C-k> <C-w>k
     map <C-l> <C-w>l
+
+" Mouse support.
+    set mouse=a
 
 " Copy selected text to system clipboard:
     vnoremap <C-c> "*Y :let @+=@*<CR>
