@@ -4,23 +4,14 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'dikiaap/minimalist'
 Plugin 'joshdick/onedark.vim'
-"Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'powerline/powerline'
 Plugin 'valloric/youcompleteme'
-Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'ryanoasis/vim-devicons'
-"Plugin 'raimondi/delimitmate'
-Plugin 'nvie/vim-flake8'
 Plugin 'ntpeters/vim-better-whitespace'
-"Plugin 'vim-scripts/indentpython.vim'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/goyo.vim'
 
 call vundle#end()
@@ -76,9 +67,6 @@ call vundle#end()
 " Mouse support.
     set mouse=a
 
-" Copy selected text to system clipboard:
-    vnoremap <C-c> "*Y :let @+=@*<CR>
-    map <C-p> "+P
 
 " Easier moving of code blocks
     vnoremap < <gv
@@ -87,14 +75,6 @@ call vundle#end()
 " Useful settings
     set history=700
     set undolevels=700
-
-" Minimalist Color Scheme
-"    set t_Co=256
-"    syntax on
-"    colorscheme minimalist
-"    let g:airline_theme='minimalist'
-"    let g:airline_powerline_fonts = 1
-"    let g:airline#extensions#tabline#enabled = 1
 
 " Onedark Color Scheme
     syntax on
@@ -115,7 +95,7 @@ call vundle#end()
 
 " Better Whitespace
     let g:better_whitespace_enabled = 1
-    "let g:strip_whitespace_on_save = 1
+    let g:strip_whitespace_on_save = 1
 
 " Make your code look pretty.
     let python_highlight_all=1
