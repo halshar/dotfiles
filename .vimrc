@@ -12,6 +12,7 @@ Plugin 'powerline/powerline'
 Plugin 'valloric/youcompleteme'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'suan/vim-instant-markdown'
 Plugin 'junegunn/goyo.vim'
 
 call vundle#end()
@@ -99,3 +100,7 @@ call vundle#end()
 
 " Make your code look pretty.
     let python_highlight_all=1
+
+" Vim instant markdown.
+    let g:instant_markdown_autostart=0
+    map <leader>md :InstantMarkdownPreview<CR>
