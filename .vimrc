@@ -25,6 +25,7 @@ call vundle#end()
     set clipboard=unnamed
     set ruler
     set autoindent
+    set hidden
     set showmatch
     set nobackup
     set cursorline
@@ -56,6 +57,12 @@ call vundle#end()
 " Save with leader + w.
     nnoremap <leader>w :w<CR>
 
+" Switch tabs forward with leader + n.
+    nnoremap <leader>n :bn<CR>
+
+" Switch tabs backward with leader + p.
+    nnoremap <leader>p :bp<CR>
+
 " Splits open at the bottom and right:
     set splitbelow splitright
 
@@ -67,7 +74,6 @@ call vundle#end()
 
 " Mouse support.
     set mouse=a
-
 
 " Easier moving of code blocks
     vnoremap < <gv
