@@ -1,4 +1,7 @@
 let mapleader = " "
+set nocompatible
+filetype plugin indent on
+syntax on
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -6,7 +9,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'powerline/powerline'
 Plugin 'valloric/youcompleteme'
@@ -18,9 +23,6 @@ Plugin 'junegunn/goyo.vim'
 call vundle#end()
 
 " Some basics:
-    set nocompatible
-    filetype plugin indent on
-    syntax on
     set encoding=utf-8
     set clipboard=unnamed
     set ruler
@@ -84,7 +86,6 @@ call vundle#end()
     set undolevels=700
 
 " Onedark Color Scheme
-    syntax on
     colorscheme onedark
     let g:onedark_hide_endofbuffer=1
     let g:onedark_termcolors=256
