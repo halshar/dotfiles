@@ -9,7 +9,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-commentary'
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
@@ -28,7 +30,6 @@ call vundle#end()
     set ruler
     set autoindent
     set hidden
-    set showmatch
     set nobackup
     set cursorline
     set wildmenu
@@ -65,6 +66,9 @@ call vundle#end()
 " Switch tabs backward with leader + p.
     nnoremap <leader>p :bp<CR>
 
+" Toggle fold with shift+tab.
+    nnoremap <s-tab> za
+
 " Splits open at the bottom and right:
     set splitbelow splitright
 
@@ -84,6 +88,10 @@ call vundle#end()
 " Useful settings
     set history=700
     set undolevels=700
+
+" Enable folding.
+    set foldmethod=indent
+    set foldlevel=99
 
 " Onedark Color Scheme
     colorscheme onedark
@@ -111,3 +119,10 @@ call vundle#end()
 " Vim instant markdown.
     let g:instant_markdown_autostart=0
     map <leader>md :InstantMarkdownPreview<CR>
+
+" YouCompleteMe.
+    let g:ycm_autoclose_preview_window_after_completion=1
+
+" VimLScript.
+    let g:SimpylFold_docstring_preview=1
+
