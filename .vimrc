@@ -69,6 +69,10 @@ call vundle#end()
 " Toggle fold with shift+tab.
     nnoremap <s-tab> za
 
+" Copy and Paste from vim to another program:
+    vnoremap <C-c> "*y :let @+=@*<CR>
+    map <C-V> "+P
+
 " Splits open at the bottom and right:
     set splitbelow splitright
 
@@ -125,4 +129,3 @@ call vundle#end()
 
 " VimLScript.
     let g:SimpylFold_docstring_preview=1
-
