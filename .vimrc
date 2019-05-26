@@ -13,7 +13,6 @@ Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-commentary'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'powerline/powerline'
 Plugin 'valloric/youcompleteme'
@@ -45,6 +44,14 @@ call vundle#end()
     set showmatch " highlight matching [{()}]
     set incsearch " search as characters are entered
 
+" Useful settings
+    set history=700
+    set undolevels=700
+
+" Enable folding.
+    set foldmethod=indent
+    set foldlevel=99
+
 " Enable autocompletion:
     set wildmode=longest,list,full
 
@@ -60,10 +67,10 @@ call vundle#end()
 " Save with leader + w.
     nnoremap <leader>w :w<CR>
 
-" Switch tabs forward with leader + n.
+" Switch buffers forward with leader + n.
     nnoremap <leader>n :bn<CR>
 
-" Switch tabs backward with leader + p.
+" Switch buffers backward with leader + p.
     nnoremap <leader>p :bp<CR>
 
 " Toggle fold with shift+tab.
@@ -71,7 +78,7 @@ call vundle#end()
 
 " Copy and Paste from vim to another program:
     vnoremap <C-c> "*y :let @+=@*<CR>
-    map <C-V> "+P
+    map <C-p> "+P
 
 " Splits open at the bottom and right:
     set splitbelow splitright
@@ -88,14 +95,6 @@ call vundle#end()
 " Easier moving of code blocks
     vnoremap < <gv
     vnoremap > >gv
-
-" Useful settings
-    set history=700
-    set undolevels=700
-
-" Enable folding.
-    set foldmethod=indent
-    set foldlevel=99
 
 " Onedark Color Scheme
     colorscheme onedark
