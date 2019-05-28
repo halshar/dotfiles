@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'nvie/vim-flake8'
+Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'tpope/vim-commentary'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdtree'
@@ -40,15 +41,15 @@ call vundle#end()
     set softtabstop=4 "number of spaces in the TAB when editing
     set expandtab " tabs are spaces
 
-" Search settings
+" Search settings:
     set showmatch " highlight matching [{()}]
     set incsearch " search as characters are entered
 
-" Useful settings
+" Useful settings:
     set history=700
     set undolevels=700
 
-" Enable folding.
+" Enable folding:
     set foldmethod=indent
     set foldlevel=99
 
@@ -58,22 +59,34 @@ call vundle#end()
 " Disable automatic commenting on newline:
     autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" Replace the word under the cursor with leader + *:
+    nnoremap <leader>* :%s/\<<c-r><c-w>\>//g<left><left>
+
 " Goyo plugin makes text more readable when writing prose:
     map <leader>g : Goyo \| set linebreak<CR>
 
-" Spell-check set to <leader>0:
+" Spell-check set to <leader>s:
     map <leader>s :setlocal spell! spelllang=en_us<CR>
 
-" Save with leader + w.
+" LaTeX live preview with leader + l:
+    map <leader>l :LLPStartPreview<CR>
+
+" Switch between last two open buffers with leader + leader:
+    nnoremap <leader><leader> <c-^>
+
+" Save with leader + w:
     nnoremap <leader>w :w<CR>
 
-" Switch buffers forward with leader + n.
+" Switch buffers forward with leader + n:
     nnoremap <leader>n :bn<CR>
 
-" Switch buffers backward with leader + p.
+" Switch buffers backward with leader + p:
     nnoremap <leader>p :bp<CR>
 
-" Toggle fold with shift+tab.
+" Close the current buffer with leader + q:
+    nnoremap <leader>bq :bp <bar> bd! #<cr>
+
+" Toggle fold with shift+tab:
     nnoremap <s-tab> za
 
 " Copy and Paste from vim to another program:
@@ -89,42 +102,46 @@ call vundle#end()
     map <C-k> <C-w>k
     map <C-l> <C-w>l
 
-" Mouse support.
+" Mouse support:
     set mouse=a
 
-" Easier moving of code blocks
+" Easier moving of code blocks:
     vnoremap < <gv
     vnoremap > >gv
 
-" Onedark Color Scheme
+" Onedark color scheme:
     colorscheme onedark
     let g:onedark_hide_endofbuffer=1
     let g:onedark_termcolors=256
     let g:airline_theme='onedark'
 
-" Vim-devicons
+" Vim-devicons:
     let g:WebDevIconsUnicodeDecorateFolderNodes=1
 
-" Vim-airline
+" Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_alt_sep = '|'
 
-" NERDTREE key mapping.
+" NERDTREE key mapping:
     :map <C-n> :NERDTree<CR>
 
-" Better Whitespace
+" Better whitespace:
     let g:better_whitespace_enabled = 1
     let g:strip_whitespace_on_save = 1
 
-" Make your code look pretty.
+" Make your code look pretty:
     let python_highlight_all=1
 
-" Vim instant markdown.
+" Vim instant markdown:
     let g:instant_markdown_autostart=0
     map <leader>md :InstantMarkdownPreview<CR>
 
-" YouCompleteMe.
+" YouCompleteMe :
     let g:ycm_autoclose_preview_window_after_completion=1
 
-" VimLScript.
+" VimLScript :
     let g:SimpylFold_docstring_preview=1
+
+" LaTeX live preview:
+    let g:livepreview_previewer = 'zathura'
+    let g:livepreview_cursorhold_recompile = 0
