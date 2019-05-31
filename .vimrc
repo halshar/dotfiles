@@ -83,9 +83,6 @@ call vundle#end()
 " Switch buffers backward with leader + p:
     nnoremap <leader>p :bp<CR>
 
-" Close the current buffer with leader + q:
-    nnoremap <leader>bq :bp <bar> bd! #<cr>
-
 " Toggle fold with shift+tab:
     nnoremap <s-tab> za
 
