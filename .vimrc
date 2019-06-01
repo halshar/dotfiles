@@ -131,7 +131,7 @@ call vundle#end()
 
 " Vim instant markdown:
     let g:instant_markdown_autostart=0
-    map <leader>md :InstantMarkdownPreview<CR>
+    map <leader>m :InstantMarkdownPreview<CR>
 
 " YouCompleteMe :
     let g:ycm_autoclose_preview_window_after_completion=1
