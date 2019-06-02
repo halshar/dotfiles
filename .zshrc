@@ -1,5 +1,7 @@
 export ZSH="/home/itachi/.oh-my-zsh"
 export PATH=$PATH:$HOME/bin
+export WORKON_HOME="$HOME/.virtualenvs"
+source /usr/bin/virtualenvwrapper.sh
 
 ZSH_THEME="agnoster"
 
@@ -16,5 +18,4 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 neofetch
 
 alias v='vim'
-alias t='tmux'
 alias c='tty-clock -cbs -C1'
