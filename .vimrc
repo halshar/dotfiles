@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'powerline/powerline'
 Plugin 'valloric/youcompleteme'
+Plugin 'Yggdroot/indentLine'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'suan/vim-instant-markdown'
@@ -142,3 +143,8 @@ call vundle#end()
 " LaTeX live preview:
     let g:livepreview_previewer = 'zathura'
     let g:livepreview_cursorhold_recompile = 0
+
+" Indent line:
+    set list lcs=tab:\┊\ 
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+    highlight SpecialKey ctermfg=8
