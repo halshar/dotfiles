@@ -87,6 +87,15 @@ call vundle#end()
 " Toggle fold with shift+tab:
     nnoremap <s-tab> za
 
+" Toggle indent lines with leader + i:
+    nnoremap <leader>i :IndentLinesToggle<CR>
+
+" Clear the terminal with leader + c:
+    nnoremap <leader>c :!clear<CR>
+
+" Run python with leader + r:
+    nnoremap <leader>r :! python
+
 " Copy and Paste from vim to another program:
     vnoremap <C-c> "*y :let @+=@*<CR>
     map <C-p> "+P
