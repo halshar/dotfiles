@@ -135,7 +135,7 @@ call vundle#end()
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     highlight SpecialKey ctermfg=8
 
-" Syntastic:
+" Syntastic :
     set statusline+=%#warningmsg#
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
