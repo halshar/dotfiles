@@ -1,7 +1,7 @@
 let mapleader = " "
 set nocompatible
 filetype plugin indent on
-syntax on
+syntax on " syntax highlighting
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -9,19 +9,13 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'joshdick/onedark.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'nvie/vim-flake8'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'tpope/vim-commentary'
-Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'powerline/powerline'
 Plugin 'valloric/youcompleteme'
 Plugin 'Yggdroot/indentLine'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'suan/vim-instant-markdown'
-Plugin 'junegunn/goyo.vim'
 
 call vundle#end()
 
@@ -29,7 +23,6 @@ call vundle#end()
     set encoding=utf-8
     set clipboard=unnamed
     set ruler
-    set autoindent
     set hidden
     set nobackup
     set cursorline
@@ -59,12 +52,6 @@ call vundle#end()
 
 " Disable automatic commenting on newline:
     autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Replace the word under the cursor with leader + *:
-    nnoremap <leader>* :%s/\<<c-r><c-w>\>//g<left><left>
-
-" Goyo plugin makes text more readable when writing prose:
-    map <leader>g : Goyo \| set linebreak<CR>
 
 " Spell-check set to <leader>s:
     map <leader>s :setlocal spell! spelllang=en_us<CR>
@@ -109,6 +96,9 @@ call vundle#end()
     map <C-k> <C-w>k
     map <C-l> <C-w>l
 
+" NERDTREE key mapping:
+    :map <C-n> :NERDTree<CR>
+
 " Mouse support:
     set mouse=a
 
@@ -122,22 +112,9 @@ call vundle#end()
     let g:onedark_termcolors=256
     let g:airline_theme='onedark'
 
-" Vim-devicons:
-    let g:WebDevIconsUnicodeDecorateFolderNodes=1
-
 " Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_alt_sep = '|'
-
-" NERDTREE key mapping:
-    :map <C-n> :NERDTree<CR>
-
-" Better whitespace:
-    let g:better_whitespace_enabled = 1
-    let g:strip_whitespace_on_save = 1
-
-" Make your code look pretty:
-    let python_highlight_all=1
 
 " Vim instant markdown:
     let g:instant_markdown_autostart=0
@@ -157,3 +134,12 @@ call vundle#end()
     set list lcs=tab:\┊\ 
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     highlight SpecialKey ctermfg=8
+
+" Syntastic:
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
