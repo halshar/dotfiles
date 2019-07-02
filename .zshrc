@@ -1,5 +1,5 @@
 export ZSH="/home/itachi/.oh-my-zsh"
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin:$HOME/.local/bin
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/bin/virtualenvwrapper.sh
 export EDITOR=vim
