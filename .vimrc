@@ -7,7 +7,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'joshdick/onedark.vim'
+Plugin 'morhetz/gruvbox'
 Plugin 'vim-airline/vim-airline'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'tpope/vim-commentary'
@@ -106,11 +106,9 @@ call vundle#end()
     vnoremap < <gv
     vnoremap > >gv
 
-" Onedark color scheme:
-    colorscheme onedark
-    let g:onedark_hide_endofbuffer=1
-    let g:onedark_termcolors=256
-    let g:airline_theme='onedark'
+" Gruvbox :
+    colorscheme gruvbox
+    set background=dark
 
 " Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
@@ -135,11 +133,3 @@ call vundle#end()
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     highlight SpecialKey ctermfg=8
 
-" Syntastic :
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
