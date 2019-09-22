@@ -133,3 +133,5 @@ call vundle#end()
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     highlight SpecialKey ctermfg=8
 
+" Syntastic :
+    let g:Syntastic_python_checker="flake8"
