@@ -6,18 +6,15 @@ export EDITOR=vim
 
 ZSH_THEME="agnoster"
 
-
-plugins=(
-  git
-  postgres
-  django
-)
-
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+bindkey -v
+export KEYTIMEOUT=1
 
 neofetch
 
 alias v='vim'
 alias t='tmux'
 alias c='tty-clock -cbs -C1'
+alias music='ncmpcpp'
