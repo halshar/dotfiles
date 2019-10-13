@@ -17,4 +17,4 @@ neofetch
 alias v='vim'
 alias t='tmux'
 alias c='tty-clock -cbs -C1'
-alias music='ncmpcpp'
+alias yt='youtube-dl'
