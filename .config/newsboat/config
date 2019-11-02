@@ -19,9 +19,9 @@ bind-key n next-unread
 bind-key p prev-unread
 bind-key U show-urls
 
-color listnormal cyan default
+color listnormal blue default
 color listfocus black yellow standout bold
-color listnormal_unread blue default
+color listnormal_unread green default
 color listfocus_unread yellow default bold
 color info red black bold
 color article cyan default
