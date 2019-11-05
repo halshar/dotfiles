@@ -1,22 +1,24 @@
-export ZSH="/home/itachi/.oh-my-zsh"
-export PATH=$PATH:$HOME/bin:$HOME/.local/bin
+export PATH=$PATH:$HOME/bin
 export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/bin/virtualenvwrapper.sh
 export EDITOR=vim
 
-ZSH_THEME="agnoster"
-
-source $ZSH/oh-my-zsh.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bindkey -v
 export KEYTIMEOUT=1
 
+autoload -U promptinit && promptinit
+prompt fade
+# prompt fire red magenta blue white white white
+
 neofetch
 
+alias la='ls -lAh'
+alias ll='ls -lh'
 alias v='vim'
 alias t='tmux'
-alias c='tty-clock -cbs -C1'
 alias yt='youtube-dl'
 alias img='sxiv -f'
 alias bat='acpi -bti'
