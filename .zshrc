@@ -11,7 +11,6 @@ export KEYTIMEOUT=1
 
 autoload -U promptinit && promptinit
 prompt fade
-# prompt fire red magenta blue white white white
 
 neofetch
 
@@ -22,5 +21,3 @@ alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
 alias bat='acpi -bti'
-alias fm='ranger'
-alias nw='newsboat'
