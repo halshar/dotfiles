@@ -44,8 +44,16 @@ call vundle#end()
     set undolevels=700
 
 " Enable folding:
-    set foldmethod=indent
-    set foldlevel=99
+    " set foldmethod=manual "fold based on manual user input
+    " set foldmethod=marker "auto folding; using 3 open/closing curly braces
+    set foldmethod=indent "fold based on indent
+    " set foldnestmax=10 "deepest fold is 10 levels
+    set nofoldenable "no fold by default
+    set foldlevel=1
+
+" Load folds
+    autocmd BufWinLeave *.* mkview                                                     
+    autocmd BufWinEnter *.* silent loadview
 
 " Enable autocompletion:
     set wildmode=longest,list,full
