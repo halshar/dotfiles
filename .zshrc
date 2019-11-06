@@ -3,16 +3,24 @@ export WORKON_HOME="$HOME/.virtualenvs"
 source /usr/bin/virtualenvwrapper.sh
 export EDITOR=vim
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-bindkey -v
-export KEYTIMEOUT=1
-
+# Theme:
 autoload -U promptinit && promptinit
 prompt fade
 
-neofetch
+# History in cache directory:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
+# Basic auto/tab complete:
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)       # Include hidden files.
+
+bindkey -v
+export KEYTIMEOUT=1
 
 alias la='ls -lAh'
 alias ll='ls -lh'
@@ -21,3 +29,8 @@ alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
 alias bat='acpi -bti'
+
+neofetch
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
