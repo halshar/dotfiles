@@ -1,6 +1,5 @@
 export PATH=$PATH:$HOME/bin
 export WORKON_HOME="$HOME/.virtualenvs"
-source /usr/bin/virtualenvwrapper.sh
 export EDITOR=vim
 
 # Theme:
@@ -29,8 +28,13 @@ alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
 alias bat='acpi -bti'
+alias ev='v ~/.vimrc'
+alias ez='v ~/.zshrc'
+alias et='v ~/.tmux.conf'
+alias se='du -a ~/bin/* ~/Documents/* ~/.config/* | awk "{print \$2}" | fzf | xargs -r -o $EDITOR'
 
 neofetch
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/bin/virtualenvwrapper.sh
