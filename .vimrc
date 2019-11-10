@@ -3,21 +3,18 @@ set nocompatible
 filetype plugin indent on
 syntax on " syntax highlighting
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'vim-airline/vim-airline'
-Plugin 'xuhdev/vim-latex-live-preview'
-Plugin 'tpope/vim-commentary'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'valloric/youcompleteme'
-Plugin 'Yggdroot/indentLine'
-Plugin 'suan/vim-instant-markdown'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'valloric/youcompleteme'
+Plug 'Yggdroot/indentLine'
+Plug 'suan/vim-instant-markdown'
 
-call vundle#end()
+call plug#end()
 
 " Some basics:
     set encoding=utf-8
