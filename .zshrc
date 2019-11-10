@@ -28,11 +28,15 @@ alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
 alias bat='acpi -bti'
+alias tp='trash-put'
 alias history='history 1'
+alias list_device='simple-mtpfs -l'
+alias mount_device='simple-mtpfs --device 1 Mobile/'
+alias unmount_device='fusermount -u Mobile/'
 alias ev='v ~/.vimrc'
 alias ez='v ~/.zshrc'
 alias et='v ~/.tmux.conf'
-alias se='du -a ~/bin/* ~/Documents/* ~/.config/* | awk "{print \$2}" | fzf | xargs -r -o $EDITOR'
+alias se='du -a ~/Scripts/* ~/Documents/* ~/.config/* | awk "{print \$2}" | fzf | xargs -r -o $EDITOR'
 
 neofetch
 
