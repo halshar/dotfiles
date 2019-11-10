@@ -1,4 +1,4 @@
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/Scripts
 export WORKON_HOME="$HOME/.virtualenvs"
 export EDITOR=vim
 
@@ -28,6 +28,7 @@ alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
 alias bat='acpi -bti'
+alias history='history 1'
 alias ev='v ~/.vimrc'
 alias ez='v ~/.zshrc'
 alias et='v ~/.tmux.conf'
@@ -35,6 +36,7 @@ alias se='du -a ~/bin/* ~/Documents/* ~/.config/* | awk "{print \$2}" | fzf | xa
 
 neofetch
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/bin/virtualenvwrapper.sh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
