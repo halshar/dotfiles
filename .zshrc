@@ -3,8 +3,11 @@ export WORKON_HOME="$HOME/.virtualenvs"
 export EDITOR=vim
 
 # Theme:
-autoload -U promptinit && promptinit
-prompt fade
+# autoload -U promptinit && promptinit
+# prompt redhat
+
+autoload -U colors && colors
+PS1="%B%{$fg[green]%}[%{$fg[green]%}%n%{$fg[green]%}@%{$fg[green]%}%M %{$fg[red]%}%~%{$fg[green]%}]%{$reset_color%}$%b "
 
 # History in cache directory:
 HISTSIZE=10000
