@@ -21,6 +21,7 @@ _comp_options+=(globdots)       # Include hidden files.
 bindkey -v
 export KEYTIMEOUT=1
 
+alias ls='ls --color=auto'
 alias la='ls -lAh'
 alias ll='ls -lh'
 alias v='vim'
