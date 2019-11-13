@@ -62,9 +62,6 @@ call plug#end()
 " Spell-check set to <leader>s:
     map <leader>s :setlocal spell! spelllang=en_us<CR>
 
-" LaTeX live preview with leader + l:
-    map <leader>l :LLPStartPreview<CR>
-
 " Switch between last two open buffers with leader + leader:
     nnoremap <leader><leader> <c-^>
 
