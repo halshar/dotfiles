@@ -25,3 +25,8 @@ color listnormal_unread green default
 color listfocus_unread yellow default bold
 color info red black bold
 color article cyan default
+
+browser linkhandler
+macro , open-in-browser
+macro v set browser "mpv"; open-in-browser ; set browser linkhandler
+macro w set browser "w3m"; open-in-browser ; set browser linkhandler
