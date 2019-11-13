@@ -13,6 +13,7 @@ Plug 'scrooloose/syntastic'
 Plug 'valloric/youcompleteme'
 Plug 'Yggdroot/indentLine'
 Plug 'suan/vim-instant-markdown'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
@@ -119,6 +120,10 @@ call plug#end()
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_alt_sep = '|'
 
+" Vimwiki uses markdown syntax:
+    let g:vimwiki_list = [{'path': '~/vimwiki/',
+                          \ 'syntax': 'markdown', 'ext': '.md'}]
+
 " Vim instant markdown:
     let g:instant_markdown_autostart=0
     map <leader>m :InstantMarkdownPreview<CR>
@@ -137,6 +142,7 @@ call plug#end()
     set list lcs=tab:\┊\ 
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
     highlight SpecialKey ctermfg=8
+    let g:indentLine_enabled = 0
 
 " Syntastic :
     let g:Syntastic_python_checker="flake8"
