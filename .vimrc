@@ -1,4 +1,4 @@
-let mapleader = " "
+let mapleader=" "
 set nocompatible
 filetype plugin indent on
 syntax on " syntax highlighting
@@ -29,9 +29,10 @@ call plug#end()
     set number relativenumber
 
 " Edit setting:
-    set tabstop=4 " number of visual spcaes per TAB
+    set tabstop=4 " specifies the width of tab character
     set softtabstop=4 "number of spaces in the TAB when editing
-    set expandtab " tabs are spaces
+    set shiftwidth=4 " determines the amount of whitespace to insert or remove using the indentation
+    set expandtab " spaces to be used in place of tab characters.
 
 " Search settings:
     set showmatch " highlight matching [{()}]
@@ -40,18 +41,6 @@ call plug#end()
 " Useful settings:
     set history=700
     set undolevels=700
-
-" Enable folding:
-    " set foldmethod=manual "fold based on manual user input
-    " set foldmethod=marker "auto folding; using 3 open/closing curly braces
-    set foldmethod=indent "fold based on indent
-    " set foldnestmax=10 "deepest fold is 10 levels
-    set nofoldenable "no fold by default
-    set foldlevel=1
-
-" Load folds
-    autocmd BufWinLeave *.* mkview                                                     
-    autocmd BufWinEnter *.* silent loadview
 
 " Enable autocompletion:
     set wildmode=longest,list,full
@@ -85,6 +74,12 @@ call plug#end()
 
 " Run python with leader + r:
     nnoremap <leader>r :! python
+
+" Run Makefile with leader + m:
+    nnoremap <leader>m :make<CR>
+
+" Run c program with leader + a:
+    nnoremap <leader>a :! ./a.out<CR>
 
 " Copy and Paste from vim to another program:
     vnoremap <C-c> "*y :let @+=@*<CR>
@@ -123,7 +118,7 @@ call plug#end()
 
 " Vim instant markdown:
     let g:instant_markdown_autostart=0
-    map <leader>m :InstantMarkdownPreview<CR>
+    map <leader>n :InstantMarkdownPreview<CR>
 
 " YouCompleteMe :
     let g:ycm_autoclose_preview_window_after_completion=1
