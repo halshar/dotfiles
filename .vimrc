@@ -8,9 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
-" Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
-Plug 'valloric/youcompleteme'
 Plug 'Yggdroot/indentLine'
 Plug 'suan/vim-instant-markdown'
 Plug 'vimwiki/vimwiki'
@@ -45,12 +43,6 @@ call plug#end()
 
 " Splits open at the bottom and right:
     set splitbelow splitright
-
-" Shortcutting spell navigation:
-    map <C-h> <C-w>h
-    map <C-j> <C-w>j
-    map <C-k> <C-w>k
-    map <C-l> <C-w>l
 
 " Easier moving of code blocks:
     vnoremap < <gv
@@ -87,9 +79,6 @@ call plug#end()
     vnoremap <C-c> "*y :let @+=@*<CR>
     map <C-p> "+P
 
-" " NERDTREE key mapping:
-"     :map <C-n> :NERDTree<CR>
-
 " Gruvbox:
      colorscheme gruvbox
      set background=dark
@@ -105,9 +94,6 @@ call plug#end()
 " Vim instant markdown:
     let g:instant_markdown_autostart=0
 
-" YouCompleteMe:
-    let g:ycm_autoclose_preview_window_after_completion=1
-
 " Indent line:
     set list lcs=tab:\┊\ 
     let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -122,3 +108,14 @@ call plug#end()
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
+
+function! InsertTabWrapper()
+    let col = col(".") - 1
+    if !col || getline(".")[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-n>"
+endfunction
+
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-p>
