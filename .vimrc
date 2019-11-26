@@ -48,6 +48,12 @@ call plug#end()
     vnoremap < <gv
     vnoremap > >gv
 
+" Shortcutting split navigation, saving a keypress:
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
+
 " Switch between last two open buffers with leader + leader:
     nnoremap <leader><leader> <c-^>
 
@@ -64,7 +70,7 @@ call plug#end()
     nnoremap <leader>c :!clear<CR>
 
 " Run python with leader + r:
-    nnoremap <leader>r :!python %s<CR>
+    nnoremap <leader>r :!python %<CR>
 
 " Run Makefile with leader + m:
     nnoremap <leader>m :!gcc %<CR>
