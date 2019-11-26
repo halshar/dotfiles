@@ -25,7 +25,7 @@ export KEYTIMEOUT=1
 alias ls='ls --color=auto'
 alias la='ls -lAh'
 alias ll='ls -lh'
-alias v='vim'
+alias v='nvim'
 alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
@@ -34,9 +34,9 @@ alias history='history 1'
 alias list_device='simple-mtpfs -l'
 alias mount_device='simple-mtpfs --device 1 Mobile/'
 alias unmount_device='fusermount -u Mobile/'
-alias ev='v ~/.vimrc'
-alias ez='v ~/.zshrc'
-alias et='v ~/.tmux.conf'
+alias ev='nvim ~/.vimrc'
+alias ez='nvim ~/.zshrc'
+alias et='nvim ~/.tmux.conf'
 alias se='du -a ~/Scripts/* ~/Documents/* ~/.config/* | awk "{print \$2}" | fzf | xargs -r -o $EDITOR'
 
 # System Information
@@ -45,4 +45,3 @@ neofetch
 # Execute the contents of the files:
 source /usr/bin/virtualenvwrapper.sh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
