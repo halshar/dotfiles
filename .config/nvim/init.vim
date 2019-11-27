@@ -4,12 +4,14 @@ syntax on
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+" Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
 Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
@@ -45,6 +47,12 @@ call plug#end()
     vnoremap < <gv
     vnoremap > >gv
 
+" Easier splits resizing:
+    map <C-Up> <C-w>+
+    map <C-Down> <C-w>-
+    map <C-Left> <C-w><
+    map <C-Right> <C-w>>
+
 " Shortcutting split navigation:
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j
@@ -66,12 +74,19 @@ call plug#end()
 " Switch buffers backward with leader + p:
     nnoremap <leader>p :bp<CR>
 
+" Markdown Preview :
+    map <leader>m :MarkdownPreview<CR>
+
 " Navigate auto-completion list with tab:
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Gruvbox:
-     colorscheme gruvbox
-     set background=dark
+" " Gruvbox:
+"      colorscheme gruvbox
+"      set background=dark
+
+" " Onedark:
+"     syntax on
+"     colorscheme onedark
 
 " Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
@@ -80,6 +95,10 @@ call plug#end()
 " Vimwiki uses markdown syntax:
     let g:vimwiki_list = [{'path': '~/vimwiki/',
                           \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" Markdown preview:
+    let g:mkdp_auto_close = 0
+    let g:mkdp_refresh_slow = 1
 
 " Neomake when writing a buffer (no delay):
     call neomake#configure#automake('w')
