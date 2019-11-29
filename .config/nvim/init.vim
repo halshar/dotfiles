@@ -62,6 +62,12 @@ call plug#end()
 " Open terminal with leader + t:
     nnoremap <leader>t :terminal<CR>
 
+" Run c/cpp program with leader + c:
+    nnoremap <leader>c :terminal rp %<CR>
+
+" Run python program with leader + r:
+    nnoremap <leader>r :terminal python %<CR>
+
 " Ctrl + s to exit terminal:
     tnoremap <C-s> <C-\><C-n>
 
