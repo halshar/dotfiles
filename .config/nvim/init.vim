@@ -4,8 +4,6 @@ syntax on
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'morhetz/gruvbox'
-" Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
@@ -40,6 +38,10 @@ call plug#end()
     set showmatch
     set incsearch
 
+" Useful settings:
+    set history=100
+    set undolevels=100
+
 " Splits open at the bottom and right:
     set splitbelow splitright
 
@@ -58,9 +60,6 @@ call plug#end()
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
 	map <C-l> <C-w>l        
-
-" Open terminal with leader + t:
-    nnoremap <leader>t :terminal<CR>
 
 " Run c/cpp program with leader + c:
     nnoremap <leader>c :terminal rp %<CR>
@@ -86,20 +85,12 @@ call plug#end()
 " Navigate auto-completion list with tab:
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" " Gruvbox:
-"      colorscheme gruvbox
-"      set background=dark
-
-" " Onedark:
-"     syntax on
-"     colorscheme onedark
-
 " Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Vimwiki uses markdown syntax:
-    let g:vimwiki_list = [{'path': '~/vimwiki/',
+    let g:vimwiki_list = [{'path': '~/Documents/Notes/',
                           \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " Markdown preview:
@@ -109,6 +100,17 @@ call plug#end()
 " Neomake when writing a buffer (no delay):
     call neomake#configure#automake('w')
     let g:neomake_open_list = 2
+    let g:c_syntax_for_h=1
+    let g:neomake_c_enabled_makers=['gcc']
+    let g:neomake_cpp_enabled_makers=['gcc']
+    let g:neomake_gcc_args=[
+    \ '-fsyntax-only',
+    \ '-std=gnu17',
+    \ '-Wall',
+    \ '-Wextra',
+    \ '-fopenmp',
+    \ '-I.'
+    \ ]
 
 " Use deoplete:
     let g:deoplete#enable_at_startup = 1
