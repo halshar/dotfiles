@@ -2,6 +2,14 @@ let mapleader=" "
 filetype plugin indent on
 syntax on
 
+if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p ~/.config/nvim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/nvim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+endif
+
+
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'vim-airline/vim-airline'
@@ -67,9 +75,6 @@ call plug#end()
 " Run python program with leader + r:
     nnoremap <leader>r :terminal python %<CR>
 
-" Ctrl + s to exit terminal:
-    tnoremap <C-s> <C-\><C-n>
-
 " Switch between last two open buffers with leader + leader:
     nnoremap <leader><leader> <c-^>
 
@@ -78,6 +83,9 @@ call plug#end()
 
 " Switch buffers backward with leader + p:
     nnoremap <leader>p :bp<CR>
+
+" Load Xresources file with leader + x:
+    nnoremap <leader>x :!xrdb ~/.Xresources<CR>
 
 " Markdown Preview :
     map <leader>m :MarkdownPreview<CR>
