@@ -1,7 +1,6 @@
+!! General settings:
 URxvt.font: xft:Hack Nerd Font Mono:style=Bold:size=12
 URxvt.scrollBar: false
-URxvt*transparent: true
-URxvt*shading: 75
 URxvt*cursorBlink: true
 
 
