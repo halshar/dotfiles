@@ -1,15 +1,30 @@
-!! General settings:
+!! Font settings:
+xft.dpi: 96
+xft.antialias: true
+xft.hinting: true
+xft.rgba: rgb
+xft.autohint: true
+xft.hintstyle: hintfull
+xft.lcdfilter: lcdfilter
+
+!! URxvt settings:
 URxvt.font: xft:Hack Nerd Font Mono:style=Bold:size=12
+URxvt*termName: rxvt-unicode-256color
+URxvt.intensityStyles: false
+URxvt.saveLines: 2000
+URxvt.cursorColor: white
 URxvt.scrollBar: false
 URxvt*cursorBlink: true
+URxvt.depth: 32
 
+!! st settings:
+st.alpha: 0.90
 
 !! Set the background, foreground and cursor colors as below:
-*.background: #282828
-*.foreground: white
-*.cursorColor: white
+*.background: #262626
+*.foreground: #ffffff
 
-!! System-default:
+!! Manjaro-default:
 *.color0:	#000000
 *.color1:	#AA0000
 *.color2:	#00AA00
@@ -26,7 +41,6 @@ URxvt*cursorBlink: true
 *.color13:	#FF55FF
 *.color14:	#55FFFF
 *.color15:	#FFFFFF
-
 
 !! Extensions:
 URxvt.perl-ext-common: default,matcher,resize-font,fullscreen,clipboard
