@@ -1,64 +1,54 @@
-!! Font settings:
-xft.dpi: 96
-xft.antialias: true
-xft.hinting: true
-xft.rgba: rgb
-xft.autohint: true
-xft.hintstyle: hintfull
-xft.lcdfilter: lcdfilter
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.hinting:                true
+Xft.rgba:                   rgb
+Xft.autohint:               true
+Xft.hintstyle:              hintfull
+Xft.lcdfilter:              lcdfilter
 
 !! URxvt settings:
-URxvt.font: xft:Hack Nerd Font Mono:style=Bold:size=12
-URxvt*termName: rxvt-unicode-256color
-URxvt.intensityStyles: false
-URxvt.saveLines: 2000
-URxvt.cursorColor: white
-URxvt.scrollBar: false
-URxvt*cursorBlink: true
-URxvt.depth: 32
-
-!! st settings:
-st.alpha: 0.90
-
-!! Set the background, foreground and cursor colors as below:
-*.background: #262626
-*.foreground: #ffffff
-
-!! Manjaro-default:
-*.color0:	#000000
-*.color1:	#AA0000
-*.color2:	#00AA00
-*.color3:	#AA5500
-*.color4:	#0000AA
-*.color5:	#AA00AA
-*.color6:	#00AAAA
-*.color7:	#AAAAAA
-*.color8:	#555555
-*.color9:	#FF5555
-*.color10:	#55FF55
-*.color11:	#FFFF55
-*.color12:	#5555FF
-*.color13:	#FF55FF
-*.color14:	#55FFFF
-*.color15:	#FFFFFF
+URxvt.intensityStyles:      false
+URxvt.font:                 xft: Hack Nerd Font Mono:style=Bold:size=12,xft: Source Code Pro:style=Bold:size=12
+URxvt.saveLines:            2000
+URxvt.scrollBar:            false
 
 !! Extensions:
-URxvt.perl-ext-common: default,matcher,resize-font,fullscreen,clipboard
-URxvt.colorUL:  white
+URxvt.perl-ext-common:      default,matcher,resize-font,fullscreen,clipboard
+URxvt.colorUL:              white
 
 !! Matcher:
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
+URxvt.url-launcher:         /usr/bin/xdg-open
+URxvt.matcher.button:       1
 
 !! Resize-font:
-URxvt.keysym.M-j:     resize-font:smaller
-URxvt.keysym.M-k:      resize-font:bigger
-URxvt.keysym.M-equal:     resize-font:reset
+URxvt.keysym.M-j:           resize-font:smaller
+URxvt.keysym.M-k:           resize-font:bigger
+URxvt.keysym.M-equal:       resize-font:reset
 
 !! Fullscreen:
-URxvt.keysym.F11: perl:fullscreen:switch
+URxvt.keysym.F11:           perl:fullscreen:switch
 
 !! Copy and Paste:
-URxvt.clipboard.autocopy: true
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.clipboard.autocopy:   true
+URxvt.keysym.M-c:           perl:clipboard:copy
+URxvt.keysym.M-v:           perl:clipboard:paste
+
+! Dracula Xresources palette
+*.foreground:               #F8F8F2
+*.background:               #282A36
+*.color0:                   #000000
+*.color8:                   #4D4D4D
+*.color1:                   #FF5555
+*.color9:                   #FF6E67
+*.color2:                   #50FA7B
+*.color10:                  #5AF78E
+*.color3:                   #F1FA8C
+*.color11:                  #F4F99D
+*.color4:                   #BD93F9
+*.color12:                  #CAA9FA
+*.color5:                   #FF79C6
+*.color13:                  #FF92D0
+*.color6:                   #8BE9FD
+*.color14:                  #9AEDFE
+*.color7:                   #BFBFBF
+*.color15:                  #E6E6E6
