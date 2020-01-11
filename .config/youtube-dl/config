@@ -1,6 +1,6 @@
 # Download the best file format available.
 -i
--o "%(uploader)s /%(upload_date)s - %(title)s - .%(ext)s"
+-o "%(uploader)s / %(playlist)s /%(upload_date)s - %(title)s - .%(ext)s"
 
 # Uniform Format
 --prefer-ffmpeg
