@@ -2,14 +2,6 @@ let mapleader=" "
 filetype plugin indent on
 syntax on
 
-if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ~/.config/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ~/.config/nvim/autoload/plug.vim
-	autocmd VimEnter * PlugInstall
-endif
-
-
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'vim-airline/vim-airline'
@@ -67,13 +59,16 @@ call plug#end()
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j
 	map <C-k> <C-w>k
-	map <C-l> <C-w>l        
+	map <C-l> <C-w>l 
 
 " Run c/cpp program with leader + c:
     nnoremap <leader>c :terminal rp %<CR>
 
 " Run python program with leader + r:
     nnoremap <leader>r :terminal python %<CR>
+
+" Close Neomake pop-up with leader + l:
+    nnoremap <leader>l :lclose<CR>
 
 " Switch between last two open buffers with leader + leader:
     nnoremap <leader><leader> <c-^>
@@ -87,7 +82,13 @@ call plug#end()
 " Load Xresources file with leader + x:
     nnoremap <leader>x :!xrdb ~/.Xresources<CR>
 
-" Markdown Preview :
+" Execute BASH script with leader + b:
+    nnoremap <leader>b :terminal ./%<CR>
+
+" Add executable permission with leader + e:
+    nnoremap <leader>e :! chmod u+x %<CR>
+
+" Markdown preview with leader + m :
     map <leader>m :MarkdownPreview<CR>
 
 " Navigate auto-completion list with tab:
