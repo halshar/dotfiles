@@ -17,6 +17,9 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)       # Include hidden files.
 
+# Auto complete with case insenstivity:
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 # Vim mode:
 bindkey -v
 export KEYTIMEOUT=1
