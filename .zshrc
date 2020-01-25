@@ -33,17 +33,11 @@ alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
 alias tp='trash-put'
+alias grep='grep --color=auto'
 alias history='history 1'
-alias list_device='simple-mtpfs -l'
-alias mount_device='simple-mtpfs --device 1 Mobile/'
-alias unmount_device='fusermount -u Mobile/'
 alias ev='nvim ~/.config/nvim/init.vim'
 alias ez='nvim ~/.zshrc'
 alias et='nvim ~/.tmux.conf'
-alias se='du -a ~/Scripts/* ~/Documents/* ~/.config/* | awk "{print \$2}" | fzf | xargs -r -o $EDITOR'
-
-# System Information
-neofetch
 
 # Execute the contents of the files:
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
