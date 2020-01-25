@@ -8,9 +8,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
-Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -86,13 +84,10 @@ call plug#end()
     nnoremap <leader>b :terminal ./%<CR>
 
 " Add executable permission with leader + e:
-    nnoremap <leader>e :! chmod u+x %<CR>
+    nnoremap <leader>e :!chmod u+x %<CR>
 
 " Markdown preview with leader + m :
     map <leader>m :MarkdownPreview<CR>
-
-" Navigate auto-completion list with tab:
-    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
@@ -121,6 +116,13 @@ call plug#end()
     \ '-I.'
     \ ]
 
-" Use deoplete:
-    let g:deoplete#enable_at_startup = 1
-    autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+function! InsertTabWrapper()
+    let col = col(".") - 1
+    if !col || getline(".")[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-n>"
+endfunction
+
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-p>
