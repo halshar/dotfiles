@@ -5,25 +5,17 @@ syntax on
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'vim-airline/vim-airline'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
-Plug 'vimwiki/vimwiki'
 Plug 'neomake/neomake'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
 call plug#end()
 
 " Some basics:
-    set encoding=utf-8
-    set clipboard+=unnamedplus
     set termguicolors
-    set ruler
     set hidden
-    set nobackup
     set cursorline
-    set wildmenu
     set number relativenumber
-    set wrap
-    set linebreak
     set scrolloff=5
 
 " Edit settings:
@@ -31,10 +23,6 @@ call plug#end()
     set softtabstop=4
     set shiftwidth=4
     set expandtab
-
-" Search settings:
-    set showmatch
-    set incsearch
 
 " Useful settings:
     set history=100
@@ -86,27 +74,16 @@ call plug#end()
 " Add executable permission with leader + e:
     nnoremap <leader>e :!chmod u+x %<CR>
 
-" Markdown preview with leader + m :
-    map <leader>m :MarkdownPreview<CR>
-
 " Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_alt_sep = '|'
-
-" Vimwiki uses markdown syntax:
-    let g:vimwiki_list = [{'path': '~/Documents/Notes/',
-                          \ 'syntax': 'markdown', 'ext': '.md'}]
-
-" Markdown preview:
-    let g:mkdp_auto_close = 0
-    let g:mkdp_refresh_slow = 1
 
 " Neomake when writing a buffer (no delay):
     call neomake#configure#automake('w')
     let g:neomake_open_list = 2
     let g:c_syntax_for_h=1
     let g:neomake_c_enabled_makers=['gcc']
-    let g:neomake_cpp_enabled_makers=['gcc']
+    let g:neomake_cpp_enabled_makers=['g++']
     let g:neomake_gcc_args=[
     \ '-fsyntax-only',
     \ '-std=gnu17',
@@ -116,13 +93,8 @@ call plug#end()
     \ '-I.'
     \ ]
 
-function! InsertTabWrapper()
-    let col = col(".") - 1
-    if !col || getline(".")[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-n>"
-endfunction
+" Use deoplete:
+    let g:deoplete#enable_at_startup = 1
 
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-p>
+" Navigate auto-completion list with tab:
+    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
