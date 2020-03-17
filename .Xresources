@@ -6,33 +6,6 @@ Xft.autohint:               true
 Xft.hintstyle:              hintfull
 Xft.lcdfilter:              lcdfilter
 
-!! URxvt settings:
-URxvt.intensityStyles:      false
-URxvt.font:                 xft: Hack Nerd Font Mono:style=Bold:size=12,xft: Source Code Pro:style=Bold:size=12
-URxvt.saveLines:            2000
-URxvt.scrollBar:            false
-
-!! Extensions:
-URxvt.perl-ext-common:      default,matcher,resize-font,fullscreen,clipboard
-URxvt.colorUL:              white
-
-!! Matcher:
-URxvt.url-launcher:         /usr/bin/xdg-open
-URxvt.matcher.button:       1
-
-!! Resize-font:
-URxvt.keysym.M-j:           resize-font:smaller
-URxvt.keysym.M-k:           resize-font:bigger
-URxvt.keysym.M-equal:       resize-font:reset
-
-!! Fullscreen:
-URxvt.keysym.F11:           perl:fullscreen:switch
-
-!! Copy and Paste:
-URxvt.clipboard.autocopy:   true
-URxvt.keysym.M-c:           perl:clipboard:copy
-URxvt.keysym.M-v:           perl:clipboard:paste
-
 ! Dracula Xresources palette
 *.foreground:               #F8F8F2
 *.background:               #282A36
