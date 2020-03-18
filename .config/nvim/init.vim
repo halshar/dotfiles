@@ -23,9 +23,6 @@ call plug#end()
     set shiftwidth=4
     set expandtab
 
-" Splits open at the bottom and right:
-    set splitbelow splitright
-
 " Disable automatic commenting on newline:
     autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
