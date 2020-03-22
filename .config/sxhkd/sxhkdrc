@@ -1,0 +1,82 @@
+# Quit bspwm
+super + shift + Escape
+    prompt "Are you sure you want to quit" "bspc quit"
+
+# Restart bspwm
+super + shift + r
+    bspc wm -r
+
+# Close or kill window
+super + {c,q}
+    bspc node -{c,k}
+
+# Focus on desktop
+super + {0-9}
+    bspc desktop -f {0-9}
+
+# Send window to desktop
+super + shift + {0-9}
+    bspc node -d {0-9}
+
+# Focus on window in direction
+super + {h,j,k,l}
+    bspc node -f {west,south,north,east}
+
+# Swap window with direction
+super + shift + {h,j,k,l}
+    bspc node -s {west,south,north,east}
+
+# Toggle floating window on and off
+super + o
+    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+# Expand or contract node in direction
+super + ctrl + {h,j,k,l}
+    bspwm_resize {west,south,north,east}
+
+# Dynamic gaps
+super + s : bracket{left,right}
+    bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
+
+# Restart hotkey daemon
+super + shift + x
+    killandnotify "sxhkd" "Config reloaded" && sxhkd &
+
+# Reload polybar
+super + shift + p
+    reloadpolybar
+
+# Reboot and shutdown
+    prompt {"Are you sure you want to reboot?" "sudo reboot", "Are you sure you want to shutdown?" "sudo shutdown"}
+
+# Run dmenu
+super + d
+    dmenu_run
+
+# Run terminal
+super + Return
+    $TERMINAL
+
+# lauch discord, newsboat, ranger, firefox, thunar,htop, qbittorrent, neomutt,cmus, screenshot, volume, brightness
+
+# Run terminal applications
+super + t ; {c,h,m,n,r}
+    st -e {cmus,htop,neomutt,newsboat,ranger}
+
+# Run gui applications
+super + g ; {d,f,t,q}
+    {discord,firefox,thunar,qbittorrent}
+
+# Volume control
+XF86AudioLowerVolume
+    amixer set Master 5%-
+XF86AudioRaiserVolume
+    amixer set Master 5%+
+XF86AudioMute
+    amixer set Master toggle
+
+# Brightness control
+XF86MonBrightnessDown
+    xbacklight -dec 5
+XF86MonBrightnessUp
+    xbacklight -inc 5
