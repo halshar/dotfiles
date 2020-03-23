@@ -2,10 +2,6 @@
 super + shift + Escape
     prompt "Are you sure you want to quit" "bspc quit"
 
-# Restart bspwm
-super + shift + r
-    bspc wm -r
-
 # Close or kill window
 super + {c,q}
     bspc node -{c,k}
@@ -28,7 +24,7 @@ super + shift + {h,j,k,l}
 
 # Toggle floating window on and off
 super + o
-    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+    bspwm_fullscreen
 
 # Expand or contract node in direction
 super + ctrl + {h,j,k,l}
@@ -37,6 +33,10 @@ super + ctrl + {h,j,k,l}
 # Dynamic gaps
 super + s : bracket{left,right}
     bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
+
+# Restart bspwm
+super + shift + r
+    bspc wm -r
 
 # Restart hotkey daemon
 super + shift + x
@@ -56,8 +56,6 @@ super + d
 # Run terminal
 super + Return
     $TERMINAL
-
-# lauch discord, newsboat, ranger, firefox, thunar,htop, qbittorrent, neomutt,cmus, screenshot, volume, brightness
 
 # Run terminal applications
 super + t ; {c,h,m,n,r}
