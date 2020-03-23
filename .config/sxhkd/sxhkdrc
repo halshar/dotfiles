@@ -2,6 +2,10 @@
 super + shift + Escape
     prompt "Are you sure you want to quit" "bspc quit"
 
+# Restart bspwm
+super + shift + b
+    bspc wm -r
+
 # Close or kill window
 super + {c,q}
     bspc node -{c,k}
@@ -12,7 +16,7 @@ super + {0-9}
 
 # Send window to desktop
 super + shift + {0-9}
-    bspc node -d {0-9}
+    bspc node -d {0-9} --follow
 
 # Focus on window in direction
 super + {h,j,k,l}
@@ -28,15 +32,7 @@ super + o
 
 # Expand or contract node in direction
 super + ctrl + {h,j,k,l}
-    bspwm_resize {west,south,north,east}
-
-# Dynamic gaps
-super + s : bracket{left,right}
-    bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
-
-# Restart bspwm
-super + shift + r
-    bspc wm -r
+    bspwm_resize {west,south,node,east}
 
 # Restart hotkey daemon
 super + shift + x
@@ -47,6 +43,7 @@ super + shift + p
     reloadpolybar
 
 # Reboot and shutdown
+super + shift + {r,s}
     prompt {"Are you sure you want to reboot?" "sudo reboot", "Are you sure you want to shutdown?" "sudo shutdown"}
 
 # Run dmenu
@@ -55,26 +52,4 @@ super + d
 
 # Run terminal
 super + Return
-    $TERMINAL
-
-# Run terminal applications
-super + t ; {c,h,m,n,r}
-    st -e {cmus,htop,neomutt,newsboat,ranger}
-
-# Run gui applications
-super + g ; {d,f,t,q}
-    {discord,firefox,thunar,qbittorrent}
-
-# Volume control
-XF86AudioLowerVolume
-    amixer set Master 5%-
-XF86AudioRaiserVolume
-    amixer set Master 5%+
-XF86AudioMute
-    amixer set Master toggle
-
-# Brightness control
-XF86MonBrightnessDown
-    xbacklight -dec 5
-XF86MonBrightnessUp
-    xbacklight -inc 5
+    st
