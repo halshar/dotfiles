@@ -10,7 +10,8 @@ alert                       =   #EC5F67
 [bar/mybar]
 width                       =   100%
 height                      =   25
-fixed-center                =   false
+fixed-center                =   true
+radius                      =   0.0
 
 wm-restack                  =   bspwm
 enable-ipc                  =   false
@@ -22,16 +23,17 @@ foreground                  =   ${colors.foreground}
 line-size                   =   1
 line-color                  =   #f00
 
-border-size                 =   2
+border-size                 =   0
 border-color                =   #00000000
 
 padding                     =   0
-module-margin-right         =   2
+module-margin-left          =   1
+module-margin-right         =   1
 
 font-0                      =   "Hack Nerd Font Mono:style=Bold:size=9"
 
 modules-left                =   bspwm xwindow
-modules-right               =   backlight cpu memory battery pulseaudio date
+modules-right               =   backlight check_update cpu memory battery pulseaudio date
 
 tray-position               =   right
 tray-padding                =   1
@@ -109,19 +111,12 @@ interval                    =   5
 
 format-volume               =   <label-volume>
 
-label-muted                 =   🔇 muted
-label-muted-foreground      =   #666
-
-ramp-volume-0               =   🔈
-ramp-volume-1               =   🔉
-ramp-volume-2               =   🔊
-
 [module/battery]
 type                        =   internal/battery
 full-at                     =   99
 battery                     =   BAT0
 adapter                     =   ADP1
-poll-interval = 5
+poll-interval               =   5
 
 time-format                 =   %H:%M
 format-charging             =   <label-charging>
@@ -130,6 +125,11 @@ format-discharging          =   <label-discharging>
 label-charging              =   Charging %percentage%%
 label-discharging           =   Discharging %percentage%%
 label-full                  =   Fully charged
+
+[module/check_update]
+type                        =   custom/script
+exec                        =   ~/.config/polybar/scripts/check_update.sh
+interval                    =   7200
 
 [settings]
 screenchange-reload         =   true
