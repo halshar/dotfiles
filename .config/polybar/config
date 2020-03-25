@@ -1,208 +1,135 @@
 [colors]
-background = #282A36
-foreground = #F8F8F2
-primary = #BD93F9
-secondary = #e60053
-alert = #bd2c40
+background                  =   #282A36
+background-alt              =   #BD93F9
+foreground                  =   #F8F8F2
+foreground-alt              =   #FF79C6
+primary                     =   #9AEDFE
+secondary                   =   #e60053
+alert                       =   #EC5F67
 
 [bar/mybar]
-width = 100%
-height = 27
-offset-x = 0
-offset-y = 0
-radius = 0.0
-fixed-center = false
+width                       =   100%
+height                      =   25
+fixed-center                =   false
 
-wm-restack = bspwm
-enable-ipc = true
-bottom = false
+wm-restack                  =   bspwm
+enable-ipc                  =   false
+bottom                      =   false
 
-background = ${colors.background}
-foreground = ${colors.foreground}
+background                  =   ${colors.background}
+foreground                  =   ${colors.foreground}
 
-; line-size = 3
-; line-color = #f00
+line-size                   =   1
+line-color                  =   #f00
 
-border-size = 4
-border-color = #00000000
+border-size                 =   2
+border-color                =   #00000000
 
-padding = 0
-module-margin-left = 1
-module-margin-right = 2
+padding                     =   0
+module-margin-right         =   2
 
-font-0 = "Hack Nerd Font Mono:style=Bold:size=10"
+font-0                      =   "Hack Nerd Font Mono:style=Bold:size=9"
 
-modules-left = bspwm xwindow
-modules-right = xbacklight pulseaudio memory battery temperature date
+modules-left                =   bspwm xwindow
+modules-right               =   backlight cpu memory battery pulseaudio date
 
-tray-position = right
-tray-padding = 1
-tray-background = ${colors.background}
-tray-offset-x = 0
-tray-offset-y = 0
-tray-scale = 1.0
+tray-position               =   right
+tray-padding                =   1
+tray-background             =   ${colors.background}
+tray-offset-x               =   0
+tray-offset-y               =   0
+tray-scale                  =   1.0
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+cursor-click                =   pointer
+cursor-scroll               =   ns-resize
 
 [module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
+type                        =   internal/xwindow
+label                       =   %title%
+
+format                      =   <label>
+format-background           =   ${colors.background-alt}
+format-foreground           =   ${colors.foreground}
+format-padding              =   2
+
+label-empty                 = 
 
 [module/bspwm]
-type = internal/bspwm
+type                        =   internal/bspwm
 
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused               =   %index%
+label-focused-background    =   ${colors.background-alt}
+label-focused-padding       =   2
 
-label-occupied = %index%
-label-occupied-padding = 2
+label-occupied              =   %index%
+label-occupied-padding      =   2
+label-occupied-foreground   =   ${colors.foreground-alt}
 
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent                =   %index%!
+label-urgent-background     =   ${colors.alert}
+label-urgent-padding        =   2
 
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+label-empty                 =   %index%
+label-empty-foreground      =   ${colors.primary}
+label-empty-padding         =   2
 
-; Separator in between workspaces
-label-separator = |
+[module/backlight]
+type                        =   internal/xbacklight
+enable-scroll               =   false
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
+format                      =   <label>
+label                       =   %percentage%%
 
 [module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
+type                        =   internal/cpu
+interval                    =   5
+format                      =   <label>
+label                       =   CPU %percentage%%
 
 [module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used%%
+type                        =   internal/memory
+interval                    =   5
+format                      =   <label>
+label                       =   RAM %gb_used%/%gb_free%
 
 [module/date]
-type = internal/date
-interval = 5
+type                        =   internal/date
+interval                    =   60
 
-date =
-date-alt = " %Y-%m-%d"
+date                        =   %a %d %b
+time                        =   %H:%M
 
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
-label = %date% %time%
+label                       =   %date%, %time%
 
 [module/pulseaudio]
-type = internal/pulseaudio
+type                        =   internal/pulseaudio
+sink                        =   <alsa_output.pci-0000_00_05.0.analog-stereo>
+use-ui-max                  =   true
+interval                    =   5
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
+format-volume               =   <label-volume>
 
-label-muted = 🔇 muted
-label-muted-foreground = #666
+label-muted                 =   🔇 muted
+label-muted-foreground      =   #666
 
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+ramp-volume-0               =   🔈
+ramp-volume-1               =   🔉
+ramp-volume-2               =   🔊
 
 [module/battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-full-at = 98
+type                        =   internal/battery
+full-at                     =   99
+battery                     =   BAT0
+adapter                     =   ADP1
+poll-interval = 5
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+time-format                 =   %H:%M
+format-charging             =   <label-charging>
+format-discharging          =   <label-discharging>
 
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+label-charging              =   Charging %percentage%%
+label-discharging           =   Discharging %percentage%%
+label-full                  =   Fully charged
 
 [settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
+screenchange-reload         =   true
