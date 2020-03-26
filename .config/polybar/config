@@ -1,135 +1,204 @@
 [colors]
-background                  =   #282A36
-background-alt              =   #BD93F9
-foreground                  =   #F8F8F2
-foreground-alt              =   #FF79C6
-primary                     =   #9AEDFE
-secondary                   =   #e60053
-alert                       =   #EC5F67
+background                              =   #282A36
+background-alt                          =   #BD93F9
+foreground                              =   #F8F8F2
+foreground-alt                          =   #FF79C6
+primary                                 =   #9AEDFE
+secondary                               =   #e60053
+alert                                   =   #EC5F67
 
 [bar/mybar]
-width                       =   100%
-height                      =   25
-fixed-center                =   true
-radius                      =   0.0
+width                                   =   100%
+height                                  =   25
+fixed-center                            =   true
+radius                                  =   0.0
 
-wm-restack                  =   bspwm
-enable-ipc                  =   false
-bottom                      =   false
+wm-restack                              =   bspwm
+enable-ipc                              =   true
+bottom                                  =   false
 
-background                  =   ${colors.background}
-foreground                  =   ${colors.foreground}
+background                              =   ${colors.background}
+foreground                              =   ${colors.foreground}
 
-line-size                   =   1
-line-color                  =   #f00
+line-size                               =   0
+line-color                              =   #f00
 
-border-size                 =   0
-border-color                =   #00000000
+border-size                             =   0
+border-color                            =   #00000000
 
-padding                     =   0
-module-margin-left          =   1
-module-margin-right         =   1
+padding                                 =   0
 
-font-0                      =   "Hack Nerd Font Mono:style=Bold:size=9"
+module-margin-left                      =   1
+module-margin-right                     =   1
 
-modules-left                =   bspwm xwindow
-modules-right               =   backlight check_update cpu memory battery pulseaudio date
+font-0                                  =   "Hack Nerd Font Mono:style=Bold:size=11"
 
-tray-position               =   right
-tray-padding                =   1
-tray-background             =   ${colors.background}
-tray-offset-x               =   0
-tray-offset-y               =   0
-tray-scale                  =   1.0
+modules-left                            =   bspwm xwindow
+modules-right                           =   check_update eth-up eth-down cpu memory temperature battery backlight volume date
 
-cursor-click                =   pointer
-cursor-scroll               =   ns-resize
+tray-position                           =   right
+tray-padding                            =   1
+tray-background                         =   ${colors.background}
+tray-offset-x                           =   0
+tray-offset-y                           =   0
+tray-scale                              =   1.0
+
+cursor-click                            =   pointer
+cursor-scroll                           =   ns-resize
 
 [module/xwindow]
-type                        =   internal/xwindow
-label                       =   %title%
+type                                    =   internal/xwindow
+label                                   =   %title%
 
-format                      =   <label>
-format-background           =   ${colors.background-alt}
-format-foreground           =   ${colors.foreground}
-format-padding              =   2
+format                                  =   <label>
+format-background                       =   ${colors.background-alt}
+format-foreground                       =   ${colors.foreground}
+format-padding                          =   2
 
-label-empty                 = 
+label-empty                             = 
 
 [module/bspwm]
-type                        =   internal/bspwm
+type                                    =   internal/bspwm
 
-label-focused               =   %index%
-label-focused-background    =   ${colors.background-alt}
-label-focused-padding       =   2
+label-focused                           =   %index%
+label-focused-background                =   ${colors.background-alt}
+label-focused-padding                   =   2
 
-label-occupied              =   %index%
-label-occupied-padding      =   2
-label-occupied-foreground   =   ${colors.foreground-alt}
+label-occupied                          =   %index%
+label-occupied-padding                  =   2
+label-occupied-foreground               =   ${colors.foreground-alt}
 
-label-urgent                =   %index%!
-label-urgent-background     =   ${colors.alert}
-label-urgent-padding        =   2
+label-urgent                            =   %index%!
+label-urgent-background                 =   ${colors.alert}
+label-urgent-padding                    =   2
 
-label-empty                 =   %index%
-label-empty-foreground      =   ${colors.primary}
-label-empty-padding         =   2
+label-empty                             =   %index%
+label-empty-foreground                  =   ${colors.primary}
+label-empty-padding                     =   2
 
 [module/backlight]
-type                        =   internal/xbacklight
-enable-scroll               =   false
+type                                    =   custom/ipc
+hook-0                                  =   light -G | sed 's/\.[0-9]*//' | awk '{ print int($1+1) }'
 
-format                      =   <label>
-label                       =   %percentage%%
+format-prefix                           =   " "
+format-underline                        =   ${colors.foreground-alt}
+format-prefix-foreground                =   ${colors.background-alt}
+
+initial                                 =   1
 
 [module/cpu]
-type                        =   internal/cpu
-interval                    =   5
-format                      =   <label>
-label                       =   CPU %percentage%%
+type                                    =   internal/cpu
+interval                                =   2
+
+format                                  =   <label>
+format-prefix                           =   " "
+format-prefix-foreground                =   ${colors.background-alt}
+label                                   =   %percentage%%
+
+[module/temperature]
+type                                    =   custom/script
+exec                                    =   "~/.config/polybar/scripts/temp.sh"
+
+label                                   =   "%output%"
+internal                                =   10
+
+format-prefix                           =   " "
+format-prefix-foreground                =   ${colors.background-alt}
 
 [module/memory]
-type                        =   internal/memory
-interval                    =   5
-format                      =   <label>
-label                       =   RAM %gb_used%/%gb_free%
+type                                    =   internal/memory
+interval                                =   5
+
+format                                  =   <label>
+format-prefix                           =   " "
+format-prefix-foreground                =   ${colors.background-alt}
+
+label                                   =   %percentage_used%%
 
 [module/date]
-type                        =   internal/date
-interval                    =   60
+type                                    =   internal/date
+interval                                =   60
 
-date                        =   %a %d %b
-time                        =   %H:%M
+date                                    =   %a %d %b
+time                                    =   %H:%M
 
-label                       =   %date%, %time%
+format-prefix                           =   " "
+format-prefix-foreground                =   ${colors.background-alt}
 
-[module/pulseaudio]
-type                        =   internal/pulseaudio
-sink                        =   <alsa_output.pci-0000_00_05.0.analog-stereo>
-use-ui-max                  =   true
-interval                    =   5
+label                                   =   %date% %time%
 
-format-volume               =   <label-volume>
+[module/volume]
+type                                    =   custom/ipc
+hook-0                                  =   "~/.config/polybar/scripts/volume.sh"
+
+format-volume                           =   <ramp-volume><label-volume>
+format-muted                            =   "<label-muted>  0%"
+
+ramp-volume-0                           =   " "
+ramp-volume-1                           =   " "
+ramp-volume-2                           =   " "
+ramp-volume-foreground                  =   ${colors.foreground-alt}
+
+label-volume                            =   %output%
+label-muted                             =   " "
+label-muted-foreground                  =   ${colors.background-alt}
+
+initial                                 =   1
 
 [module/battery]
-type                        =   internal/battery
-full-at                     =   99
-battery                     =   BAT0
-adapter                     =   ADP1
-poll-interval               =   5
+type                                    =   internal/battery
+full-at                                 =   98
 
-time-format                 =   %H:%M
-format-charging             =   <label-charging>
-format-discharging          =   <label-discharging>
+battery                                 =   BAT0
+adapter                                 =   ADP1
+poll-interval                           =   5
 
-label-charging              =   Charging %percentage%%
-label-discharging           =   Discharging %percentage%%
-label-full                  =   Fully charged
+format-charging                         =   <label-charging>
+format-charging-prefix                  =   "⚡"
+format-charging-prefix-foreground       =   ${colors.background-alt}
+
+format-discharging                      =   <label-discharging>
+format-discharging-prefix               =   " "
+format-discharging-prefix-foreground    =   ${colors.background-alt}
+
+label-charging                          =   %percentage%%
+label-discharging                       =   %percentage%%
+
+[module/eth-down]
+type                                    =   internal/network
+interface                               =   eno1
+interval                                =   1
+
+format-connected-prefix                 =   " "
+format-connected-prefix-foreground      =   ${colors.background-alt}
+label-connected                         =   %downspeed%
+
+label-disconnected                      =   %ifname% disconnected
+label-disconnected-foreground           =   ${colors.foreground-alt}
+
+[module/eth-up]
+type                                    =   internal/network
+interface                               =   eno1
+interval                                =   1
+
+format-connected-prefix                 =   " "
+format-connected-prefix-foreground      =   ${colors.background-alt}
+label-connected                         =   %upspeed%
+
+label-disconnected                      =   %ifname% disconnected
+label-disconnected-foreground           =   ${colors.foreground-alt}
 
 [module/check_update]
-type                        =   custom/script
-exec                        =   ~/.config/polybar/scripts/check_update.sh
-interval                    =   7200
+type                                    =   custom/script
+exec                                    =   "~/.config/polybar/scripts/updates_arch_combined.sh"
+
+format-prefix                           =   " "
+format-prefix-foreground                =   ${colors.background-alt}
+
+interval                                =   7200
 
 [settings]
-screenchange-reload         =   true
+screenchange-reload                     =   true
+
+; vim:ft=dosini
+; syntax:ssSemi
