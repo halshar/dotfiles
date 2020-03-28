@@ -210,7 +210,7 @@ initial                                 =   1
 
 [module/volume]
 type                                    =   custom/ipc
-hook-0                                  =   "~/.config/polybar/scripts/volume.sh"
+hook-0                                  =   "~/.config/polybar/scripts/display_volume.sh"
 
 format-prefix                           =   "  "
 format-foreground                       =   ${colors.color0}
