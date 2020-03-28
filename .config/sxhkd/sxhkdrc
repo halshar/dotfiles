@@ -39,7 +39,7 @@ super + shift + x
     killandnotify "sxhkd" "Config reloaded" && sxhkd &
 
 # Brightness
-super + {XF86MonBrightnessUp,XF86MonBrightnessDown}
+XF86MonBrightness{Up,Down}
     light {-A 5, -U 5} && polybar-msg hook backlight 1
 
 # Reboot and shutdown
@@ -54,10 +54,6 @@ super + d
 super + Return
     st
 
-# Fullscreen screenshot
-Print
-    screenshot full
-
-# Select screenshot
-shift + Print
-    screenshot select
+# Screenshot
+super + {_,shift + } Print
+    {screenshot full,screenshot select}
