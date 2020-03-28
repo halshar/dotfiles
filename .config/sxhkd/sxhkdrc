@@ -38,10 +38,6 @@ super + ctrl + {h,j,k,l}
 super + shift + x
     killandnotify "sxhkd" "Config reloaded" && sxhkd &
 
-# Reload polybar
-super + shift + p
-    reloadpolybar
-
 # Reboot and shutdown
 super + shift + {r,s}
     prompt {"Are you sure you want to reboot?" "sudo reboot", "Are you sure you want to shutdown?" "sudo shutdown"}
@@ -53,3 +49,11 @@ super + d
 # Run terminal
 super + Return
     st
+
+# Fullscreen screenshot
+Print
+    screenshot full
+
+# Select screenshot
+shift + Print
+    screenshot select
