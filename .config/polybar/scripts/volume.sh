@@ -7,10 +7,6 @@ vol=$(echo "$device" | grep "front-left" | awk '{ print $5 }')
 
 if [ "$mute" = "yes" ]; then
     echo "mute"
-elif [ "$(echo "$vol" | tr -d "%")" -gt 70 ]; then
-    echo "$vol"
-elif [ "$(echo "$vol" | tr -d "%")" -gt 35 ]; then
-    echo "$vol"
 else
     echo "$vol"
 fi
