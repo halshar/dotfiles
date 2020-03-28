@@ -34,9 +34,12 @@ super + o
 super + ctrl + {h,j,k,l}
     bspwm_resize {west,south,node,east}
 
-# Restart hotkey daemon
-super + shift + x
-    killandnotify "sxhkd" "Config reloaded" && sxhkd &
+# Reload polybar or sxhkd
+super + shift + {x,p}
+    { \
+    pkill -USR1 sxhkd && notify-send "sxhkd" "Reloaded key bindings", \
+    pkill -x polybar && polybar mybar -r & \
+    }
 
 # Brightness
 XF86MonBrightness{Up,Down}
@@ -48,7 +51,7 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 
 # Reboot and shutdown
 super + shift + {r,s}
-    prompt {"Are you sure you want to reboot?" "sudo reboot", "Are you sure you want to shutdown?" "sudo shutdown"}
+    prompt {"Are you sure you want to reboot?" "shutdown -r now", "Are you sure you want to shutdown?" "shutdown now"}
 
 # Run dmenu
 super + d
