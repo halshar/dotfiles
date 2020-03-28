@@ -84,8 +84,9 @@ label-empty-padding                     =   1
 
 [module/eth-up]
 type                                    =   internal/network
+; interface                               =   wlo1
 interface                               =   eno1
-interval                                =   1
+interval                                =   5
 
 format-connected-prefix                 =   "  "
 format-connected-prefix-foreground      =   ${colors.color0}
@@ -98,8 +99,9 @@ label-disconnected-foreground           =   ${colors.foreground-alt}
 
 [module/eth-down]
 type                                    =   internal/network
+; interface                               =   wlo1
 interface                               =   eno1
-interval                                =   1
+interval                                =   5
 
 format-connected-prefix                 =   "  "
 format-connected-prefix-foreground      =   ${colors.color0}
@@ -138,7 +140,7 @@ interval                                =   7200
 
 [module/cpu]
 type                                    =   internal/cpu
-interval                                =   2
+interval                                =   5
 
 format                                  =   <label>
 format-prefix                           =   "  "
@@ -165,7 +167,7 @@ type                                    =   custom/script
 exec                                    =   "~/.config/polybar/scripts/temperature.sh"
 
 label                                   =   "%output%"
-internal                                =   10
+internal                                =   60
 
 format-prefix                           =   "  "
 format-prefix-foreground                =   ${colors.color0}
@@ -197,7 +199,7 @@ label-discharging                       =   %percentage%%
 
 [module/backlight]
 type                                    =   custom/ipc
-hook-0                                  =   light -G | sed 's/\.[0-9]*//' | awk '{ print int($1+1) }'
+hook-0                                  =   "light -G | sed 's/\.[0-9]*//' | awk '{ print int($1+1) }'"
 
 format-prefix                           =   "  "
 format-prefix-foreground                =   ${colors.color0}
