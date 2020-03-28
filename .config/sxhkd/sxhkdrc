@@ -28,11 +28,11 @@ super + shift + {h,j,k,l}
 
 # Toggle floating window on and off
 super + o
-    bspwm_fullscreen
+    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
 
 # Expand or contract node in direction
-super + ctrl + {h,j,k,l}
-    bspwm_resize {west,south,node,east}
+super + alt + {h,j,k,l}
+    bspwm_resize {west,south,north,east}
 
 # Reload polybar or sxhkd
 super + shift + {x,p}
@@ -42,12 +42,12 @@ super + shift + {x,p}
     }
 
 # Brightness
-XF86MonBrightness{Up,Down}
+super + {Up,Down}
     light {-A 5, -U 5} && polybar-msg hook backlight 1
 
 # Volume
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-    volume {up,down,toggle} && polybar-msg hook volume 1
+super + {Left,Right,m}
+    volume {down,up,toogle} && polybar-msg hook volume 1
 
 # Reboot and shutdown
 super + shift + {r,s}
@@ -64,3 +64,11 @@ super + Return
 # Screenshot
 super + {_,shift + } Print
     {screenshot full,screenshot select}
+
+# Run terminal applications
+super + t ; {c,h,e,n,r}
+    st -e {cmus,htop,neomutt,newsboat,ranger}
+
+# Run gui applications
+super + g ; {d,f,t,q}
+    {discord,firefox,thunar,qbittorrent}
