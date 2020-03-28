@@ -42,6 +42,10 @@ super + shift + x
 XF86MonBrightness{Up,Down}
     light {-A 5, -U 5} && polybar-msg hook backlight 1
 
+# Volume
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+    volume {up,down,toggle} && polybar-msg hook volume 1
+
 # Reboot and shutdown
 super + shift + {r,s}
     prompt {"Are you sure you want to reboot?" "sudo reboot", "Are you sure you want to shutdown?" "sudo shutdown"}
