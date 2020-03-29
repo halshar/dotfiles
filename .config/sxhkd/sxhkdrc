@@ -34,6 +34,10 @@ super + o
 super + alt + {h,j,k,l}
     bspwm_resize {west,south,north,east} 50
 
+# Move floating window
+super + ctrl + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
 # Reload polybar
 super + shift + x
     pkill -USR1 sxhkd && notify-send "sxhkd" "Reloaded key bindings"
