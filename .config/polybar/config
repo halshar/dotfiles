@@ -84,9 +84,8 @@ label-empty-padding                     =   1
 
 [module/eth-up]
 type                                    =   internal/network
-; interface                               =   wlo1
-interface                               =   eno1
-interval                                =   5
+interface                               =   wlo1
+interval                                =   3
 
 format-connected-prefix                 =   "  "
 format-connected-prefix-foreground      =   ${colors.color0}
@@ -94,14 +93,14 @@ format-connected-foreground             =   ${colors.color0}
 format-connected-background             =   ${colors.color1}
 
 label-connected                         =   %upspeed%
-label-disconnected                      =   %ifname% disconnected
-label-disconnected-foreground           =   ${colors.foreground-alt}
+label-disconnected                      =   "  "
+label-disconnected-foreground           =   ${colors.color0}
+label-disconnected-background           =   ${colors.color1}
 
 [module/eth-down]
 type                                    =   internal/network
-; interface                               =   wlo1
-interface                               =   eno1
-interval                                =   5
+interface                               =   wlo1
+interval                                =   3
 
 format-connected-prefix                 =   "  "
 format-connected-prefix-foreground      =   ${colors.color0}
@@ -109,8 +108,9 @@ format-connected-foreground             =   ${colors.color0}
 format-connected-background             =   ${colors.color1}
 
 label-connected                         =   %downspeed%
-label-disconnected                      =   %ifname% disconnected
-label-disconnected-foreground           =   ${colors.foreground-alt}
+label-disconnected                      =   "  "
+label-disconnected-foreground           =   ${colors.color0}
+label-disconnected-background           =   ${colors.color1}
 
 [module/check_update]
 type                                    =   custom/script
