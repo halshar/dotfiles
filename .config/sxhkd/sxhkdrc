@@ -32,14 +32,15 @@ super + o
 
 # Expand or contract node in direction
 super + alt + {h,j,k,l}
-    bspwm_resize {west,south,north,east}
+    bspwm_resize {west,south,north,east} 50
 
-# Reload polybar or sxhkd
-super + shift + {x,p}
-    { \
-    pkill -USR1 sxhkd && notify-send "sxhkd" "Reloaded key bindings", \
-    pkill -x polybar && polybar mybar -r & \
-    }
+# Reload polybar
+super + shift + x
+    pkill -USR1 sxhkd && notify-send "sxhkd" "Reloaded key bindings"
+
+# Reload sxhkd
+super + shift + p
+    pkill -x polybar && polybar mybar -r &
 
 # Brightness
 super + {Up,Down}
