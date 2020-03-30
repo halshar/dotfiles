@@ -1,39 +1,20 @@
-#!/bin/sh
-# Simple script to output battery level formatted for polybar
+#!/bin/bash
 
-bat_number=0
-acpi=$(acpi -b 2>/dev/null| grep "Battery $bat_number")
-ac_adapt=$(acpi -a | awk '{print $2}')
-mode=$(echo "$acpi" | awk '{print $3}')
-percent=$(echo "$acpi" | awk '{print $4}'| grep -Eo '[0-9]*')
-remaining=$(echo "$acpi" | awk '{print $5}')
-symbol=""
+CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
+STATUS=$(cat /sys/class/power_supply/BAT0/status)
 
+if [ "$STATUS" = "Discharging" ]; then
+    STATUS="  "
 
-if [ "$mode" = "Discharging," ]; then
-  symbol='⚡ '
-elif [ "$mode" = "Charging," ]; then
-  symbol=' '
-elif [ "$mode" = "Unknown," ]; then
-  if [ "$ac_adapt" = "on-line," ]; then
-    symbol='⚡ '
-  elif [ "$ac_adapt" = "off-line," ]; then
-    symbol=' '
-  fi
+    if [ "$CAPACITY" -le "5" ]; then
+        notify-send --icon="battery-caution-symbolic.svg" "Battery" "Battery is critically low!"
+    elif [ "$CAPACITY" -le "15" ]; then
+        notify-send --icon="battery-low-symbolic.svg" "Battery" "Low battery, connect charger!"
+    fi
+
 else
-  symbol=' '
+    STATUS="  "
 fi
 
-printf "%s" "$symbol"
+echo "$STATUS${CAPACITY}%"
 
-if [ "$percent" -lt 20 ]; then
-  printf "%%{F#ed0b0b}"
-elif [ "$percent" -lt 50 ]; then
-  printf "%%{F#f2e421}";
-fi
-
-printf "$percent%%"
-
-# if [ "$mode" = "Discharging," ] || [ "$mode" = "Charging," ] || [ "$ac_adapt" = "off-line," ]; then
-#   echo " ($remaining)"
-# fi
