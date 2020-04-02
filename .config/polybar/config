@@ -176,7 +176,7 @@ format-background                       =   ${colors.color2}
 
 [module/battery]
 type                                    =   custom/script
-exec                                    =   "~/.config/polybar/scripts/battery"
+exec                                    =   "~/.config/polybar/scripts/battery.sh"
 
 label                                   =   "%output%"
 interval                                =   5
