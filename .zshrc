@@ -1,4 +1,3 @@
-export PATH=$PATH:$HOME/Scripts
 export EDITOR=nvim
 
 # Enable colors and change prompt:
@@ -40,4 +39,4 @@ alias ez='nvim ~/.zshrc'
 alias et='nvim ~/.tmux.conf'
 
 # Execute the contents of the files:
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
