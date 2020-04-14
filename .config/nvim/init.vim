@@ -3,9 +3,9 @@ syntax on
 
 call plug#begin()
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-commentary'
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'vim-airline/vim-airline'
+    Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -22,6 +22,15 @@ call plug#end()
     set softtabstop=4
     set shiftwidth=4
     set expandtab
+
+" Splits open at the bottom and right:
+    set splitbelow splitright
+
+" Shortcutting split navigation:
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
 
 " Disable automatic commenting on newline:
     autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
