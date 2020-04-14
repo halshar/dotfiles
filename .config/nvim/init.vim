@@ -27,10 +27,10 @@ call plug#end()
     set splitbelow splitright
 
 " Shortcutting split navigation:
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
 
 " Disable automatic commenting on newline:
     autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
