@@ -1,8 +1,7 @@
 export EDITOR=nvim
 
 # Prompt
-NEWLINE=$'\n'
-PS1="%B%F{207}%~ %F{135}> %f"
+PS1="%B%F{207}%~ %F{135}>%f "
 
 # History in cache directory:
 HISTSIZE=10000
