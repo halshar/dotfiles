@@ -1,9 +1,8 @@
-filetype plugin indent on
 syntax on
 
 call plug#begin()
 
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-commentary'
 
@@ -32,14 +31,17 @@ call plug#end()
     map <C-k> <C-w>k
     map <C-l> <C-w>l
 
-" Disable automatic commenting on newline:
-    autocmd Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" COC-nvim:
+    inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" Use deoplete:
-    let g:deoplete#enable_at_startup = 1
-
-" Navigate auto-completion list with tab:
-    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
 
 " Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
