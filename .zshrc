@@ -1,8 +1,8 @@
 export EDITOR=nvim
 
-# Enable colors and change prompt:
-autoload -U colors && colors
-PS1="%B%{$fg[green]%}[%{$fg[green]%}%n%{$fg[green]%}@%{$fg[green]%}%M %{$fg[red]%}%~%{$fg[green]%}]%{$reset_color%}$%b "
+# Prompt
+NEWLINE=$'\n'
+PS1="%B%F{207}%~ %F{135}> %f"
 
 # History in cache directory:
 HISTSIZE=10000
