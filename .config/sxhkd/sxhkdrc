@@ -56,7 +56,7 @@ super + {Left,Right,m}
 
 # Reboot and shutdown
 super + shift + {r,s}
-    prompt {"Are you sure you want to reboot?" "shutdown -r now", "Are you sure you want to shutdown?" "shutdown now"}
+    prompt {"Are you sure you want to reboot?" "reboot", "Are you sure you want to shutdown?" "shutdown now"}
 
 # Run dmenu
 super + d
@@ -64,7 +64,7 @@ super + d
 
 # Run terminal
 super + Return
-    st
+    $TERMINAL
 
 # Screenshot
 super + {_,shift + } Print
@@ -72,7 +72,7 @@ super + {_,shift + } Print
 
 # Run terminal applications
 super + t ; {c,h,e,n,r}
-    st -e {cmus,htop,neomutt,newsboat,ranger}
+    $TERMINAL -e {cmus,htop,neomutt,newsboat,ranger}
 
 # Run gui applications
 super + g ; {d,f,t,q}
