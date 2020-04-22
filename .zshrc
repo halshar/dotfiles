@@ -1,4 +1,5 @@
 export EDITOR=nvim
+export TERMINAL=alacritty
 
 # Prompt
 PS1="%B%F{207}%~ %F{135}>%f "
