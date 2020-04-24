@@ -4,7 +4,7 @@ super + shift + Escape
 
 # Restart bspwm
 super + shift + b
-    bspc wm -r
+    bspc wm -r && notify-send "BSPWM" "BSPWM restarted"
 
 # Close or kill window
 super + {c,q}
@@ -44,7 +44,7 @@ super + shift + x
 
 # Reload sxhkd
 super + shift + p
-    pkill -x polybar && polybar mybar -r &
+    pkill -x polybar && notify-send "polybar" "Reloaded polybar" && polybar mybar -r &
 
 # Brightness
 super + {Up,Down}
@@ -64,7 +64,7 @@ super + d
 
 # Run terminal
 super + Return
-    $TERMINAL
+    alacritty
 
 # Screenshot
 super + {_,shift + } Print
@@ -72,7 +72,7 @@ super + {_,shift + } Print
 
 # Run terminal applications
 super + t ; {c,h,e,n,r}
-    $TERMINAL -e {cmus,htop,neomutt,newsboat,ranger}
+    alacritty -e {cmus,htop,neomutt,newsboat,ranger}
 
 # Run gui applications
 super + g ; {d,f,t,q}
