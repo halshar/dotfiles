@@ -5,6 +5,7 @@ call plug#begin()
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-commentary'
+    Plug 'ap/vim-css-color'
 
 call plug#end()
 
