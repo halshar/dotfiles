@@ -5,49 +5,31 @@ foreground                              =   #F8F8F2
 foreground-alt                          =   #FF79C6
 primary                                 =   #9AEDFE
 
-color0                                  =   #FEFEFE
-color1                                  =   #A77AC4
-color2                                  =   #7197E7
-color3                                  =   #292D3E
-
 alert                                   =   #EC5F67
 
 [bar/mybar]
 width                                   =   100%
-height                                  =   22
+height                                  =   24
 fixed-center                            =   true
 radius                                  =   0.0
 
 wm-restack                              =   bspwm
+override-redirect                       =   true
 enable-ipc                              =   true
 bottom                                  =   false
+separator                               =   |
 
 background                              =   ${colors.background}
 foreground                              =   ${colors.foreground}
 
-line-size                               =   0
-line-color                              =   #f00
-
-border-size                             =   0
-border-color                            =   #00000000
-
-padding                                 =   0
-
-module-margin-left                      =   0
-module-margin-right                     =   0
-
 font-0                                  =   "Hack Nerd Font Mono:style=Bold:size=10"
 font-1                                  =   "Feather:style=Regular"
 
-modules-left                            =   bspwm
-modules-center                          =   
-modules-right                           =   arrow1 eth-up eth-down arrow2 check_update fs arrow3 cpu memory arrow2 temperature battery arrow3 backlight volume arrow2 date
+modules-left                            =   bspwm 
+modules-right                           =   check_update fs temperature battery backlight volume date
 
 tray-position                           =   right
 tray-padding                            =   1
-tray-background                         =   ${colors.color2}
-tray-offset-x                           =   0
-tray-offset-y                           =   0
 tray-scale                              =   1.0
 
 cursor-click                            =   pointer
@@ -56,13 +38,6 @@ cursor-scroll                           =   ns-resize
 [module/xwindow]
 type                                    =   internal/xwindow
 label                                   =   %title%
-
-format                                  =   <label>
-format-background                       =   ${colors.background-alt}
-format-foreground                       =   ${colors.foreground}
-format-padding                          =   1
-
-label-empty                             = 
 
 [module/bspwm]
 type                                    =   internal/bspwm
@@ -80,7 +55,6 @@ label-urgent-background                 =   ${colors.alert}
 label-urgent-padding                    =   1
 
 label-empty                             =   %index%
-label-empty-foreground                  =   ${colors.primary}
 label-empty-padding                     =   1
 
 [module/eth-up]
@@ -89,14 +63,9 @@ interface                               =   eno1
 interval                                =   3
 
 format-connected-prefix                 =   "  "
-format-connected-prefix-foreground      =   ${colors.color0}
-format-connected-foreground             =   ${colors.color0}
-format-connected-background             =   ${colors.color1}
 
 label-connected                         =   %upspeed%
 label-disconnected                      =   "  "
-label-disconnected-foreground           =   ${colors.color0}
-label-disconnected-background           =   ${colors.color1}
 
 [module/eth-down]
 type                                    =   internal/network
@@ -104,95 +73,68 @@ interface                               =   eno1
 interval                                =   3
 
 format-connected-prefix                 =   "  "
-format-connected-prefix-foreground      =   ${colors.color0}
-format-connected-foreground             =   ${colors.color0}
-format-connected-background             =   ${colors.color1}
 
 label-connected                         =   %downspeed%
 label-disconnected                      =   "  "
-label-disconnected-foreground           =   ${colors.color0}
-label-disconnected-background           =   ${colors.color1}
 
 [module/check_update]
 type                                    =   custom/script
 exec                                    =   "~/.config/polybar/scripts/updates_arch_combined.sh"
 
-format-prefix                           =   "  "
-format-prefix-foreground                =   ${colors.color0}
-format-foreground                       =   ${colors.color0}
-format-background                       =   ${colors.color2}
+label                                   =   "%output%"
+format-prefix                           =   "|  "
 
 interval                                =   7200
 
 [module/fs]
 type                                    =   internal/fs
-
 mount-0                                 =   /home
 
 format-mounted-prefix                   =   "  "
-format-mounted-prefix-foreground        =   ${colors.color0}
-format-mounted-foreground               =   ${colors.color0}
-format-mounted-background               =   ${colors.color2}
-
 label-mounted                           =   %free%
 
 interval                                =   7200
 
-
 [module/cpu]
 type                                    =   internal/cpu
-interval                                =   5
+label                                   =   %percentage%%
 
 format                                  =   <label>
 format-prefix                           =   "  "
-format-prefix-foreground                =   ${colors.color0}
-format-foreground                       =   ${colors.color0}
-format-background                       =   ${colors.color1}
 
-label                                   =   %percentage%%
+interval                                =   5
 
 [module/memory]
 type                                    =   internal/memory
-interval                                =   5
+label                                   =   %gb_used%/%gb_total%
 
 format                                  =   <label>
 format-prefix                           =   "  "
-format-prefix-foreground                =   ${colors.color0}
-format-foreground                       =   ${colors.color0}
-format-background                       =   ${colors.color1}
 
-label                                   =   %percentage_used%%
+interval                                =   5
 
 [module/temperature]
 type                                    =   custom/script
 exec                                    =   "~/.config/polybar/scripts/temperature.sh"
 
 label                                   =   "%output%"
-internal                                =   60
+format-prefix                           =   "  "
 
-format-prefix                           =   "  "
-format-prefix-foreground                =   ${colors.color0}
-format-foreground                       =   ${colors.color0}
-format-background                       =   ${colors.color2}
-
+interval                                =   60
 
 [module/battery]
 type                                    =   custom/script
 exec                                    =   "~/.config/polybar/scripts/battery.sh"
 
 label                                   =   "%output%"
-interval                                =   5
 
-label-background                        =   ${colors.color2}
+interval                                =   5
 
 [module/backlight]
 type                                    =   custom/ipc
 hook-0                                  =   "light -G | sed 's/\.[0-9]*//' | awk '{ print int($1+1) }'"
 
 format-prefix                           =   "  "
-format-prefix-foreground                =   ${colors.color0}
-format-foreground                       =   ${colors.color0}
-format-background                       =   ${colors.color1}
 
 initial                                 =   1
 
@@ -201,49 +143,20 @@ type                                    =   custom/ipc
 hook-0                                  =   "~/.config/polybar/scripts/display_volume.sh"
 
 format-prefix                           =   "  "
-format-foreground                       =   ${colors.color0}
-format-background                       =   ${colors.color1}
 
 initial                                 =   1
 
 
 [module/date]
 type                                    =   internal/date
-interval                                =   60
+label                                   =   %date% %time%
 
 date                                    =   %a %d %b
 time                                    =   %H:%M
 
 format-prefix                           =   "  "
-format-prefix-foreground                =   ${colors.color0}
-format-foreground                       =   ${colors.color0}
-format-background                       =   ${colors.color2}
 
-label                                   =   %date% %time%
-
-[module/arrow1]
-type                                    =   custom/text
-
-content                                 =   "%{T2} %{T-}"
-content-font                            =   1
-content-foreground                      =   ${colors.color1}
-content-background                      =   ${colors.color3}
-
-[module/arrow2]
-type                                    =   custom/text
-
-content                                 =   "%{T2} %{T-}"
-content-font                            =   1
-content-foreground                      =   ${colors.color2}
-content-background                      =   ${colors.color1}
-
-[module/arrow3]
-type = custom/text
-
-content                                 =   "%{T2} %{T-}"
-content-font                            =   1
-content-foreground                      =   ${colors.color1}
-content-background                      =   ${colors.color2}
+interval                                =   60
 
 [settings]
 screenchange-reload                     =   true
