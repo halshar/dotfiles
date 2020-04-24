@@ -14,7 +14,7 @@ alert                                   =   #EC5F67
 
 [bar/mybar]
 width                                   =   100%
-height                                  =   25
+height                                  =   22
 fixed-center                            =   true
 radius                                  =   0.0
 
@@ -37,6 +37,7 @@ module-margin-left                      =   0
 module-margin-right                     =   0
 
 font-0                                  =   "Hack Nerd Font Mono:style=Bold:size=10"
+font-1                                  =   "Feather:style=Regular"
 
 modules-left                            =   bspwm
 modules-center                          =   
@@ -84,31 +85,31 @@ label-empty-padding                     =   1
 
 [module/eth-up]
 type                                    =   internal/network
-interface                               =   wlo1
+interface                               =   eno1
 interval                                =   3
 
-format-connected-prefix                 =   "  "
+format-connected-prefix                 =   "  "
 format-connected-prefix-foreground      =   ${colors.color0}
 format-connected-foreground             =   ${colors.color0}
 format-connected-background             =   ${colors.color1}
 
 label-connected                         =   %upspeed%
-label-disconnected                      =   "  "
+label-disconnected                      =   "  "
 label-disconnected-foreground           =   ${colors.color0}
 label-disconnected-background           =   ${colors.color1}
 
 [module/eth-down]
 type                                    =   internal/network
-interface                               =   wlo1
+interface                               =   eno1
 interval                                =   3
 
-format-connected-prefix                 =   "  "
+format-connected-prefix                 =   "  "
 format-connected-prefix-foreground      =   ${colors.color0}
 format-connected-foreground             =   ${colors.color0}
 format-connected-background             =   ${colors.color1}
 
 label-connected                         =   %downspeed%
-label-disconnected                      =   "  "
+label-disconnected                      =   "  "
 label-disconnected-foreground           =   ${colors.color0}
 label-disconnected-background           =   ${colors.color1}
 
@@ -116,7 +117,7 @@ label-disconnected-background           =   ${colors.color1}
 type                                    =   custom/script
 exec                                    =   "~/.config/polybar/scripts/updates_arch_combined.sh"
 
-format-prefix                           =   "  "
+format-prefix                           =   "  "
 format-prefix-foreground                =   ${colors.color0}
 format-foreground                       =   ${colors.color0}
 format-background                       =   ${colors.color2}
@@ -128,7 +129,7 @@ type                                    =   internal/fs
 
 mount-0                                 =   /home
 
-format-mounted-prefix                   =   "  "
+format-mounted-prefix                   =   "  "
 format-mounted-prefix-foreground        =   ${colors.color0}
 format-mounted-foreground               =   ${colors.color0}
 format-mounted-background               =   ${colors.color2}
@@ -143,7 +144,7 @@ type                                    =   internal/cpu
 interval                                =   5
 
 format                                  =   <label>
-format-prefix                           =   "  "
+format-prefix                           =   "  "
 format-prefix-foreground                =   ${colors.color0}
 format-foreground                       =   ${colors.color0}
 format-background                       =   ${colors.color1}
@@ -155,7 +156,7 @@ type                                    =   internal/memory
 interval                                =   5
 
 format                                  =   <label>
-format-prefix                           =   "  "
+format-prefix                           =   "  "
 format-prefix-foreground                =   ${colors.color0}
 format-foreground                       =   ${colors.color0}
 format-background                       =   ${colors.color1}
@@ -169,10 +170,11 @@ exec                                    =   "~/.config/polybar/scripts/temperatu
 label                                   =   "%output%"
 internal                                =   60
 
-format-prefix                           =   "  "
+format-prefix                           =   "  "
 format-prefix-foreground                =   ${colors.color0}
 format-foreground                       =   ${colors.color0}
 format-background                       =   ${colors.color2}
+
 
 [module/battery]
 type                                    =   custom/script
@@ -187,7 +189,7 @@ label-background                        =   ${colors.color2}
 type                                    =   custom/ipc
 hook-0                                  =   "light -G | sed 's/\.[0-9]*//' | awk '{ print int($1+1) }'"
 
-format-prefix                           =   "  "
+format-prefix                           =   "  "
 format-prefix-foreground                =   ${colors.color0}
 format-foreground                       =   ${colors.color0}
 format-background                       =   ${colors.color1}
@@ -198,7 +200,7 @@ initial                                 =   1
 type                                    =   custom/ipc
 hook-0                                  =   "~/.config/polybar/scripts/display_volume.sh"
 
-format-prefix                           =   "  "
+format-prefix                           =   "  "
 format-foreground                       =   ${colors.color0}
 format-background                       =   ${colors.color1}
 
@@ -212,7 +214,7 @@ interval                                =   60
 date                                    =   %a %d %b
 time                                    =   %H:%M
 
-format-prefix                           =   "  "
+format-prefix                           =   "  "
 format-prefix-foreground                =   ${colors.color0}
 format-foreground                       =   ${colors.color0}
 format-background                       =   ${colors.color2}
