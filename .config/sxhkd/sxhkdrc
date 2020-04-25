@@ -10,6 +10,14 @@ super + shift + b
 super + {c,q}
     bspc node -{c,k}
 
+# Alternate between tiled and monocole layout
+super + grave
+    bspc desktop -l next
+
+# Set the window state
+super + {t,alt + t,f,space}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
 # Focus on desktop
 super + {0-9}
     bspc desktop -f {0-9}
@@ -25,10 +33,6 @@ super + {h,j,k,l}
 # Swap window with direction
 super + shift + {h,j,k,l}
     bspc node -s {west,south,north,east}
-
-# Toggle floating window on and off
-super + o
-    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
 
 # Expand or contract node in direction
 super + alt + {h,j,k,l}
@@ -52,7 +56,7 @@ super + {Up,Down}
 
 # Volume
 super + {Left,Right,m}
-    volume {down,up,toogle} && polybar-msg hook volume 1
+    volume {down,up,toggle} && polybar-msg hook volume 1
 
 # Reboot and shutdown
 super + shift + {r,s}
