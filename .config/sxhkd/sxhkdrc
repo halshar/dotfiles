@@ -11,8 +11,13 @@ super + {c,q}
     bspc node -{c,k}
 
 # Alternate between tiled and monocole layout
+# If you use '-l monocle' you loose the toggle functionality
 super + grave
     bspc desktop -l next
+
+# Toggle polybar on/off
+super + shift + t
+    polybar-msg cmd toggle
 
 # Set the window state
 super + {t,alt + t,f,space}
@@ -37,6 +42,10 @@ super + shift + {h,j,k,l}
 # Expand or contract node in direction
 super + alt + {h,j,k,l}
     bspwm_resize {west,south,north,east} 50
+
+# Dynamic gaps.
+super + shift + bracket{left,right}
+	bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
 
 # Move floating window
 super + ctrl + {h,j,k,l}
