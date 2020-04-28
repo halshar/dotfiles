@@ -10,17 +10,12 @@ super + shift + b
 super + {c,q}
     bspc node -{c,k}
 
-# Alternate between tiled and monocole layout
-# If you use '-l monocle' you loose the toggle functionality
-super + grave
-    bspc desktop -l next
-
 # Toggle polybar on/off
 super + shift + t
     polybar-msg cmd toggle
 
 # Set the window state
-super + {t,alt + t,f,space}
+super + {alt + space,alt + t,f,space}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # Focus on desktop
@@ -51,13 +46,13 @@ super + shift + bracket{left,right}
 super + ctrl + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Reload polybar
-super + shift + x
-    pkill -USR1 sxhkd && notify-send "sxhkd" "Reloaded key bindings"
+# Reload polybar and sxhkd
+super + r; {p,s}
+    pkill -USR1 {polybar,sxhkd} && notify-send "Reloaded config"
 
-# Reload sxhkd
-super + shift + p
-    pkill -x polybar && notify-send "polybar" "Reloaded polybar" && polybar mybar -r &
+# Lock screen
+super + alt + b
+    betterlockscreen -l
 
 # Brightness
 super + {Up,Down}
