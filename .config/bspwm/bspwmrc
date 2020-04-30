@@ -31,8 +31,9 @@ bspc config focused_border_color    "#BD93F9"
 bspc config urgent_border_color     "#EC5F67"
 
 # Rules
-bspc rule -a "Zathura" state=tiled
-bspc rule -a "mpv" state=floating
+bspc rule -a Zathura state=tiled
+bspc rule -a mpv state=floating
+bspc rule -a Gimp desktop='^8' state=floating follow=on
 
 # Polybar
 $HOME/.config/polybar/launch.sh
