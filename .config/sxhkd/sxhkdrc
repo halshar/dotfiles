@@ -10,14 +10,6 @@ super + shift + b
 super + {c,q}
     bspc node -{c,k}
 
-# Toggle polybar on/off
-super + shift + t
-    polybar-msg cmd toggle
-
-# Set the window state
-super + {alt + space,alt + t,f,space}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
-
 # Focus on desktop
 super + {0-9}
     bspc desktop -f {0-9}
@@ -34,13 +26,26 @@ super + {h,j,k,l}
 super + shift + {h,j,k,l}
     bspc node -s {west,south,north,east}
 
+# Set the window state
+super + {alt + space,alt + t,f,space}
+	bspc node -t "~{tiled,pseudo_tiled,floating,fullscreen}"
+
 # Expand or contract node in direction
 super + alt + {h,j,k,l}
     bspwm_resize {west,south,north,east} 50
 
-# Dynamic gaps.
+# Dynamic gaps
 super + shift + bracket{left,right}
 	bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
+
+# Reset gaps to default
+super + shift + u
+    bspc config window_gap 5
+
+# Preselect the direction, cancel the preselection
+# by pointing at given direction twice
+ctrl + alt + {h,j,k,l}
+    bspc node --presel-dir "~{north,south,west,east}"
 
 # Move floating window
 super + ctrl + {h,j,k,l}
@@ -49,6 +54,10 @@ super + ctrl + {h,j,k,l}
 # Reload polybar and sxhkd
 super + r; {p,s}
     pkill -USR1 {polybar,sxhkd} && notify-send "Reloaded config"
+
+# Toggle polybar on/off
+super + shift + t
+    polybar-msg cmd toggle
 
 # Lock screen
 super + alt + b
