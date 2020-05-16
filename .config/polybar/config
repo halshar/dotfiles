@@ -17,7 +17,7 @@ wm-restack                              =   bspwm
 override-redirect                       =   true
 enable-ipc                              =   true
 bottom                                  =   false
-separator                               =   |
+separator                               =   " "
 
 background                              =   ${colors.background}
 foreground                              =   ${colors.foreground}
@@ -30,6 +30,7 @@ modules-right                           =   check_update fs temperature battery 
 
 tray-position                           =   right
 tray-padding                            =   1
+tray-maxsize                            =   16
 tray-scale                              =   1.0
 
 cursor-click                            =   pointer
@@ -82,7 +83,8 @@ type                                    =   custom/script
 exec                                    =   "~/.config/polybar/scripts/updates_arch_combined.sh"
 
 label                                   =   "%output%"
-format-prefix                           =   "|  "
+format-prefix                           =   "  "
+format-prefix-foreground                =   #FF7400
 
 interval                                =   7200
 
@@ -91,6 +93,7 @@ type                                    =   internal/fs
 mount-0                                 =   /home
 
 format-mounted-prefix                   =   "  "
+format-mounted-prefix-foreground        =   #7289DA
 label-mounted                           =   %free%
 
 interval                                =   7200
@@ -119,6 +122,7 @@ exec                                    =   "~/.config/polybar/scripts/temperatu
 
 label                                   =   "%output%"
 format-prefix                           =   "  "
+format-prefix-foreground                =   #FF0000
 
 interval                                =   5
 
@@ -135,6 +139,7 @@ type                                    =   custom/ipc
 hook-0                                  =   "light -G | sed 's/\.[0-9]*//' | awk '{ print int($1+1) }'"
 
 format-prefix                           =   "  "
+format-prefix-foreground                =   #FFF000
 
 initial                                 =   1
 
@@ -143,6 +148,7 @@ type                                    =   custom/ipc
 hook-0                                  =   "~/.config/polybar/scripts/display_volume.sh"
 
 format-prefix                           =   "  "
+format-prefix-foreground                =   #00FFFF
 
 initial                                 =   1
 
@@ -155,6 +161,7 @@ date                                    =   %a %d %b
 time                                    =   %H:%M
 
 format-prefix                           =   "  "
+format-prefix-foreground                =   #00FF00
 
 interval                                =   60
 
