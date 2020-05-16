@@ -1,10 +1,10 @@
 #!/bin/bash
 
-CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
-STATUS=$(cat /sys/class/power_supply/BAT0/status)
+read -r CAPACITY < /sys/class/power_supply/BAT0/capacity
+read -r STATUS < /sys/class/power_supply/BAT0/status
 
 if [ "$STATUS" = "Discharging" ]; then
-    STATUS="  "
+    STATUS=" %{F#FF6289} %{F-}"
 
     if [ "$CAPACITY" -le "5" ]; then
         notify-send -u critical "Battery" "Battery is critically low!"
@@ -13,8 +13,8 @@ if [ "$STATUS" = "Discharging" ]; then
     fi
 
 else
-    STATUS="  "
+    STATUS=" %{F#FF93AC} %{F-}"
 fi
 
-echo "$STATUS${CAPACITY}%"
+echo "${STATUS}${CAPACITY}"
 
