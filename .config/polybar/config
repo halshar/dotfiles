@@ -136,7 +136,7 @@ interval                                =   5
 
 [module/backlight]
 type                                    =   custom/ipc
-hook-0                                  =   "light -G | sed 's/\.[0-9]*//' | awk '{ print int($1+1) }'"
+hook-0                                  =   "light -G | sed 's/\.[0-9]*//'"
 
 format-prefix                           =   "  "
 format-prefix-foreground                =   #FFF000
