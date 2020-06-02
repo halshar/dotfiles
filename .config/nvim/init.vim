@@ -6,6 +6,8 @@ call plug#begin()
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-commentary'
     Plug 'ap/vim-css-color'
+    Plug 'vimwiki/vimwiki'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 call plug#end()
 
@@ -47,3 +49,11 @@ call plug#end()
 " Vim-airline:
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" Vimwiki :
+    let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" Markdown-preview.nvim:
+    let g:mkdp_auto_close = 0
+    let g:mkdp_refresh_slow = 1
