@@ -1,4 +1,4 @@
-syntax on
+let mapleader=" "
 
 call plug#begin()
 
@@ -13,7 +13,7 @@ call plug#end()
 
 " Basic settings:
     set termguicolors
-    set clipboard=unnamedplus
+    set clipboard+=unnamedplus
     set hidden
     set cursorline
     set relativenumber
@@ -53,6 +53,7 @@ call plug#end()
 " Vimwiki :
     let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+    let g:vimwiki_table_mappings = 0
 
 " Markdown-preview.nvim:
     let g:mkdp_auto_close = 0
