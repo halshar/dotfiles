@@ -8,6 +8,7 @@ call plug#begin()
     Plug 'ap/vim-css-color'
     Plug 'vimwiki/vimwiki'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+    Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
@@ -58,3 +59,6 @@ call plug#end()
 " Markdown-preview.nvim:
     let g:mkdp_auto_close = 0
     let g:mkdp_refresh_slow = 1
+
+" Dracula colorscheme:
+    colorscheme dracula
