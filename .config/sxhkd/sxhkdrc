@@ -26,9 +26,13 @@ super + {h,j,k,l}
 super + shift + {h,j,k,l}
     bspc node -s {west,south,north,east}
 
+# Switch to last visited desktop
+alt + Tab
+    bspc desktop last -f
+
 # Set the window state
 super + {alt + space,alt + t,f,space}
-	bspc node -t "~{tiled,pseudo_tiled,floating,fullscreen}"
+    bspc node -t "~{tiled,pseudo_tiled,floating,fullscreen}"
 
 # Set the node flags
 super + n ; {l,s,p}
@@ -36,7 +40,7 @@ super + n ; {l,s,p}
 
 # Make node split ratios equal or balanced
 super + n ; {e,b}
-	bspc node @/ {--equalize,--balance}
+    bspc node @/ {--equalize,--balance}
 
 # Insert receptacle
 super + n ; r
@@ -60,7 +64,7 @@ super + alt + {h,j,k,l}
 
 # Dynamic gaps
 super + shift + bracket{left,right}
-	bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
+    bspc config -d focused window_gap "$(($(bspc config -d focused window_gap) {-,+} 5 ))"
 
 # Reset gaps to default
 super + shift + u
@@ -77,7 +81,7 @@ super + alt + {1-9}
 
 # Move floating window
 super + ctrl + {h,j,k,l}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Reload polybar and sxhkd
 super + x; {p,s}
