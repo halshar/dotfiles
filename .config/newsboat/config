@@ -14,8 +14,6 @@ bind-key u pageup
 bind-key a toggle-article-read
 bind-key n next-unread
 bind-key p prev-unread
-bind-key s sort
-bind-key S rev-sort
 bind-key U show-urls
 
 color listnormal            blue    default
