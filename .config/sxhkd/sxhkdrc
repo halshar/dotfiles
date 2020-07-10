@@ -31,12 +31,12 @@ alt + Tab
     bspc desktop last -f
 
 # Set the window state
-super + {alt + space,alt + t,f,space}
-    bspc node -t "~{tiled,pseudo_tiled,floating,fullscreen}"
+super + {alt + space,f,space}
+    bspc node -t "~{tiled,floating,fullscreen}"
 
 # Set the node flags
-super + n ; {l,s,p}
-    bspc node -g {locked,sticky,private}
+super + n ; {s,p,l,m}
+    bspc node -g {sticky,private,locked,marked}
 
 # Make node split ratios equal or balanced
 super + n ; {e,b}
@@ -76,7 +76,7 @@ ctrl + alt + {h,j,k,l}
     bspc node --presel-dir "~{west,south,north,east}"
 
 # Preselect the ratio
-super + alt + {1-9}
+ctrl + alt + {1-9}
     bspc node -o 0.{1-9}
 
 # Move floating window
