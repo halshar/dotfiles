@@ -51,12 +51,12 @@ super + n ; q
     bspc node 'any.leaf.!window.local' -k
 
 # Move marked/focused node to the first matching receptacle
-super + n ; i
+super + n ; f
     bspwm_smart_presel
 
 # Rotate desktop
-super + {_,shift + }r
-    bspc node @/ --rotate {90,-90}
+super + r
+    bspc node @/ --rotate 90
 
 # Expand or contract node in direction
 super + alt + {h,j,k,l}
@@ -105,7 +105,7 @@ super + {Left,Right,m}
 
 # Reboot and shutdown
 super + shift + {r,s}
-    prompt {"Are you sure you want to reboot?" "reboot", "Are you sure you want to shutdown?" "shutdown now"}
+    prompt {"Are you sure you want to reboot?" "systemctl reboot", "Are you sure you want to shutdown?" "systemctl poweroff"}
 
 # Run dmenu
 super + d
