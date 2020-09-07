@@ -91,6 +91,10 @@ super + x; {p,s}
 super + shift + t
     polybar-msg cmd toggle
 
+# dropdown terminal
+ctrl + alt + t
+    tdrop -ma -w 1914 -y 0 alacritty
+
 # Lock screen
 super + alt + b
     betterlockscreen -l
