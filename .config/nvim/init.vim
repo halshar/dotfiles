@@ -3,6 +3,7 @@ let mapleader=" "
 call plug#begin()
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'mattn/emmet-vim'
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-commentary'
     Plug 'ap/vim-css-color'
