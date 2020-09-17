@@ -1,6 +1,6 @@
 # Quit bspwm
 super + shift + Escape
-    prompt "Are you sure you want to quit" "bspc quit"
+    prompt "Do you want to quit" "bspc quit"
 
 # Restart bspwm
 super + shift + b
@@ -91,7 +91,7 @@ super + x; {p,s}
 super + shift + t
     polybar-msg cmd toggle
 
-# dropdown terminal
+# Dropdown terminal
 ctrl + alt + t
     tdrop -ma -w 1914 -y 0 alacritty
 
@@ -107,9 +107,9 @@ super + {Up,Down}
 super + {Left,Right,m}
     volume {down,up,toggle} && polybar-msg hook volume 1
 
-# Reboot and shutdown
+# Reboot, shutdown, and suspend
 super + shift + {r,p,s}
-    prompt {"Are you sure you want to reboot?" "systemctl reboot", "Are you sure you want to shutdown?" "systemctl poweroff", "Are you sure you want to suspend?" "systemctl suspend"}
+    prompt {"Do you want to reboot?" "systemctl reboot", "Do you want to shutdown?" "systemctl poweroff", "Do you want to suspend?" "systemctl suspend"}
 
 # Run dmenu
 super + d
@@ -130,3 +130,7 @@ super + t ; {c,h,e,n,r}
 # Run GUI applications
 super + g ; {d,f,t,q}
     {discord,firefox,thunar,qbittorrent}
+
+# sxhkdrc cheatsheet
+super + s
+    cheatsheet
