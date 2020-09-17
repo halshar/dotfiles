@@ -27,7 +27,7 @@ font-0                                  =   "Hack Nerd Font Mono:style=Bold:size
 font-1                                  =   "Feather:style=Regular;2"
 
 modules-left                            =   bspwm modes
-modules-right                           =   check_update fs temperature battery backlight volume date
+modules-right                           =   fs temperature battery backlight volume date
 
 tray-position                           =   right
 tray-padding                            =   1
@@ -184,7 +184,7 @@ time                                    =   %H:%M
 format-prefix                           =   "  "
 format-prefix-foreground                =   #00FF00
 
-interval                                =   60
+interval                                =   10
 
 [settings]
 screenchange-reload                     =   true
