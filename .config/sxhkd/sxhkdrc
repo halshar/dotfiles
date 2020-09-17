@@ -55,8 +55,8 @@ super + n ; f
     bspwm_smart_presel
 
 # Rotate desktop
-super + r
-    bspc node @/ --rotate 90
+super + shift + {comma,period}
+    bspc node @parent -R {+,-}90
 
 # Expand or contract node in direction
 super + alt + {h,j,k,l}
@@ -108,8 +108,8 @@ super + {Left,Right,m}
     volume {down,up,toggle} && polybar-msg hook volume 1
 
 # Reboot and shutdown
-super + shift + {r,s}
-    prompt {"Are you sure you want to reboot?" "systemctl reboot", "Are you sure you want to shutdown?" "systemctl poweroff"}
+super + shift + {r,p,s}
+    prompt {"Are you sure you want to reboot?" "systemctl reboot", "Are you sure you want to shutdown?" "systemctl poweroff", "Are you sure you want to suspend?" "systemctl suspend"}
 
 # Run dmenu
 super + d
