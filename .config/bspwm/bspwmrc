@@ -5,7 +5,6 @@ sxhkd &
 nm-applet &
 dunst &
 nitrogen --restore &
-fcitx &
 
 # Workspaces
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
@@ -30,14 +29,18 @@ bspc config pointer_action2         resize_corner
 
 bspc config normal_border_color     "#282A36"
 bspc config focused_border_color    "#BD93F9"
+bspc config presel_feedback_color   "#6272A4"
 bspc config urgent_border_color     "#EC5F67"
 
 # Rules
 bspc rule -a Zathura state=tiled
-bspc rule -a mpv state=floating
 bspc rule -a Anki state=floating
 bspc rule -a Chromium state=floating
-bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Gimp desktop='^7' state=floating follow=on
+bspc rule -a firefox desktop='^3' follow=on
+bspc rule -a Thunar desktop='^4' follow=on
+bspc rule -a discord desktop='^9' follow=on
+bspc rule -a qBittorrent desktop='0' follow=on
 
 # Polybar
 $HOME/.config/polybar/launch.sh
