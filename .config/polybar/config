@@ -61,17 +61,6 @@ label-urgent-padding                    =   1
 label-empty                             =   %icon%
 label-empty-padding                     =   1
 
-; ws-icon-0                               =   1;home
-; ws-icon-1                               =   2;code
-; ws-icon-2                               =   3;web
-; ws-icon-3                               =   4;file
-; ws-icon-4                               =   5;music
-; ws-icon-5                               =   6;record
-; ws-icon-6                               =   7;edit
-; ws-icon-7                               =   8;game
-; ws-icon-8                               =   9;chat
-; ws-icon-9                               =   0;torrent
-
 ws-icon-0                               =   1;
 ws-icon-1                               =   2;
 ws-icon-2                               =   3;
@@ -88,19 +77,19 @@ type                                    =   internal/bspwm
 format                                  =   <label-mode>
 
 label-sticky                            =   " Sticky "
-label-sticky-foreground                 =   ${colors.foreground}
+label-sticky-foreground                 =   ${colors.background}
 label-sticky-background                 =   ${colors.background-alt}
 
 label-private                           =   " Private "
-label-private-foreground                =   ${colors.foreground}
+label-private-foreground                =   ${colors.background}
 label-private-background                =   ${colors.background-alt}
 
 label-locked                            =   " Locked "
-label-locked-foreground                 =   ${colors.foreground}
+label-locked-foreground                 =   ${colors.background}
 label-locked-background                 =   ${colors.background-alt}
 
 label-marked                            =   " Marked "
-label-marked-foreground                 =   ${colors.foreground}
+label-marked-foreground                 =   ${colors.background}
 label-marked-background                 =   ${colors.background-alt}
 
 [module/eth-up]
