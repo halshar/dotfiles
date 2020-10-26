@@ -1,13 +1,13 @@
 # Quit bspwm
 super + shift + Escape
-    prompt "Do you want to quit" "bspc quit"
+    prompt "Do you want to quit BSPWM" "bspc quit"
 
 # Restart bspwm
-super + shift + b
+super + x ; b
     bspc wm -r && notify-send "BSPWM" "BSPWM restarted"
 
 # Close or kill window
-super + {c,q}
+super + {c,shift + q}
     bspc node -{c,k}
 
 # Focus on desktop
@@ -59,7 +59,7 @@ super + shift + {comma,period}
     bspc node @parent -R {+,-}90
 
 # Expand or contract node in direction
-super + alt + {h,j,k,l}
+super + ctrl + {h,j,k,l}
     bspwm_resize {west,south,north,east} 50
 
 # Dynamic gaps
@@ -80,7 +80,7 @@ ctrl + alt + {1-9}
     bspc node -o 0.{1-9}
 
 # Move floating window
-super + ctrl + {h,j,k,l}
+super + alt + {h,j,k,l}
     bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Reload polybar and sxhkd
@@ -96,7 +96,7 @@ ctrl + alt + t
     tdrop -ma -w 1914 -y 0 alacritty
 
 # Lock screen
-super + alt + b
+super + shift + b
     betterlockscreen -l
 
 # Brightness
