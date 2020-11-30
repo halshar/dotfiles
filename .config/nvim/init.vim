@@ -10,6 +10,7 @@ call plug#begin()
     Plug 'vimwiki/vimwiki'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -35,6 +36,13 @@ call plug#end()
     map <C-j> <C-w>j
     map <C-k> <C-w>k
     map <C-l> <C-w>l
+
+" Fzf.vim:
+    nnoremap <silent><leader>b :Buffers<CR>
+    nnoremap <silent><leader>f :Files<CR>
+    nnoremap <silent><leader>g :GFiles<CR>
+    nnoremap <leader>r :Rg!
+    let g:fzf_layout = { "down": "40%" }
 
 " COC-nvim:
     inoremap <silent><expr> <TAB>
