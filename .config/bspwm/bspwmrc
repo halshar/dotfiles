@@ -5,6 +5,8 @@ bspc rule -r "*"
 
 # Autostart
 sxhkd &
+picom &
+clipmenud &
 nm-applet &
 dunst &
 nitrogen --restore &
