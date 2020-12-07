@@ -119,6 +119,10 @@ super + d
 super + Return
     alacritty
 
+# clipmenu
+super + a
+    clipmenu
+
 # Screenshot
 super + {_,shift + } Print
     {screenshot full,screenshot select}
