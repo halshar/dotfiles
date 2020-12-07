@@ -7,6 +7,10 @@ export BROWSER="firefox"
 # other program settings:
 export LESS=-R
 
+# clipmenu
+export CM_SELECTIONS="clipboard"
+export CM_MAX_CLIPS=50
+
 # colored man pages
 # start blinking
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
