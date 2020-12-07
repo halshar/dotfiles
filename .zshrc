@@ -1,5 +1,5 @@
 # Prompt
-PS1="%B%F{207}%~ %F{135}>%f "
+PS1="%B%F{207}%~ %F{135}❯%f "
 
 # History in cache directory:
 HISTSIZE=10000
@@ -28,10 +28,13 @@ alias v='nvim'
 alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
+alias ds='du -sh ./* | sort -h'
 alias tp='trash-put'
 alias grep='grep --color=auto'
 alias history='history 1'
 alias ev='nvim ~/.config/nvim/init.vim'
+alias es='nvim ~/.config/sxhkd/sxhkdrc'
+alias eb='nvim ~/.config/bspwm/bspwmrc'
 alias ez='nvim ~/.zshrc'
 alias et='nvim ~/.tmux.conf'
 
