@@ -29,6 +29,7 @@ alias t='tmux'
 alias yt='youtube-dl'
 alias img='sxiv -f'
 alias ds='du -sh ./* | sort -h; du -sh'
+alias myip='curl https://ipinfo.io/ip'
 alias tp='trash-put'
 alias grep='grep --color=auto'
 alias history='history 1'
@@ -37,10 +38,6 @@ alias es='nvim ~/.config/sxhkd/sxhkdrc'
 alias eb='nvim ~/.config/bspwm/bspwmrc'
 alias ez='nvim ~/.zshrc'
 alias et='nvim ~/.tmux.conf'
-alias gs='git status'
-alias ga='git add'
-alias gc='git commiit'
-alias gd='git diff'
 
 # Execute the contents of the files:
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
