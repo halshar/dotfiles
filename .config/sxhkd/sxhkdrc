@@ -123,6 +123,10 @@ super + Return
 super + a
     clipmenu
 
+# pulsemixer
+super + p
+    alacritty --class "pulsemixer" -e pulsemixer
+
 # Screenshot
 super + {_,shift + } Print
     {screenshot full,screenshot select}
