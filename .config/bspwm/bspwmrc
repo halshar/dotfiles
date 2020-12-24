@@ -17,7 +17,7 @@ bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 # Global settings
 bspc config automatic_scheme        spiral
 bspc config initial_polarity        first_child
-bspc config border_width            3
+bspc config border_width            2
 bspc config window_gap              5
 
 bspc config top_padding             24
@@ -48,6 +48,7 @@ bspc rule -a firefox desktop='^3' follow=on
 bspc rule -a Thunar desktop='^4' follow=on
 bspc rule -a discord desktop='^9'
 bspc rule -a qBittorrent desktop='0'
+bspc rule -a Alacritty:pulsemixer state=floating
 
 # Polybar
 $HOME/.config/polybar/launch.sh
