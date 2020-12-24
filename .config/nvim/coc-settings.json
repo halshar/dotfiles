@@ -1,0 +1,15 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": [
+        "html",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+        "python",
+        "css",
+        "markdown",
+        "json"
+    ],
+    "prettier.tabWidth": 4
+}

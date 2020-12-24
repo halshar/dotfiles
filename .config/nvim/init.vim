@@ -1,4 +1,4 @@
-let mapleader=" "
+let mapleader="\<Space>"
 
 call plug#begin()
 
@@ -11,6 +11,7 @@ call plug#begin()
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'junegunn/fzf.vim'
+    Plug 'lambdalisue/fern.vim'
 
 call plug#end()
 
@@ -37,12 +38,31 @@ call plug#end()
     map <C-k> <C-w>k
     map <C-l> <C-w>l
 
+" Remove search highlight:
+    nnoremap <silent> <leader>h :nohlsearch<CR>
+
+" Fern.vim:
+    nnoremap <silent> <leader>e :Fern %:h -drawer -toggle<CR>
+
 " Fzf.vim:
     nnoremap <silent><leader>b :Buffers<CR>
     nnoremap <silent><leader>f :Files<CR>
     nnoremap <silent><leader>g :GFiles<CR>
     nnoremap <leader>r :Rg!
     let g:fzf_layout = { "down": "40%" }
+
+" Vimwiki :
+    let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+    let g:vimwiki_table_mappings = 0
+
+" Markdown-preview.nvim:
+    let g:mkdp_auto_close = 0
+    let g:mkdp_refresh_slow = 1
+
+" Dracula colorscheme:
+    let g:dracula_colorterm = 0
+    colorscheme dracula
 
 " COC-nvim:
     inoremap <silent><expr> <TAB>
@@ -56,18 +76,23 @@ call plug#end()
       return !col || getline('.')[col - 1]  =~# '\s'
     endfunction
 
-" Vim-airline:
-    let g:airline#extensions#tabline#enabled = 1
-    let g:airline#extensions#tabline#left_alt_sep = '|'
+    let g:coc_global_extensions = ['coc-json', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-jedi']
 
-" Vimwiki :
-    let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-    let g:vimwiki_table_mappings = 0
+    command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" Markdown-preview.nvim:
-    let g:mkdp_auto_close = 0
-    let g:mkdp_refresh_slow = 1
+    " Remap keys for gotos
+        nmap <silent> gd <Plug>(coc-definition)
+        nmap <silent> gy <Plug>(coc-type-definition)
+        nmap <silent> gi <Plug>(coc-implementation)
+        nmap <silent> gr <Plug>(coc-references)
 
-" Dracula colorscheme:
-    colorscheme dracula
+    " Use K to show documentation in preview window
+        nnoremap <silent> <leader>d :call <SID>show_documentation()<CR>
+
+        function! s:show_documentation()
+          if (index(['vim','help'], &filetype) >= 0)
+            execute 'h '.expand('<cword>')
+          else
+            call CocAction('doHover')
+          endif
+        endfunction
