@@ -1,4 +1,7 @@
 auto-reload yes
+reload-threads 5
+scrolloff 5
+confirm-exit yes
 browser firefox
 
 bind-key j down
