@@ -7,8 +7,9 @@ call plug#begin()
     Plug 'vimwiki/vimwiki'
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    Plug 'lambdalisue/fern.vim'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -17,8 +18,9 @@ call plug#end()
     set clipboard+=unnamedplus
     set hidden
     set cursorline
-    set relativenumber
+    set number relativenumber
     set scrolloff=5
+    set foldmethod=indent
 
 " Edit settings:
     set tabstop=4
@@ -38,14 +40,9 @@ call plug#end()
 " Remove search highlight:
     nnoremap <silent> <leader>h :nohlsearch<CR>
 
-" Fern.vim:
-    nnoremap <silent> <leader>e :Fern %:h -drawer -toggle<CR>
-
 " Fzf.vim:
     nnoremap <silent><leader>b :Buffers<CR>
     nnoremap <silent><leader>f :Files<CR>
-    nnoremap <silent><leader>g :GFiles<CR>
-    nnoremap <leader>r :Rg!
     let g:fzf_layout = { "down": "40%" }
 
 " Vimwiki :
