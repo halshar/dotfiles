@@ -1,23 +1,6 @@
 # Prompt
 PS1="%B%F{207}%~ %F{135}❯%f "
 
-git_branch_test_color() {
-  local ref=$(git symbolic-ref --short HEAD 2> /dev/null)
-  if [ -n "${ref}" ]; then
-    if [ -n "$(git status --porcelain)" ]; then
-      local gitstatuscolor="%F{red}"
-    else
-      local gitstatuscolor="%F{green}"
-    fi
-    echo "${gitstatuscolor}(${ref})"
-  else
-    echo ""
-  fi
-}
-
-setopt PROMPT_SUBST
-RPROMPT='%f$(git_branch_test_color)%f'
-
 # History in cache directory:
 HISTFILE=~/.cache/zsh/history
 
