@@ -1,0 +1,37 @@
+# basic options
+set shell sh
+set drawbox true
+set ignorecase true
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+
+# custom commands
+cmd delete ${{
+    set -f
+    printf "$fx\n"
+    printf "delete?[y/n]"
+    read ans
+    [ $ans = "y" ] && trash -- $fx
+}}
+
+cmd open ${{
+    case $(file --mime-type $f -b) in
+        text/*) $EDITOR $fx;;
+        image/*) imv $fx;;
+        audio/*) mpv $fx;;
+        video/*) mpv $fx;;
+        application/pdf) zathura $fx;;
+        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+# bindings
+map A rename
+map I push A<c-a>
+map i push A<a-b><a-b><a-f>
+map a push A<a-b>
+map DD delete
+map o open
+map <c-r> reload
+map <enter> shell
