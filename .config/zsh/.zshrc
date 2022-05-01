@@ -18,6 +18,8 @@ zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" 
 bindkey -v
 export KEYTIMEOUT=1
 
-# load alias and function files if they exist
+# reverse search
+bindkey '^r' history-incremental-search-backward
+
+# load aliasrc file if it exists
 [ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
-[ -f "$HOME/.config/zsh/functrc" ] && source "$HOME/.config/zsh/functrc"

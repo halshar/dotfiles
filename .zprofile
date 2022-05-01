@@ -3,13 +3,15 @@ export EDITOR="nvim"
 export READER="zathura"
 export BROWSER="firefox"
 export FILE="lf"
+export VIDEO="mpv"
+export IMAGE="sxiv"
 
 # updating path with necessary directories
-export PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin"
+export PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin"
 
 # zsh specific
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export ZDOTDIR="$HOME/.config/zsh"
 
 # clean up
