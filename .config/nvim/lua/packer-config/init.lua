@@ -10,4 +10,5 @@ return require('packer').startup(function()
     use 'tpope/vim-commentary'
     use { 'nvim-telescope/telescope.nvim', requires = { {'nvim-lua/plenary.nvim'} } }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end,}
 end)
