@@ -5,6 +5,7 @@ set ignorecase true
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
+set icons
 
 # custom commands
 cmd delete ${{
@@ -18,20 +19,19 @@ cmd delete ${{
 cmd open ${{
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
-        image/*) imv $fx;;
-        audio/*) mpv $fx;;
-        video/*) mpv $fx;;
-        application/pdf) zathura $fx;;
+        image/*) $IMAGE $fx;;
+        audio/*) $VIDEO $fx;;
+        video/*) $VIDEO $fx;;
+        application/pdf) $READER $fx;;
         *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
 
+cmd dragon %dragon -a -x -T $fx
+
 # bindings
-map A rename
-map I push A<c-a>
-map i push A<a-b><a-b><a-f>
-map a push A<a-b>
 map DD delete
+map DU dragon
 map o open
 map <c-r> reload
 map <enter> shell
