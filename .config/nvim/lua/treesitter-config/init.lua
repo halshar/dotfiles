@@ -1,14 +1,21 @@
 require'nvim-treesitter.configs'.setup {
     ensure_installed = {
-        "lua",
-        "go",
-        "python",
         "bash",
+        "comment",
+        "css",
         "dockerfile",
+        "go",
+        "hcl",
+        "html",
         "json",
+        "lua",
+        "make",
+        "markdown",
+        "python",
         "regex",
+        "sql",
+        "toml",
         "yaml",
-        "markdown"
     },
 
     sync_install = false,
@@ -17,4 +24,4 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
         additional_vim_regex_highlighting = false,
     },
-} 
+}
