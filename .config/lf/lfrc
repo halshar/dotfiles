@@ -1,10 +1,11 @@
 # basic options
-set shell sh
+set shell zsh
+set shellopts '-euy'
+set ifs "\n"
 set drawbox true
 set ignorecase true
-set shellopts '-eu'
-set ifs "\n"
 set scrolloff 10
+# set colors
 set icons
 
 # custom commands
@@ -35,3 +36,6 @@ map DU dragon
 map o open
 map <c-r> reload
 map <enter> shell
+map I push A<c-a>
+map A rename
+map a push A<a-b>
