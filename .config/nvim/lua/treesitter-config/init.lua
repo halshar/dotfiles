@@ -4,6 +4,7 @@ require'nvim-treesitter.configs'.setup {
         "comment",
         "css",
         "dockerfile",
+        "java",
         "go",
         "hcl",
         "html",
@@ -16,6 +17,9 @@ require'nvim-treesitter.configs'.setup {
         "sql",
         "toml",
         "yaml",
+        "javascript",
+        "scss",
+        "typescript",
     },
 
     sync_install = false,

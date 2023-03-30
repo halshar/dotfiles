@@ -62,6 +62,11 @@ require("lspconfig").jsonls.setup {
     on_attach = custom_attach,
 }
 
+-- typescript lsp
+require("lspconfig").tsserver.setup {
+    on_attach = custom_attach,
+}
+
 
 -- format on save for go files
 vim.api.nvim_create_autocmd("BufWritePre", {
