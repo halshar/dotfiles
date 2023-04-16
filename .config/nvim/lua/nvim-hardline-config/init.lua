@@ -1,12 +1,13 @@
 require('hardline').setup {
-  bufferline = false,  -- enable bufferline
+  bufferline = false,
   bufferline_settings = {
-    exclude_terminal = false,  -- don't show terminal buffers in bufferline
-    show_index = false,        -- show buffer indexes (not the actual buffer numbers) in bufferline
+    exclude_terminal = false,
+    show_index = false,
   },
-  theme = 'dracula',   -- change theme
-  sections = {         -- define sections
+  theme = 'dracula',
+  sections = {
     {class = 'mode', item = require('hardline.parts.mode').get_item},
+    {class = 'high', item = require('hardline.parts.git').get_item, hide = 100},
     {class = 'med', item = require('hardline.parts.filename').get_item},
     '%<',
     {class = 'med', item = '%='},
