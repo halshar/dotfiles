@@ -13,6 +13,7 @@ return require('packer').startup(function()
     use 'mattn/emmet-vim'
     use 'lewis6991/gitsigns.nvim'
     use 'tpope/vim-fugitive'
+    use 'NvChad/nvim-colorizer.lua'
     use {'nvim-telescope/telescope.nvim', tag = '0.1.1',}
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end,}
