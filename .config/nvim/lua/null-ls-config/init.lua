@@ -13,6 +13,7 @@ local sources = {
     formatting.goimports,
     formatting.gofumpt,
     diagnostics.revive,
+    diagnostics.hadolint,
 }
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
