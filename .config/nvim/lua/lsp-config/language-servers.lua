@@ -43,6 +43,11 @@ require("lspconfig").terraformls.setup{
     on_attach = custom_attach,
 }
 
+-- typescript lsp
+require("lspconfig").tsserver.setup{
+    on_attach = custom_attach,
+}
+
 -- html lsp
 require("lspconfig").html.setup {
     on_attach = custom_attach,
