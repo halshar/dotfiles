@@ -12,6 +12,7 @@ PROMPT='%B%F{207}%~ %f%F{135}❯%b%f '
 RPROMPT='%B%F{46}$(parse_git_branch)%b%f'
 
 # autocomplete with case insenstivity
+autoload -Uz +X compinit && compinit
 zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" "l:|=* r:|=*"
 
 # vi mode
