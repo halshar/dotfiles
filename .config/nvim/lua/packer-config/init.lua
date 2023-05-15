@@ -1,7 +1,6 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use 'neovim/nvim-lspconfig'
-    use 'vimwiki/vimwiki'
     use 'numToStr/Comment.nvim'
     use 'Mofiqul/dracula.nvim'
     use 'ojroques/nvim-hardline'
