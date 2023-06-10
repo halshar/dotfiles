@@ -1,7 +1,7 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
     use 'neovim/nvim-lspconfig'
-    use 'Mofiqul/dracula.nvim'
+    use 'dracula/vim'
     use 'ojroques/nvim-hardline'
     use 'mbbill/undotree'
     use 'nvim-tree/nvim-tree.lua'
