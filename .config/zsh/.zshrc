@@ -19,5 +19,8 @@ zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" 
 bindkey -v
 export KEYTIMEOUT=1
 
+# node version manager
+eval "$(fnm env --use-on-cd)"
+
 # load the alias file
 source "$HOME/.config/zsh/aliasrc"
