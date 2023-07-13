@@ -1,6 +1,5 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
-    use 'neovim/nvim-lspconfig'
     use 'dracula/vim'
     use 'ojroques/nvim-hardline'
     use 'mbbill/undotree'
@@ -14,6 +13,9 @@ return require('packer').startup(function()
     use 'sindrets/diffview.nvim'
     use 'NvChad/nvim-colorizer.lua'
     use 'lukas-reineke/indent-blankline.nvim'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'neovim/nvim-lspconfig'
     use { 'echasnovski/mini.surround', branch = 'stable' }
     use { 'echasnovski/mini.comment', branch = 'stable' }
     use {'nvim-telescope/telescope.nvim', tag = '0.1.1',}
