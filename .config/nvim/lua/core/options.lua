@@ -6,6 +6,8 @@ set.cursorline = true
 set.number = true
 set.relativenumber = true
 set.scrolloff = 5
+set.ignorecase = true
+set.spelllang = { "en" }
 
 set.tabstop = 2
 set.softtabstop = 2
