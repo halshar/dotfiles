@@ -1,0 +1,60 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$fill\
+$cmd_duration\
+$line_break\
+$character"""
+
+add_newline = true
+continuation_prompt = "[❮ ](bold #8be9fd)"
+
+[username]
+format = "[$user@]($style)"
+style_user = "bold #8be9fd"
+disabled=false
+
+[hostname]
+format = "[$hostname]($style) "
+style = "bold #8be9fd"
+disabled=false
+
+[directory]
+style = "bold #ff79c6"
+truncation_length = 8
+truncation_symbol = "…/"
+truncate_to_repo = false
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "bold #bd93f9"
+
+[git_state]
+style = "bold #bd93f9"
+
+[git_status]
+style = "bold #bd93f9"
+
+[git_metrics]
+added_style = "bold #50fa7b"
+deleted_style = "bold #ff5555"
+disabled = false
+
+[fill]
+symbol = " "
+
+[cmd_duration]
+style = "bold #f1fa8c"
+
+[line_break]
+disabled = false
+
+[character]
+success_symbol = "[❯](bold #bd93f9)"
+error_symbol = "[❯](bold #ff5555)"
+vimcmd_symbol = "[❮](bold #8be9fd)"

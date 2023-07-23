@@ -21,6 +21,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export LESS=-R
 export LESSHISTFILE="-"
 
+# app paths
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
 # update path env variable
 PATH="$PATH:$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin/"
 export PATH

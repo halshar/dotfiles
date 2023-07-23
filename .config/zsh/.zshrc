@@ -1,15 +1,11 @@
 # no duplicate commands in history file
 setopt HIST_IGNORE_ALL_DUPS
 
-# git branch info
-parse_git_branch() {
-    git symbolic-ref --short HEAD 2> /dev/null
-}
+# don't track commands that start with space
+setopt HIST_IGNORE_SPACE
 
-# left and right prompt
-setopt PROMPT_SUBST
-PROMPT='%B%F{207}%~ %f%F{135}❯%b%f '
-RPROMPT='%B%F{46}$(parse_git_branch)%b%f'
+# save every command in history file before execution
+setopt INC_APPEND_HISTORY
 
 # autocomplete with case insenstivity
 autoload -Uz +X compinit && compinit
@@ -19,8 +15,11 @@ zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" 
 bindkey -v
 export KEYTIMEOUT=1
 
+# load the aliases file
+source "$HOME/.config/zsh/aliasrc"
+
 # node version manager
 eval "$(fnm env --use-on-cd)"
 
-# load the alias file
-source "$HOME/.config/zsh/aliasrc"
+# starship prompt
+eval "$(starship init zsh)"
