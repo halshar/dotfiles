@@ -102,4 +102,10 @@ return {
 		end,
 		ft = { "markdown" },
 	},
+
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
+	},
 }
