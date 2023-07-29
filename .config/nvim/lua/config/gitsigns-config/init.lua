@@ -45,6 +45,6 @@ require("gitsigns").setup({
 		map("n", "<leader>hD", function()
 			gs.diffthis("~")
 		end)
-		map("n", "<leader>td", gs.toggle_deleted)
+		map("n", "<leader>tD", gs.toggle_deleted)
 	end,
 })
