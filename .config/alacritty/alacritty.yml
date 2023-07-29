@@ -8,7 +8,7 @@ window:
   class:
     instance: Alacritty
     general: Alacritty
-  decoration: none
+  decorations: none
   opacity: 1.0
   startup_mode: Maximized
 
@@ -86,8 +86,9 @@ colors:
     white: "#ffffff"
 
 cursor:
-  style: Block
-  blinking: On
+  style:
+    shape: Block
+    blinking: On
   unfocused_hollow: true
 
 live_config_reload: true
