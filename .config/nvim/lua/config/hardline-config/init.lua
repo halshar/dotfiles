@@ -4,10 +4,10 @@ require("hardline").setup({
 		exclude_terminal = false,
 		show_index = false,
 	},
-	theme = "dracula",
+	theme = "oxocarbon",
 	sections = {
 		{ class = "mode", item = require("hardline.parts.mode").get_item },
-		{ class = "high", item = require("hardline.parts.git").get_item, hide = 100 },
+		{ class = "high", item = require("hardline.parts.git").get_item },
 		{ class = "med", item = require("hardline.parts.filename").get_item },
 		"%<",
 		{ class = "med", item = "%=" },
