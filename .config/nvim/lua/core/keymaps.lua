@@ -35,7 +35,7 @@ map("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
 map("n", "<leader>dc", "<cmd>DiffviewClose<CR>", opts)
 map("n", "<leader>dr", "<cmd>DiffviewRefresh<CR>", opts)
 map("n", "<leader>dt", "<cmd>DiffviewToggleFiles<CR>", opts)
-map("n", "<leader>dh", "<cmd>DiffviewOpen HEAD~1<CR>", opts)
+map("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", opts)
 
 -- trouble
 map("n", "<leader>tt", "<cmd>TroubleToggle<CR>", opts)
@@ -47,3 +47,6 @@ map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>", opts)
 map("n", "gI", "<cmd>TroubleToggle lsp_implementations<CR>", opts)
 map("n", "gd", "<cmd>TroubleToggle lsp_definitions<CR>", opts)
 map("n", "gD", "<cmd>TroubleToggle lsp_type_definitions<CR>", opts)
+
+-- oil
+map("n", "<leader>fo", "<CMD>Oil --float<CR>", opts)
