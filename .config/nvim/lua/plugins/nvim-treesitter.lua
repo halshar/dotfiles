@@ -1,0 +1,46 @@
+return {
+	"nvim-treesitter/nvim-treesitter",
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter-textobjects",
+	},
+	build = ":TSUpdate",
+	config = function()
+		require("nvim-treesitter.configs").setup({
+			ensure_installed = {
+				"bash",
+				"comment",
+				"css",
+				"diff",
+				"dockerfile",
+				"gitignore",
+				"go",
+				"hcl",
+				"html",
+				"javascript",
+				"jsdoc",
+				"json",
+				"lua",
+				"luadoc",
+				"make",
+				"markdown",
+				"markdown_inline",
+				"norg",
+				"proto",
+				"python",
+				"regex",
+				"sql",
+				"toml",
+				"tsx",
+				"typescript",
+				"vim",
+				"vimdoc",
+				"yaml",
+			},
+			sync_install = false,
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
+			},
+		})
+	end,
+}

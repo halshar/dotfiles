@@ -12,6 +12,7 @@ map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<leader>o", "<C-w>o", opts)
 map("n", "<leader>hh", "<cmd>nohlsearch<CR>", opts)
 map("n", "<leader>u", "<cmd>bunload<CR>", opts)
+map("n", "<leader>nt", "<cmd>set rnu!<CR>", opts)
 
 -- telescope
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
@@ -23,9 +24,8 @@ map("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", opts)
 map("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
 map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", opts)
 map("n", "<leader>fm", "<cmd>Telescope spell_suggest<CR>", opts)
-
--- nvimtree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", opts)
+map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
 
 -- lazy
 map("n", "<leader>lc", "<cmd>Lazy check<CR>", opts)

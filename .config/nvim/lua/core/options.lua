@@ -7,6 +7,8 @@ set.number = true
 set.relativenumber = true
 set.scrolloff = 5
 set.ignorecase = true
+set.breakindent = true
+set.completeopt = "menuone,noselect"
 set.spelllang = { "en" }
 
 set.tabstop = 2

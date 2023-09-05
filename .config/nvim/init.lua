@@ -1,8 +1,3 @@
 require("core.options")
 require("core.keymaps")
 require("core.lazy")
-require("config.lsp-config")
-require("config.treesitter-config")
-require("config.null-ls-config")
-require("config.gitsigns-config")
-require("config.hardline-config")
