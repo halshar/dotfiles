@@ -12,6 +12,7 @@ return {
 				"cssls",
 				"docker_compose_language_service",
 				"dockerls",
+				"gopls",
 				"html",
 				"jsonls",
 				"lua_ls",
@@ -49,6 +50,18 @@ return {
 
 		require("lspconfig").docker_compose_language_service.setup({
 			on_attach = custom_attach,
+		})
+
+		-- golang lsp
+		require("lspconfig").gopls.setup({
+			on_attach = custom_attach,
+			settings = {
+				gopls = {
+					analyses = {
+						unusedparams = true,
+					},
+				},
+			},
 		})
 
 		-- html lsp
