@@ -1,8 +1,15 @@
 return {
-	"nyoom-engineering/oxocarbon.nvim",
+	"EdenEast/nightfox.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.cmd([[colorscheme oxocarbon]])
+		require("nightfox").setup({
+			groups = {
+				all = {
+					MatchParen = { fg = "orange" },
+				},
+			},
+		})
+		vim.cmd("colorscheme carbonfox")
 	end,
 }
