@@ -1,8 +1,9 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		{ "williamboman/mason.nvim", config = true },
+		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
 		require("mason").setup()
@@ -20,6 +21,22 @@ return {
 				"tsserver",
 				"yamlls",
 			},
+		})
+		require("mason-tool-installer").setup({
+			ensure_installed = {
+				"eslint_d",
+				"gofumpt",
+				"goimports-reviser",
+				"golangci-lint",
+				"golines",
+				"hadolint",
+				"prettierd",
+				"shellcheck",
+				"stylua",
+				"yamllint",
+			},
+			auto_update = false,
+			run_on_start = false,
 		})
 
 		-- function with all the mappings
