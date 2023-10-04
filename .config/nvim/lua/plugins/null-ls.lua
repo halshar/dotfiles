@@ -14,6 +14,7 @@ return {
 			formatting.gofumpt,
 			formatting.goimports_reviser,
 			formatting.golines,
+			formatting.rustywind,
 			diagnostics.golangci_lint,
 			diagnostics.hadolint,
 			diagnostics.eslint_d,

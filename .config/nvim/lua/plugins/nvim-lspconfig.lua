@@ -18,6 +18,7 @@ return {
 				"jsonls",
 				"lua_ls",
 				"marksman",
+				"tailwindcss",
 				"tsserver",
 				"yamlls",
 			},
@@ -31,6 +32,7 @@ return {
 				"golines",
 				"hadolint",
 				"prettierd",
+				"rustywind",
 				"shellcheck",
 				"stylua",
 				"yamllint",
@@ -105,6 +107,11 @@ return {
 
 		-- markdown lsp
 		require("lspconfig").marksman.setup({
+			on_attach = custom_attach,
+		})
+
+		-- tailwindcss lsp
+		require("lspconfig").tailwindcss.setup({
 			on_attach = custom_attach,
 		})
 
