@@ -110,6 +110,17 @@ return {
 			on_attach = custom_attach,
 		})
 
+		-- rust lsp
+		require("lspconfig").rust_analyzer.setup({
+			on_attach = custom_attach,
+			cmd = {
+				"rustup",
+				"run",
+				"stable",
+				"rust-analyzer",
+			},
+		})
+
 		-- tailwindcss lsp
 		require("lspconfig").tailwindcss.setup({
 			on_attach = custom_attach,
