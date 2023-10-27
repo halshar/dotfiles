@@ -6,6 +6,7 @@ set.cursorline = true
 set.number = true
 set.relativenumber = true
 set.scrolloff = 5
+set.colorcolumn = "80"
 set.ignorecase = true
 set.breakindent = true
 set.completeopt = "menuone,noselect"

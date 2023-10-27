@@ -52,28 +52,36 @@ return {
 			vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { buffer = 0 })
 		end
 
+		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		local capabilities = cmp_nvim_lsp.default_capabilities()
+
 		-- bash lsp
 		require("lspconfig").bashls.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		-- css lsp
 		require("lspconfig").cssls.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		-- docker lsp
 		require("lspconfig").dockerls.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		require("lspconfig").docker_compose_language_service.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		-- golang lsp
 		require("lspconfig").gopls.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 			settings = {
 				gopls = {
 					analyses = {
@@ -86,16 +94,19 @@ return {
 		-- html lsp
 		require("lspconfig").html.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		-- json lsp
 		require("lspconfig").jsonls.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		-- lua lsp
 		require("lspconfig").lua_ls.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 			settings = {
 				Lua = {
 					diagnostics = {
@@ -108,11 +119,13 @@ return {
 		-- markdown lsp
 		require("lspconfig").marksman.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		-- rust lsp
 		require("lspconfig").rust_analyzer.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 			cmd = {
 				"rustup",
 				"run",
@@ -124,16 +137,19 @@ return {
 		-- tailwindcss lsp
 		require("lspconfig").tailwindcss.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		-- typescript lsp
 		require("lspconfig").tsserver.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 
 		-- yaml lsp
 		require("lspconfig").yamlls.setup({
 			on_attach = custom_attach,
+			capabilities = capabilities,
 		})
 	end,
 }
