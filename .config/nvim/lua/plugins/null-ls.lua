@@ -7,6 +7,7 @@ return {
 		local formatting = null_ls.builtins.formatting
 
 		local sources = {
+			formatting.black,
 			code_actions.eslint_d,
 			code_actions.gitsigns,
 			formatting.prettierd,
@@ -19,6 +20,8 @@ return {
 			diagnostics.golangci_lint,
 			diagnostics.hadolint,
 			diagnostics.eslint_d,
+			diagnostics.mypy,
+			diagnostics.ruff,
 			diagnostics.shellcheck,
 			diagnostics.yamllint,
 		}

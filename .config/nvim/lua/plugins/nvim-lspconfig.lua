@@ -18,6 +18,7 @@ return {
 				"jsonls",
 				"lua_ls",
 				"marksman",
+				"pyright",
 				"tailwindcss",
 				"tsserver",
 				"yamlls",
@@ -25,13 +26,16 @@ return {
 		})
 		require("mason-tool-installer").setup({
 			ensure_installed = {
+				"black",
 				"eslint_d",
 				"gofumpt",
 				"goimports-reviser",
 				"golangci-lint",
 				"golines",
 				"hadolint",
+				"mypy",
 				"prettierd",
+				"ruff",
 				"rustywind",
 				"shellcheck",
 				"stylua",
@@ -118,6 +122,12 @@ return {
 
 		-- markdown lsp
 		require("lspconfig").marksman.setup({
+			on_attach = custom_attach,
+			capabilities = capabilities,
+		})
+
+		-- python lsp
+		require("lspconfig").pyright.setup({
 			on_attach = custom_attach,
 			capabilities = capabilities,
 		})
