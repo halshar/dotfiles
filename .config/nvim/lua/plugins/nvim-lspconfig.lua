@@ -9,6 +9,7 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
+				"ansiblels",
 				"bashls",
 				"cssls",
 				"docker_compose_language_service",
@@ -26,6 +27,7 @@ return {
 		})
 		require("mason-tool-installer").setup({
 			ensure_installed = {
+				"ansible-lint",
 				"black",
 				"eslint_d",
 				"gofumpt",
@@ -58,6 +60,12 @@ return {
 
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local capabilities = cmp_nvim_lsp.default_capabilities()
+
+		-- ansible lsp
+		require("lspconfig").ansiblels.setup({
+			on_attach = custom_attach,
+			capabilities = capabilities,
+		})
 
 		-- bash lsp
 		require("lspconfig").bashls.setup({
