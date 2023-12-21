@@ -17,6 +17,7 @@ return {
 			formatting.golines,
 			formatting.rustfmt,
 			formatting.rustywind,
+			formatting.taplo,
 			diagnostics.golangci_lint,
 			diagnostics.hadolint,
 			diagnostics.eslint_d,

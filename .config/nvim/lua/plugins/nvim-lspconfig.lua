@@ -21,6 +21,7 @@ return {
 				"marksman",
 				"pyright",
 				"tailwindcss",
+				"taplo",
 				"tsserver",
 				"yamlls",
 			},
@@ -154,6 +155,12 @@ return {
 
 		-- tailwindcss lsp
 		require("lspconfig").tailwindcss.setup({
+			on_attach = custom_attach,
+			capabilities = capabilities,
+		})
+
+		-- toml lsp
+		require("lspconfig").taplo.setup({
 			on_attach = custom_attach,
 			capabilities = capabilities,
 		})
