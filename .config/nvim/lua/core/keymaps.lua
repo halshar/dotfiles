@@ -13,8 +13,11 @@ map("n", "<leader>o", "<C-w>o", opts)
 map("n", "<leader>hh", "<cmd>nohlsearch<CR>", opts)
 map("n", "<leader>u", "<cmd>bunload<CR>", opts)
 map("n", "<leader>nt", "<cmd>set rnu!<CR>", opts)
+map("n", "<leader>to", "<cmd>terminal<CR>", opts)
 map("n", "<leader>th", "<cmd>split | terminal<CR>", opts)
 map("n", "<leader>tv", "<cmd>vsplit | terminal<CR>", opts)
+map("v", "J", ":m '>+1<CR>gv=gv", opts)
+map("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- telescope
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
@@ -36,7 +39,6 @@ map("n", "<leader>lc", "<cmd>Lazy check<CR>", opts)
 -- diffview
 map("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
 map("n", "<leader>dc", "<cmd>DiffviewClose<CR>", opts)
-map("n", "<leader>dr", "<cmd>DiffviewRefresh<CR>", opts)
 map("n", "<leader>dt", "<cmd>DiffviewToggleFiles<CR>", opts)
 map("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", opts)
 
@@ -57,5 +59,7 @@ map("n", "<leader>fo", "<CMD>Oil --float<CR>", opts)
 -- gopher
 map("n", "<leader>gj", "<CMD>GoTagAdd json<CR>", opts)
 map("n", "<leader>gy", "<CMD>GoTagAdd yaml<CR>", opts)
-map("n", "<leader>gt", "<CMD>GoTestsAll<CR>", opts)
+map("n", "<leader>gT", "<CMD>GoTestsAll<CR>", opts)
+map("n", "<leader>gt", "<CMD>GoTestAdd<CR>", opts)
 map("n", "<leader>ge", "<CMD>GoIfErr<CR>", opts)
+map("n", "<leader>gc", "<CMD>GoCmt<CR>", opts)

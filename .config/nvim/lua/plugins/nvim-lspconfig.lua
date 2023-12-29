@@ -56,7 +56,6 @@ return {
 			vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, { buffer = 0 })
 			vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { buffer = 0 })
 			vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = 0 })
-			vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { buffer = 0 })
 		end
 
 		-- add borders to diagnostics
