@@ -30,6 +30,8 @@ return {
 			ensure_installed = {
 				"ansible-lint",
 				"black",
+				"debugpy",
+				"delve",
 				"eslint_d",
 				"gofumpt",
 				"goimports-reviser",
