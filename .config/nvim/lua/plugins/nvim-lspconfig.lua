@@ -21,6 +21,7 @@ return {
 				"marksman",
 				"pyright",
 				"tailwindcss",
+				"terraformls",
 				"taplo",
 				"tsserver",
 				"yamlls",
@@ -44,6 +45,8 @@ return {
 				"rustywind",
 				"shellcheck",
 				"stylua",
+				"tfsec",
+				"trivy",
 				"yamllint",
 			},
 			auto_update = false,
@@ -172,6 +175,13 @@ return {
 
 		-- tailwindcss lsp
 		require("lspconfig").tailwindcss.setup({
+			on_attach = custom_attach,
+			capabilities = capabilities,
+		})
+
+		-- terraform lsp
+		require("lspconfig").terraformls.setup({
+			filetypes = { "terraform", "tf", "hcl" },
 			on_attach = custom_attach,
 			capabilities = capabilities,
 		})

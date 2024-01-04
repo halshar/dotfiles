@@ -18,12 +18,16 @@ return {
 			formatting.rustfmt,
 			formatting.rustywind,
 			formatting.taplo,
+			formatting.terraform_fmt,
 			diagnostics.golangci_lint,
 			diagnostics.hadolint,
 			diagnostics.eslint_d,
 			diagnostics.mypy,
 			diagnostics.ruff,
 			diagnostics.shellcheck,
+			diagnostics.terraform_validate,
+			diagnostics.tfsec,
+			diagnostics.trivy,
 			diagnostics.yamllint,
 		}
 

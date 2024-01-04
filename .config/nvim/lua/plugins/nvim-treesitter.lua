@@ -31,6 +31,7 @@ return {
 				"regex",
 				"sql",
 				"ssh_config",
+				"terraform",
 				"toml",
 				"tsx",
 				"typescript",
