@@ -1,12 +1,15 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason.nvim",
+		{ "williamboman/mason.nvim", config = true },
+		"vigoux/notifier.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
-		require("mason").setup()
+		require("notifier").setup({
+			components = { "lsp" },
+		})
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"ansiblels",
