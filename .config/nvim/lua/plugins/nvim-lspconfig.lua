@@ -34,6 +34,7 @@ return {
 			ensure_installed = {
 				"ansible-lint",
 				"black",
+				"checkmake",
 				"debugpy",
 				"delve",
 				"eslint_d",

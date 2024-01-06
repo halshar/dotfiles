@@ -19,6 +19,7 @@ return {
 			formatting.rustywind,
 			formatting.taplo,
 			formatting.terraform_fmt,
+			diagnostics.checkmake,
 			diagnostics.golangci_lint,
 			diagnostics.hadolint,
 			diagnostics.eslint_d,
