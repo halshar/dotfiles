@@ -4,66 +4,89 @@ return {
 		{ "williamboman/mason.nvim", config = true },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		require("notifier").setup({
-			components = { "lsp" },
-		})
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"ansiblels",
-				"bashls",
-				"cssls",
-				"docker_compose_language_service",
-				"dockerls",
-				"gopls",
-				"html",
-				"jsonls",
-				"lua_ls",
-				"marksman",
-				"pyright",
-				"tailwindcss",
-				"terraformls",
-				"taplo",
-				"tsserver",
-				"yamlls",
+		local servers = {
+			bashls = {},
+			html = {},
+			cssls = {},
+			tailwindcss = {},
+			tsserver = {},
+			ansiblels = {},
+			yamlls = {},
+			dockerls = {},
+			docker_compose_language_service = {},
+			taplo = {},
+			pyright = {},
+			terraformls = {},
+			lua_ls = {
+				settings = {
+					Lua = {
+						workspace = { checkThirdParty = false },
+						telemetry = { enable = false },
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
 			},
-		})
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				"ansible-lint",
-				"black",
-				"checkmake",
-				"debugpy",
-				"delve",
-				"eslint_d",
-				"gofumpt",
-				"goimports-reviser",
-				"golangci-lint",
-				"golines",
-				"hadolint",
-				"mypy",
-				"prettierd",
-				"ruff",
-				"rustywind",
-				"shellcheck",
-				"stylua",
-				"tfsec",
-				"trivy",
-				"yamllint",
+			gopls = {
+				settings = {
+					gopls = {
+						analyses = {
+							unusedparams = true,
+						},
+					},
+				},
 			},
-			auto_update = false,
-			run_on_start = false,
-		})
+			rust_analyzer = {
+				cmd = {
+					"rustup",
+					"run",
+					"stable",
+					"rust-analyzer",
+				},
+			},
+		}
 
-		-- function with all the mappings
-		local custom_attach = function()
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-			vim.keymap.set("n", "gr", vim.lsp.buf.rename, { buffer = 0 })
-			vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { buffer = 0 })
-			vim.keymap.set("n", "<leader>de", vim.diagnostic.open_float, { buffer = 0 })
-			vim.keymap.set("n", "<leader>dn", vim.diagnostic.goto_next, { buffer = 0 })
-			vim.keymap.set("n", "<leader>dp", vim.diagnostic.goto_prev, { buffer = 0 })
+		local non_lsp = {
+			"ansible-lint",
+			"black",
+			"checkmake",
+			"debugpy",
+			"delve",
+			"eslint_d",
+			"gofumpt",
+			"goimports-reviser",
+			"golangci-lint",
+			"golines",
+			"hadolint",
+			"mypy",
+			"prettierd",
+			"ruff",
+			"rustywind",
+			"shellcheck",
+			"stylua",
+			"tfsec",
+			"trivy",
+			"yamllint",
+		}
+
+		-- this function gets run when an LSP connects to a particular buffer.
+		local on_attach = function(_, bufnr)
+			local nmap = function(mode, keys, func, desc)
+				if desc then
+					desc = "LSP: " .. desc
+				end
+
+				vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
+			end
+
+			nmap("n", "gr", vim.lsp.buf.rename, "Rename")
+			nmap("n", "ga", vim.lsp.buf.code_action, "Code Action")
+			nmap("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+			nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 		end
 
 		-- add borders to diagnostics
@@ -82,129 +105,35 @@ return {
 			border = "rounded",
 		})
 
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		-- capabilities for auto-completion
+		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-		-- ansible lsp
-		require("lspconfig").ansiblels.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
+		local mason_lspconfig = require("mason-lspconfig")
+		local mason_tool = require("mason-tool-installer")
+
+		-- ensure the servers are installed
+		mason_lspconfig.setup({
+			ensure_installed = vim.tbl_keys(servers),
 		})
 
-		-- bash lsp
-		require("lspconfig").bashls.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
+		-- ensure the linters and formatters are installed
+		mason_tool.setup({
+			ensure_installed = non_lsp,
+			auto_update = false,
+			run_on_start = false,
 		})
 
-		-- css lsp
-		require("lspconfig").cssls.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- docker lsp
-		require("lspconfig").dockerls.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		require("lspconfig").docker_compose_language_service.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- golang lsp
-		require("lspconfig").gopls.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-			settings = {
-				gopls = {
-					analyses = {
-						unusedparams = true,
-					},
-				},
-			},
-		})
-
-		-- html lsp
-		require("lspconfig").html.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- json lsp
-		require("lspconfig").jsonls.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- lua lsp
-		require("lspconfig").lua_ls.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-				},
-			},
-		})
-
-		-- markdown lsp
-		require("lspconfig").marksman.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- python lsp
-		require("lspconfig").pyright.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- rust lsp
-		require("lspconfig").rust_analyzer.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-			cmd = {
-				"rustup",
-				"run",
-				"stable",
-				"rust-analyzer",
-			},
-		})
-
-		-- tailwindcss lsp
-		require("lspconfig").tailwindcss.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- terraform lsp
-		require("lspconfig").terraformls.setup({
-			filetypes = { "terraform", "tf", "hcl" },
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- toml lsp
-		require("lspconfig").taplo.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- typescript lsp
-		require("lspconfig").tsserver.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
-		})
-
-		-- yaml lsp
-		require("lspconfig").yamlls.setup({
-			on_attach = custom_attach,
-			capabilities = capabilities,
+		-- setup lsp handlers
+		mason_lspconfig.setup_handlers({
+			function(server_name)
+				require("lspconfig")[server_name].setup({
+					capabilities = capabilities,
+					on_attach = on_attach,
+					settings = servers[server_name],
+					filetypes = (servers[server_name] or {}).filetypes,
+				})
+			end,
 		})
 	end,
 }

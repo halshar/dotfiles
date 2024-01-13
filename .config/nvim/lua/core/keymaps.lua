@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 vim.g.mapleader = " "
@@ -18,6 +18,12 @@ map("n", "<leader>th", "<cmd>split | terminal<CR>", opts)
 map("n", "<leader>tv", "<cmd>vsplit | terminal<CR>", opts)
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
+map({ "n", "v" }, "<Space>", "<Nop>", opts)
+
+-- diagnostics
+map("n", "<leader>de", vim.diagnostic.open_float, opts)
+map("n", "<leader>dn", vim.diagnostic.goto_next, opts)
+map("n", "<leader>dp", vim.diagnostic.goto_prev, opts)
 
 -- telescope
 map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
