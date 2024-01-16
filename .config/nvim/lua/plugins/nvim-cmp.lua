@@ -14,13 +14,14 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
+			preselect = cmp.PreselectMode.None,
 			window = {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
 			},
 			completion = {
 				autocomplete = false,
-				completeopt = "menu,menuone,preview,noselect",
+				completeopt = "menu,menuone,preview,noinsert",
 			},
 			snippet = {
 				expand = function(args)
@@ -28,17 +29,34 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<C-b>"] = cmp.mapping.scroll_docs(-5),
-				["<C-f>"] = cmp.mapping.scroll_docs(5),
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<C-l>"] = cmp.mapping(function(fallback)
+					if luasnip.expand_or_locally_jumpable() then
+						luasnip.expand_or_jump()
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<C-h>"] = cmp.mapping(function(fallback)
+					if luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 			}),
-
 			sources = cmp.config.sources({
-				{ name = "path" },
 				{ name = "nvim_lsp" },
-				{ name = "buffer" },
 				{ name = "luasnip" },
+				{ name = "path" },
+			}, {
+				{ name = "buffer" },
 			}),
+			experimental = {
+				ghost_text = true,
+			},
 		})
 	end,
 }
