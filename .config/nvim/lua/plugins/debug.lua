@@ -8,13 +8,16 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 			dapui.setup()
-			dap.listeners.after.event_initialized["dapui_config"] = function()
+			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()
 			end
-			dap.listeners.before.event_terminated["dapui_config"] = function()
+			dap.listeners.before.launch.dapui_config = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated.dapui_config = function()
 				dapui.close()
 			end
-			dap.listeners.before.event_exited["dapui_config"] = function()
+			dap.listeners.before.event_exited.dapui_config = function()
 				dapui.close()
 			end
 		end,
@@ -27,7 +30,7 @@ return {
 				desc = "toggle debugger ui",
 			},
 			{ "<leader>db", "<CMD>DapToggleBreakpoint<CR>", desc = "add breakpoint" },
-			{ "<leader>ds", "<CMD>DapContinue<CR>", desc = "continue debug" },
+			{ "<leader>ds", "<CMD>DapContinue<CR>", desc = "start/continue debug" },
 		},
 	},
 	{
@@ -41,18 +44,8 @@ return {
 			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
 			require("dap-python").setup(path)
 		end,
-		keys = {
-			{
-
-				"<leader>dr",
-				function()
-					require("dap-python").test_method()
-				end,
-			},
-		},
 	},
 	{
-
 		"leoluz/nvim-dap-go",
 		ft = "go",
 		dependencies = {
