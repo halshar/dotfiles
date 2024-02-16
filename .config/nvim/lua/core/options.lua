@@ -5,10 +5,13 @@ set.hidden = true
 set.cursorline = true
 set.number = true
 set.relativenumber = true
-set.scrolloff = 5
-set.colorcolumn = "80"
+set.undofile = true
 set.ignorecase = true
-set.breakindent = true
+set.smartcase = true
+set.smartindent = true
+set.scrolloff = 11
+set.colorcolumn = "80"
+set.signcolumn = "yes"
 set.completeopt = "menuone,noselect"
 set.spelllang = { "en" }
 
