@@ -19,7 +19,6 @@ return {
 			docker_compose_language_service = {},
 			taplo = {},
 			pyright = {},
-			terraformls = {},
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -51,6 +50,7 @@ return {
 		}
 
 		local non_lsp = {
+			"actionlint",
 			"ansible-lint",
 			"black",
 			"checkmake",
@@ -62,14 +62,15 @@ return {
 			"golangci-lint",
 			"golines",
 			"hadolint",
+			"isort",
 			"mypy",
 			"prettierd",
 			"ruff",
 			"rustywind",
+			"shfmt",
 			"shellcheck",
 			"stylua",
-			"tfsec",
-			"trivy",
+			"yamlfmt",
 			"yamllint",
 		}
 
