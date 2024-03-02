@@ -21,6 +21,12 @@ map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
 map({ "n", "v" }, "<Space>", "<Nop>", opts)
 
+-- system clipboard
+map({ "n", "v" }, "<leader>sy", '"+y')
+map({ "n", "v" }, "<leader>sd", '"+d')
+map("n", "<leader>sp", '"+p')
+map("n", "<leader>sP", '"+P')
+
 -- diagnostics
 map("n", "<leader>de", vim.diagnostic.open_float, opts)
 map("n", "<leader>dn", vim.diagnostic.goto_next, opts)

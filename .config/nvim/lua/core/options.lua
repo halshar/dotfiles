@@ -10,6 +10,7 @@ set.ignorecase = true
 set.smartcase = true
 set.smartindent = true
 set.scrolloff = 11
+set.showmode = false
 set.colorcolumn = "80"
 set.signcolumn = "yes"
 set.completeopt = "menuone,noselect"
@@ -25,5 +26,3 @@ set.splitright = true
 
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
-
-set.clipboard = "unnamedplus"
