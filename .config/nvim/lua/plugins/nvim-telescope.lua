@@ -3,11 +3,7 @@ return {
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"debugloop/telescope-undo.nvim",
-		{
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-		},
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	config = function()
 		require("telescope").setup({
@@ -23,6 +19,5 @@ return {
 			},
 		})
 		require("telescope").load_extension("fzf")
-		require("telescope").load_extension("undo")
 	end,
 }

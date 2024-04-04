@@ -3,9 +3,18 @@ return {
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 	},
-	version = "*",
-	config = true,
+	config = function()
+		local nvimtree = require("nvim-tree")
+		nvimtree.setup({
+			view = {
+				width = 40,
+			},
+			git = {
+				ignore = false,
+			},
+		})
+	end,
 	keys = {
-		{ "<leader>e", "<cmd>NvimTreeToggle<CR>" },
+		{ "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>" },
 	},
 }

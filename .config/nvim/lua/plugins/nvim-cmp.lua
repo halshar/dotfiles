@@ -1,5 +1,6 @@
 return {
 	"hrsh7th/nvim-cmp",
+	event = "InsertEnter",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
@@ -52,7 +53,14 @@ return {
 				{ name = "luasnip" },
 				{ name = "path" },
 			}, {
-				{ name = "buffer" },
+				{
+					name = "buffer",
+					option = {
+						get_bufnrs = function()
+							return vim.api.nvim_list_bufs()
+						end,
+					},
+				},
 			}),
 			experimental = {
 				ghost_text = true,

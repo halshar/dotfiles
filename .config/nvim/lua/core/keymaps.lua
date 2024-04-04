@@ -44,7 +44,6 @@ map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", opts)
 map("n", "<leader>fm", "<cmd>Telescope spell_suggest<CR>", opts)
 map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", opts)
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
-map("n", "<leader>fu", "<cmd>Telescope undo<CR>", opts)
 
 -- lazy
 map("n", "<leader>lc", "<cmd>Lazy check<CR>", opts)
