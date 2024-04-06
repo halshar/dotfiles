@@ -68,6 +68,9 @@ map("n", "gD", "<cmd>TroubleToggle lsp_type_definitions<CR>", opts)
 -- oil
 map("n", "<leader>fo", "<CMD>Oil --float<CR>", opts)
 
+-- undotree
+map("n", "<leader>fu", "<CMD>UndotreeToggle<CR>", opts)
+
 -- gopher
 map("n", "<leader>gj", "<CMD>GoTagAdd json<CR>", opts)
 map("n", "<leader>gy", "<CMD>GoTagAdd yaml<CR>", opts)
