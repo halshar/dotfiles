@@ -75,3 +75,9 @@ gdec() {
 		return 1
 	fi
 }
+
+# Function to search and cd into all directories using fzf
+fcd() {
+	local dir
+	dir=$(fd --hidden --type directory "$1" 2>/dev/null | fzf +m --reverse) && cd "$dir" || return
+}

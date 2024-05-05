@@ -23,3 +23,6 @@ eval "$(fnm env --use-on-cd)"
 
 # starship prompt
 eval "$(starship init zsh)"
+
+# set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
