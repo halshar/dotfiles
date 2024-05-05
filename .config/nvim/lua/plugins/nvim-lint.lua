@@ -10,7 +10,7 @@ return {
 			make = { "checkmake" },
 			python = { "mypy", "ruff" },
 			["yaml.ansible"] = { "ansible_lint", "yamllint" },
-			yaml = { "yamllint", "actionlint" },
+			yaml = { "yamllint" },
 			go = { "golangcilint" },
 			dockerfile = { "hadolint" },
 			sh = { "shellcheck" },

@@ -15,11 +15,15 @@ return {
 			tsserver = {},
 			ansiblels = {},
 			yamlls = {},
+			gitlab_ci_ls = {},
 			jsonls = {},
 			dockerls = {},
 			docker_compose_language_service = {},
 			taplo = {},
 			pyright = {},
+			powershell_es = {
+				cmd = { "pwsh" },
+			},
 			lua_ls = {
 				settings = {
 					Lua = {
