@@ -28,3 +28,6 @@ set.splitright = true
 
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
+
+set.list = true
+set.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
