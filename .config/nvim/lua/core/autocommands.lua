@@ -25,3 +25,10 @@ vim.api.nvim_create_user_command("FormatEnable", function()
 end, {
 	desc = "Re-enable autoformat-on-save",
 })
+
+-- disable line numbers and relative numbers when entering a terminal buffer
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("TerminalSettings", { clear = true }),
+	pattern = "*",
+	command = "setlocal nonumber norelativenumber",
+})
