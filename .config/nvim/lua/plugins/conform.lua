@@ -6,7 +6,7 @@ return {
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-					return
+					return {}
 				end
 				return { timeout_ms = 500, lsp_fallback = true }
 			end,
@@ -29,5 +29,12 @@ return {
 				yaml = { "yamlfmt" },
 			},
 		})
+		vim.keymap.set({ "n", "v" }, "<leader>mf", function()
+			conform.format({
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 500,
+			})
+		end, { desc = "Format file or range (in visual mode)" })
 	end,
 }
