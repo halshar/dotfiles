@@ -75,9 +75,11 @@ return {
 			"rustywind",
 			"shfmt",
 			"shellcheck",
+			"stylelint",
 			"stylua",
 			"yamlfmt",
 			"yamllint",
+			"xmlformatter",
 		}
 
 		-- this function gets run when an LSP connects to a particular buffer.

@@ -27,6 +27,7 @@ return {
 				sh = { "shellcheck", "shfmt" },
 				toml = { "taplo" },
 				yaml = { "yamlfmt" },
+				xml = { "xmlformat" },
 			},
 		})
 		vim.keymap.set({ "n", "v" }, "<leader>mf", function()

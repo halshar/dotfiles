@@ -7,6 +7,7 @@ return {
 			typescript = { "eslint_d" },
 			javascriptreact = { "eslint_d" },
 			typescriptreact = { "eslint_d" },
+			css = { "stylelint" },
 			make = { "checkmake" },
 			python = { "mypy", "ruff" },
 			["yaml.ansible"] = { "ansible_lint", "yamllint" },
