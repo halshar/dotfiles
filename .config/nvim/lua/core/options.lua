@@ -10,7 +10,6 @@ set.ignorecase = true
 set.smartcase = true
 set.smartindent = true
 set.showmode = false
-set.cmdheight = 0
 set.laststatus = 3
 set.scrolloff = 11
 set.colorcolumn = "80"
