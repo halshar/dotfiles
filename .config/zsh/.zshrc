@@ -9,7 +9,8 @@ setopt INC_APPEND_HISTORY
 
 # autocomplete with case insenstivity
 autoload -Uz +X compinit && compinit
-zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}" "r:|[._-]=* r:|=*" "l:|=* r:|=*"
+zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}"
+zstyle ":completion:*" menu select
 
 # vi mode
 bindkey -v
