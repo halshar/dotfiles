@@ -21,6 +21,7 @@ return {
 			docker_compose_language_service = {},
 			taplo = {},
 			pyright = {},
+			ruby_lsp = {},
 			powershell_es = {
 				bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
 				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
@@ -73,6 +74,7 @@ return {
 			"jq",
 			"mypy",
 			"prettier",
+			"rubyfmt",
 			"ruff",
 			"rustywind",
 			"shfmt",

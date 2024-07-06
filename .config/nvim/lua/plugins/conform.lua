@@ -22,6 +22,7 @@ return {
 				markdown = { "prettier" },
 				python = { "isort", "black" },
 				lua = { "stylua" },
+				ruby = { "rubyfmt" },
 				rust = { "rustfmt" },
 				bash = { "shellcheck", "shfmt" },
 				sh = { "shellcheck", "shfmt" },
