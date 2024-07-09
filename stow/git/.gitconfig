@@ -1,0 +1,41 @@
+[user]
+  name = Harshal Jadhav
+  email = bestt1315@gmail.com
+  signingkey = ~/.ssh/git.pub
+
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  light = false
+  side-by-side = true
+  true-color = always
+  tabs = 2
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+[init]
+  defaultBranch = master
+
+[fetch]
+  prune = true
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = ~/.ssh/allowed_signers
+
+[commit]
+  gpgSign = true
+
+[tag]
+  gpgSign = true
