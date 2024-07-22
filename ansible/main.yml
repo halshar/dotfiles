@@ -1,0 +1,45 @@
+- name: Gather facts
+  hosts: localhost
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Run setup module
+      ansible.builtin.setup:
+
+- name: Privileged tasks
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Update system packages
+      ansible.builtin.include_role:
+        name: update
+
+    - name: Install additional packages
+      ansible.builtin.include_role:
+        name: packages
+
+    - name: Install Brave browser
+      ansible.builtin.include_role:
+        name: brave
+
+    - name: Change default shell
+      ansible.builtin.include_role:
+        name: shell
+
+- name: Non-Privileged tasks
+  hosts: localhost
+  gather_facts: false
+  become: false
+  tasks:
+    - name: Setup GNU Stow
+      ansible.builtin.include_role:
+        name: stow
+
+    - name: Install Rust
+      ansible.builtin.include_role:
+        name: rust
+
+    - name: Install Go
+      ansible.builtin.include_role:
+        name: go

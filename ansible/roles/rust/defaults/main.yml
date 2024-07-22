@@ -1,0 +1,8 @@
+rust_binaries:
+  - tsm
+  - fd-find
+  - git-delta
+  - ripgrep
+  - abhyas
+  - fnm
+  - starship

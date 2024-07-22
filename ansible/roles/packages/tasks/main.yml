@@ -1,0 +1,23 @@
+- name: Install common packages
+  ansible.builtin.package:
+    name: "{{ packages_common }}"
+    state: present
+
+- name: Install Debian packages
+  ansible.builtin.apt:
+    name: "{{ packages_debian }}"
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install RedHat packages
+  ansible.builtin.dnf:
+    name: "{{ packages_redhat }}"
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Install Redhat package groups
+  ansible.builtin.dnf:
+    name: "@{{ item }}"
+    state: present
+  loop: "{{ packages_redhat_groups }}"
+  when: ansible_os_family == "RedHat"

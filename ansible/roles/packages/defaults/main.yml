@@ -1,0 +1,36 @@
+packages_common:
+  - alacritty
+  - cmake
+  - curl
+  - firefox
+  - gcc
+  - git
+  - golang
+  - htop
+  - mpv
+  - neofetch
+  - neovim
+  - openssl
+  - stow
+  - tmux
+  - tree
+  - wget
+  - zsh
+
+packages_debian:
+  - build-essential
+  - libssl-dev
+
+packages_redhat:
+  - openssl-devel
+
+packages_redhat_groups:
+  - C Development Tools and Libraries
+  - Core
+  - Development Tools
+  - Fonts
+  - Hardware Support
+  - Headless Virtualization
+  - Multimedia
+  - VideoLAN Client
+  - Virtualization

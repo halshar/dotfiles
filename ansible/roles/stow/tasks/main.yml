@@ -1,0 +1,14 @@
+- name: Ensure parent directories exist before stowing
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop: "{{ stow_parent_dirs }}"
+
+- name: Create symlinks using stow
+  ansible.builtin.shell: stow -vt ~/ * 2>&1
+  args:
+    executable: /bin/bash
+    chdir: ../stow/
+  register: stow_result
+  changed_when: stow_result.stdout != ""

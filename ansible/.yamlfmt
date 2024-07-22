@@ -1,0 +1,8 @@
+formatter:
+  type: basic
+  include_document_start: false
+  indent: 2
+  pad_line_comments: 2
+  retain_line_breaks: true
+
+# vim: set filetype=yaml:

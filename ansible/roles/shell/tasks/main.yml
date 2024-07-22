@@ -1,0 +1,19 @@
+- name: Get default shell
+  ansible.builtin.shell: |
+    set -o pipefail
+    getent passwd {{ ansible_user_id }} | cut -d: -f7
+  args:
+    executable: /bin/bash
+  register: default_shell
+  changed_when: false
+
+- name: Get zsh absolute path
+  ansible.builtin.command: which zsh
+  register: zsh_path
+  changed_when: false
+
+- name: Set zsh as default shell
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: "{{ zsh_path.stdout.strip() }}"
+  when: default_shell.stdout.strip() != zsh_path.stdout.strip()

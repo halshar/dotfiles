@@ -1,0 +1,9 @@
+- name: Install useful go binaries
+  ansible.builtin.shell: |
+    source ~/.zprofile
+    go install {{ item }}
+  args:
+    executable: /bin/bash
+  loop: "{{ go_binaries }}"
+  register: go_install
+  changed_when: false

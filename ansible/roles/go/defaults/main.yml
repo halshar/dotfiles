@@ -1,0 +1,5 @@
+go_binaries:
+  - github.com/go-delve/delve/cmd/dlv@latest
+  - golang.org/x/tools/gopls@latest
+  - github.com/junegunn/fzf@master
+  - github.com/gokcehan/lf@master

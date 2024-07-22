@@ -1,0 +1,37 @@
+- name: Check if rust is installed
+  ansible.builtin.shell: |
+    source ~/.zprofile
+    rustc --version
+  args:
+    executable: /bin/bash
+  register: rust_check
+  ignore_errors: true
+  changed_when: false
+
+- name: Download rust downloader
+  ansible.builtin.get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/rustup-init.sh
+    mode: '0755'
+  when: rust_check.rc != 0
+
+- name: Install rust
+  ansible.builtin.shell: |
+    set -o pipefail
+    source ~/.zprofile
+    /tmp/rustup-init.sh --no-modify-path -y
+  args:
+    executable: /bin/bash
+  register: result
+  changed_when: "'Rust is installed' not in result.stdout"
+  when: rust_check.rc != 0
+
+- name: Install useful rust binaries
+  ansible.builtin.shell: |
+    source ~/.zprofile
+    cargo install {{ item }}
+  args:
+    executable: /bin/bash
+  loop: "{{ rust_binaries }}"
+  register: cargo_install
+  changed_when: false

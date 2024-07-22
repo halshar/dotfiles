@@ -1,0 +1,31 @@
+- name: Update dnf configuration
+  ansible.builtin.blockinfile:
+    path: /etc/dnf/dnf.conf
+    block: |
+      fastestmirror=True
+      max_parallel_downloads=10
+    insertafter: EOF
+  when: ansible_os_family == "RedHat"
+
+- name: Update dnf cache
+  ansible.builtin.dnf:
+    update_cache: true
+  when: ansible_os_family == "RedHat"
+  register: dnf_update
+
+- name: Update dnf packages
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest  # noqa package-latest
+  when: ansible_os_family == "RedHat" and dnf_update.changed
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: ansible_os_family == "Debian"
+  register: apt_update
+
+- name: Update apt packages
+  ansible.builtin.apt:
+    upgrade: dist
+  when: ansible_os_family == "Debian" and apt_update.changed

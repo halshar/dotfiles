@@ -1,0 +1,49 @@
+- name: Ensure curl is installed
+  ansible.builtin.package:
+    name: curl
+    state: present
+
+- name: Download Brave GPG key - Debian
+  ansible.builtin.get_url:
+    # yamllint disable-line rule:line-length
+    url: https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+    dest: /usr/share/keyrings/brave-browser-archive-keyring.gpg
+    mode: "0644"
+  when: ansible_os_family == "Debian"
+
+- name: Add Brave repository to sources list - Debian
+  ansible.builtin.copy:
+    dest: /etc/apt/sources.list.d/brave-browser-release.list
+    # yamllint disable-line rule:line-length
+    content: deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main
+    mode: "0644"
+  when: ansible_os_family == "Debian"
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: ansible_os_family == "Debian"
+
+- name: Ensure dnf-plugins-core is installed - RedHat
+  ansible.builtin.dnf:
+    name: dnf-plugins-core
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Add Brave browser to dnf repository - RedHat
+  ansible.builtin.command:
+    # yamllint disable-line rule:line-length
+    cmd: dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+    creates: /etc/yum.repos.d/brave-browser.repo
+  when: ansible_os_family == "RedHat"
+
+- name: Import Brave GPG key - RedHat
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+  when: ansible_os_family == "RedHat"
+
+- name: Install Brave browser
+  ansible.builtin.package:
+    name: brave-browser
+    state: present

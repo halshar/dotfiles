@@ -1,0 +1,3 @@
+stow_parent_dirs:
+  - "{{ ansible_env.HOME }}/.config"
+  - "{{ ansible_env.HOME }}/.local/share"
