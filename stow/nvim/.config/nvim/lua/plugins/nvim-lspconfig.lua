@@ -7,60 +7,28 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
-		local servers = {
-			bashls = {},
-			html = {},
-			cssls = {},
-			tailwindcss = {},
-			tsserver = {},
+		local lsp_servers = {
 			ansiblels = {},
-			yamlls = {},
-			gitlab_ci_ls = {},
-			jsonls = {},
-			dockerls = {},
+			bashls = {},
+			cssls = {},
 			docker_compose_language_service = {},
-			taplo = {},
+			dockerls = {},
+			gitlab_ci_ls = {},
+			gopls = { settings = { gopls = { analyses = { unusedparams = true } } } },
+			html = {},
+			jsonls = {},
+			lua_ls = {},
 			pyright = {},
-			ruby_lsp = {},
-			powershell_es = {
-				bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
-				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
-				cmd = { "pwsh" },
-			},
-			lua_ls = {
-				settings = {
-					Lua = {
-						workspace = { checkThirdParty = false },
-						telemetry = { enable = false },
-						diagnostics = {
-							globals = { "vim" },
-						},
-					},
-				},
-			},
-			gopls = {
-				settings = {
-					gopls = {
-						analyses = {
-							unusedparams = true,
-						},
-					},
-				},
-			},
-			rust_analyzer = {
-				cmd = {
-					"rustup",
-					"run",
-					"stable",
-					"rust-analyzer",
-				},
-			},
+			rust_analyzer = { cmd = { "rustup", "run", "stable", "rust-analyzer" } },
+			tailwindcss = {},
+			taplo = {},
+			terraformls = {},
+			tsserver = {},
+			yamlls = {},
 		}
 
 		local non_lsp = {
-			"actionlint",
 			"ansible-lint",
-			"black",
 			"checkmake",
 			"debugpy",
 			"delve",
@@ -70,20 +38,17 @@ return {
 			"golangci-lint",
 			"golines",
 			"hadolint",
-			"isort",
 			"jq",
-			"mypy",
 			"prettier",
-			"rubyfmt",
 			"ruff",
 			"rustywind",
-			"shfmt",
 			"shellcheck",
+			"shfmt",
 			"stylelint",
 			"stylua",
+			"xmlformatter",
 			"yamlfmt",
 			"yamllint",
-			"xmlformatter",
 		}
 
 		-- this function gets run when an LSP connects to a particular buffer.
@@ -96,7 +61,7 @@ return {
 				vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
 			end
 
-			nmap("n", "gr", vim.lsp.buf.rename, "Rename")
+			nmap("n", "gR", vim.lsp.buf.rename, "Rename")
 			nmap("n", "ga", vim.lsp.buf.code_action, "Code Action")
 			nmap("n", "K", vim.lsp.buf.hover, "Hover Documentation")
 			nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
@@ -125,9 +90,9 @@ return {
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool = require("mason-tool-installer")
 
-		-- ensure the servers are installed
+		-- ensure the lsp servers are installed
 		mason_lspconfig.setup({
-			ensure_installed = vim.tbl_keys(servers),
+			ensure_installed = vim.tbl_keys(lsp_servers),
 		})
 
 		-- ensure the linters and formatters are installed
@@ -143,8 +108,8 @@ return {
 				require("lspconfig")[server_name].setup({
 					capabilities = capabilities,
 					on_attach = on_attach,
-					settings = servers[server_name],
-					filetypes = (servers[server_name] or {}).filetypes,
+					settings = lsp_servers[server_name],
+					filetypes = (lsp_servers[server_name] or {}).filetypes,
 				})
 			end,
 		})
