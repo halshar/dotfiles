@@ -49,6 +49,10 @@ map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
 -- lazy
 map("n", "<leader>lc", "<cmd>Lazy check<CR>", opts)
 
+-- diff
+map("n", "<leader>wd", "<cmd>windo diffthis<CR>", opts)
+map("n", "<leader>wo", "<cmd>windo diffoff<CR>", opts)
+
 -- diffview
 map("n", "<leader>do", "<cmd>DiffviewOpen<CR>", opts)
 map("n", "<leader>dc", "<cmd>DiffviewClose<CR>", opts)
@@ -56,15 +60,12 @@ map("n", "<leader>dt", "<cmd>DiffviewToggleFiles<CR>", opts)
 map("n", "<leader>dh", "<cmd>DiffviewFileHistory<CR>", opts)
 
 -- trouble
-map("n", "<leader>tt", "<cmd>TroubleToggle<CR>", opts)
-map("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<CR>", opts)
-map("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<CR>", opts)
-map("n", "<leader>tl", "<cmd>TroubleToggle loclist<CR>", opts)
-map("n", "<leader>tq", "<cmd>TroubleToggle quickfix<CR>", opts)
-map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>", opts)
-map("n", "gI", "<cmd>TroubleToggle lsp_implementations<CR>", opts)
-map("n", "gd", "<cmd>TroubleToggle lsp_definitions<CR>", opts)
-map("n", "gD", "<cmd>TroubleToggle lsp_type_definitions<CR>", opts)
+map("n", "<leader>tt", "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>", opts)
+map("n", "<leader>tw", "<cmd>Trouble diagnostics toggle focus=true<CR>", opts)
+map("n", "gr", "<cmd>Trouble lsp_references focus=true win.position=bottom<CR>", opts)
+map("n", "gd", "<cmd>Trouble lsp_definitions focus=true win.position=bottom<CR>", opts)
+map("n", "<leader>tl", "<cmd>Trouble loclist toggle focus=true<CR>", opts)
+map("n", "<leader>tq", "<cmd>Trouble qflist toggle focus=true<CR>", opts)
 
 -- oil
 map("n", "<leader>fo", "<CMD>Oil --float<CR>", opts)
