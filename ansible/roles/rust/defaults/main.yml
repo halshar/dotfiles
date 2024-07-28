@@ -1,8 +1,8 @@
 rust_binaries:
-  - tsm
+  - abhyas
   - fd-find
+  - fnm
   - git-delta
   - ripgrep
-  - abhyas
-  - fnm
   - starship
+  - tsm

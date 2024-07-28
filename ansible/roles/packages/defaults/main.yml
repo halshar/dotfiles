@@ -8,29 +8,34 @@ packages_common:
   - golang
   - htop
   - mpv
+  - mupdf
   - neofetch
   - neovim
   - openssl
+  - pipx
+  - python3-pip
+  - qbittorrent
   - stow
+  - thunderbird
   - tmux
   - tree
+  - unzip
   - wget
   - zsh
 
 packages_debian:
   - build-essential
   - libssl-dev
+  - lsb-release
 
 packages_redhat:
+  - awscli2
+  - dnf-plugins-core
   - openssl-devel
+  - redhat-lsb-core
 
 packages_redhat_groups:
   - C Development Tools and Libraries
-  - Core
   - Development Tools
   - Fonts
-  - Hardware Support
-  - Headless Virtualization
-  - Multimedia
   - VideoLAN Client
-  - Virtualization
