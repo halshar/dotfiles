@@ -17,3 +17,10 @@
     name: "{{ ansible_user_id }}"
     shell: "{{ zsh_path.stdout.strip() }}"
   when: default_shell.stdout.strip() != zsh_path.stdout.strip()
+
+- name: Create zsh cache directory
+  become: false
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.cache/zsh"
+    state: directory
+    mode: "0755"
