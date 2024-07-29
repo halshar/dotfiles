@@ -18,7 +18,7 @@
         name: update
       tags: update
 
-    - name: Install additional packages
+    - name: Manage additional packages
       ansible.builtin.import_role:
         name: packages
       tags: packages
@@ -53,3 +53,18 @@
       ansible.builtin.import_role:
         name: go
       tags: go
+
+    - name: Install Node
+      ansible.builtin.import_role:
+        name: node
+      tags: node
+
+- name: Instructions
+  hosts: all
+  gather_facts: false
+  become: false
+  tags: always
+  tasks:
+    - name: End message
+      ansible.builtin.debug:
+        msg: "Please either restart or logout to load the changes"

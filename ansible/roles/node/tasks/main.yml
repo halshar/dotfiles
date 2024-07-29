@@ -1,0 +1,8 @@
+- name: Install node lts
+  ansible.builtin.shell: |
+    source ~/.zprofile
+    fnm install --lts
+  args:
+    executable: /bin/bash
+  register: node_install
+  changed_when: node_install.stderr == ""

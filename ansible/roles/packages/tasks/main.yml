@@ -21,3 +21,10 @@
     state: present
   loop: "{{ packages_redhat_groups }}"
   when: ansible_os_family == "RedHat"
+
+- name: Remove nodejs and npm packages
+  ansible.builtin.package:
+    name:
+      - nodejs
+      - npm
+    state: absent
