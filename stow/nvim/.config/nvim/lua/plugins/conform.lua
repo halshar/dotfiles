@@ -11,7 +11,7 @@ return {
 				return { timeout_ms = 1000, lsp_format = "fallback" }
 			end,
 			formatters_by_ft = {
-				go = { "gofumpt", "goimports" },
+				go = { "goimports", "gofumpt" },
 				javascript = { "prettier", "rustywind" },
 				typescript = { "prettier", "rustywind" },
 				javascriptreact = { "prettier", "rustywind" },
@@ -23,8 +23,8 @@ return {
 				python = { "ruff_format" },
 				lua = { "stylua" },
 				rust = { "rustfmt" },
-				bash = { "shfmt" },
-				sh = { "shfmt" },
+				bash = { "shellcheck", "shfmt" },
+				sh = { "shellcheck", "shfmt" },
 				toml = { "taplo" },
 				terraform = { "terraform_fmt" },
 				yaml = { "yamlfmt" },
