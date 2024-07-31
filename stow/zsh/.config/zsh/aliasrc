@@ -105,3 +105,30 @@ gci() {
       --bind "enter:execute:$_viewGitLog | less -R" \
       --bind "ctrl-y:execute:$_gitHash | xsel --clipboard"
 }
+
+# Function to update git fetch refspec for given remote
+gufc() {
+  # use the first argument otherwise default to origin
+  local remote=${1:-origin}
+
+  # update the fetch configuration for the given remote
+  git config --local "remote.${remote}.fetch" "+refs/heads/*:refs/remotes/${remote}/*"
+}
+
+# Function to select the kubernetes configuration file
+kconf() {
+  local selected_file
+  selected_file="$(find ~/.kube -maxdepth 1 -type f | fzf +m)"
+
+  # Check if a file was selected, if yes then export it
+  if [[ -n "$selected_file" ]]; then
+    export KUBECONFIG="$selected_file"
+  fi
+
+  # Check if KUBECONFIG is set and non-empty
+  if [[ -n "$KUBECONFIG" ]]; then
+    echo "KUBECONFIG: $KUBECONFIG"
+  else
+    echo "KUBECONFIG: <empty>"
+  fi
+}
