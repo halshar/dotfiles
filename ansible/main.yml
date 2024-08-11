@@ -28,6 +28,11 @@
         name: brave
       tags: brave
 
+    - name: Install Docker
+      ansible.builtin.import_role:
+        name: docker
+      tags: docker
+
     - name: Change default shell
       ansible.builtin.import_role:
         name: shell
