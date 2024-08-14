@@ -1,4 +1,10 @@
 local set = vim.opt
+local gset = vim.g
+
+gset.loaded_python3_provider = 0
+gset.loaded_ruby_provider = 0
+gset.loaded_perl_provider = 0
+gset.loaded_node_provider = 0
 
 set.termguicolors = true
 set.hidden = true
