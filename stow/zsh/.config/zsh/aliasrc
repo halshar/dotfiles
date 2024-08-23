@@ -1,19 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-alias ls='ls --color=auto --group-directories-first'
-alias la='ls -lAh --group-directories-first'
-alias ll='ls -lh --group-directories-first'
-alias lh='ls -ld --group-directories-first .?*'
-alias rm='rm -i'
-alias vim='nvim'
-alias img='sxiv -f'
-alias grep='grep --color=auto'
-alias yt='yt-dlp --config-location=~/.config/youtube-dl/config'
-alias ds='du -sh ./* | sort -h; du -sh'
-alias myip='curl https://ipinfo.io/ip;echo'
-alias ez='nvim ~/.config/zsh/.zshrc'
-alias ep='nvim ~/.zprofile'
-alias et='nvim ~/.config/tmux/tmux.conf'
+alias ls="ls --color=auto --group-directories-first"
+alias ll="ls -lh"
+alias la="ls -lah"
+alias lh="ls -ld .*"
+alias rm="rm -i"
+alias grep="grep --color=auto"
+alias ds="du -sh ./* | sort -h; du -sh"
+alias myip="curl https://ipinfo.io/ip;echo"
+alias vim="nvim"
 
 # Function to create directory and cd into it
 cnc() {

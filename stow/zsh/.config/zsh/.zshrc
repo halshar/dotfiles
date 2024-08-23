@@ -1,10 +1,6 @@
-# no duplicate commands in history file
+# additional shell options
 setopt HIST_IGNORE_ALL_DUPS
-
-# don't track commands that start with space
 setopt HIST_IGNORE_SPACE
-
-# save every command in history file before execution
 setopt INC_APPEND_HISTORY
 
 # autocomplete with case insenstivity
@@ -16,8 +12,9 @@ zstyle ":completion:*" menu select
 bindkey -v
 export KEYTIMEOUT=1
 
-# load the aliases file
+# load the aliases files
 source "$HOME/.config/zsh/aliasrc"
+source "$HOME/.config/private/privaterc"
 
 # node version manager
 eval "$(fnm env --use-on-cd)"
