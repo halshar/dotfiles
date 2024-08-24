@@ -1,12 +1,16 @@
 packages_common:
   - alacritty
+  - bat
+  - ca-certificates
   - cmake
   - curl
   - firefox
   - gcc
   - git
   - golang
+  - helm
   - htop
+  - luajit
   - mpv
   - mupdf
   - neofetch
@@ -15,10 +19,12 @@ packages_common:
   - pipx
   - python3-pip
   - qbittorrent
+  - sqlite3
   - stow
   - thunderbird
   - tmux
   - tree
+  - unrar
   - unzip
   - wget
   - zsh
