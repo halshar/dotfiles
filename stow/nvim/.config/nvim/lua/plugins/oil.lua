@@ -12,4 +12,14 @@ return {
 			},
 		},
 	},
+	keys = {
+		{
+			"<leader>fo",
+			function()
+				vim.cmd((vim.bo.filetype == "oil") and "bd" or "Oil")
+			end,
+			desc = "Toggle Oil or close Oil buffer",
+			mode = "n",
+		},
+	},
 }
