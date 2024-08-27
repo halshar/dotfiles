@@ -24,3 +24,11 @@
     path: "{{ ansible_env.HOME }}/.cache/zsh"
     state: directory
     mode: "0755"
+
+- name: Create privaterc file
+  become: false
+  ansible.builtin.shell: |
+    mkdir -p ~/.config/private
+    touch ~/.config/private/privaterc
+  args:
+    creates: ~/.config/private/privaterc
