@@ -1,7 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		{ "williamboman/mason.nvim", config = true },
+		{ "williamboman/mason.nvim", opts = {} },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		{ "folke/neodev.nvim", opts = {} },
@@ -15,6 +15,7 @@ return {
 			dockerls = {},
 			gitlab_ci_ls = {},
 			gopls = { settings = { gopls = { analyses = { unusedparams = true } } } },
+			helm_ls = { settings = { ["helm-ls"] = { yamlls = { path = "yaml-language-server" } } } },
 			html = {},
 			jsonls = {},
 			lua_ls = {},
