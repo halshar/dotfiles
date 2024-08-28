@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	event = { "BufWritePre" },
 	config = function()
 		local conform = require("conform")
 		conform.setup({
@@ -31,12 +32,19 @@ return {
 				xml = { "xmlformat" },
 			},
 		})
-		vim.keymap.set({ "n", "v" }, "<leader>mf", function()
-			conform.format({
-				async = false,
-				lsp_format = "fallback",
-				timeout_ms = 1000,
-			})
-		end, { desc = "Format file or range (in visual mode)" })
 	end,
+	keys = {
+		{
+			"<leader>mf",
+			function()
+				require("conform").format({
+					async = false,
+					lsp_format = "fallback",
+					timeout_ms = 1000,
+				})
+			end,
+			mode = { "n", "v" },
+			desc = "Format buffer",
+		},
+	},
 }

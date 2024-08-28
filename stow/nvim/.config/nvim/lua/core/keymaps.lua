@@ -29,39 +29,9 @@ map({ "n", "v" }, "<leader>sd", '"+d')
 map("n", "<leader>sp", '"+p')
 map("n", "<leader>sP", '"+P')
 
--- telescope
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
-map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", opts)
-map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", opts)
-map("n", "<leader>ft", "<cmd>Telescope treesitter<CR>", opts)
-map("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", opts)
-map("n", "<leader>fd", "<cmd>Telescope diagnostics<CR>", opts)
-map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", opts)
-map("n", "<leader>fm", "<cmd>Telescope spell_suggest<CR>", opts)
-map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", opts)
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", opts)
-
 -- vimdiff
 map("n", "<leader>wd", "<cmd>windo diffthis<CR>", opts)
 map("n", "<leader>wo", "<cmd>windo diffoff<CR>", opts)
-
--- diffview
-map("n", "<leader>go", "<cmd>DiffviewOpen<CR>", opts)
-map("n", "<leader>gc", "<cmd>DiffviewClose<CR>", opts)
-map("n", "<leader>gt", "<cmd>DiffviewToggleFiles<CR>", opts)
-map("n", "<leader>gh", "<cmd>DiffviewFileHistory<CR>", opts)
-
--- trouble
-map("n", "<leader>tt", "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>", opts)
-map("n", "<leader>tw", "<cmd>Trouble diagnostics toggle focus=true<CR>", opts)
-map("n", "<leader>tl", "<cmd>Trouble loclist toggle focus=true<CR>", opts)
-map("n", "<leader>tq", "<cmd>Trouble qflist toggle focus=true<CR>", opts)
-map("n", "gr", "<cmd>Trouble lsp_references focus=true win.position=bottom<CR>", opts)
-map("n", "gd", "<cmd>Trouble lsp_definitions focus=true win.position=bottom<CR>", opts)
-
--- undotree
-map("n", "<leader>bu", "<CMD>UndotreeToggle<CR>", opts)
 
 -- lazy
 map("n", "<leader>bl", "<cmd>Lazy check<CR>", opts)
