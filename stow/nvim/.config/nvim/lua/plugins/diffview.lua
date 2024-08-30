@@ -1,6 +1,5 @@
 return {
 	"sindrets/diffview.nvim",
-	dependencies = { "tpope/vim-fugitive" },
 	keys = {
 		{
 			"<leader>gh",
