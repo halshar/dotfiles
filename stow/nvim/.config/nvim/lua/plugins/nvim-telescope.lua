@@ -10,6 +10,14 @@ return {
 			defaults = {
 				layout_strategy = "vertical",
 				layout_config = { height = 0.95, width = 0.95 },
+				mappings = {
+					n = {
+						["<C-s>"] = "select_vertical",
+					},
+					i = {
+						["<C-s>"] = "select_vertical",
+					},
+				},
 			},
 			pickers = {
 				find_files = {

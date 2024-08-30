@@ -11,15 +11,25 @@ return {
 				winblend = 0,
 			},
 		},
+		keymaps = {
+			["<C-h>"] = false,
+			["<C-l>"] = false,
+			["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+		},
 	},
 	keys = {
 		{
 			"<leader>fo",
 			function()
-				vim.cmd((vim.bo.filetype == "oil") and "bd" or "Oil")
+				local oil = require("oil")
+				if vim.bo.filetype == "oil" then
+					oil.close()
+				else
+					oil.toggle_float()
+				end
 			end,
-			desc = "Toggle Oil or close Oil buffer",
 			mode = "n",
+			desc = "Toggle Oil buffer",
 		},
 	},
 }
