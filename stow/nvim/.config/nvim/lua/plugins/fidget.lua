@@ -4,5 +4,10 @@ return {
 		progress = {
 			ignore = { "null-ls" },
 		},
+		integration = {
+			["nvim-tree"] = {
+				enable = false,
+			},
+		},
 	},
 }
