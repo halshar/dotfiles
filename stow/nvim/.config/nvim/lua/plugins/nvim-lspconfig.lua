@@ -4,7 +4,6 @@ return {
 		{ "williamboman/mason.nvim", opts = {} },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = function()
 		local lsp_servers = {
