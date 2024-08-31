@@ -9,16 +9,13 @@ return {
 			local dap = require("dap")
 			local dapui = require("dapui")
 			dapui.setup()
-			dap.listeners.before.attach.dapui_config = function()
+			dap.listeners.before["event_initialized"]["dapui_config"] = function()
 				dapui.open()
 			end
-			dap.listeners.before.launch.dapui_config = function()
-				dapui.open()
-			end
-			dap.listeners.before.event_terminated.dapui_config = function()
+			dap.listeners.before["event_terminated"]["dapui_config"] = function()
 				dapui.close()
 			end
-			dap.listeners.before.event_exited.dapui_config = function()
+			dap.listeners.before["event_exited"]["dapui_config"] = function()
 				dapui.close()
 			end
 		end,
@@ -28,10 +25,33 @@ return {
 				function()
 					require("dapui").toggle()
 				end,
-				desc = "toggle debugger ui",
+				mode = "n",
+				desc = "Debug: Toggle debugger UI",
 			},
-			{ "<leader>db", "<CMD>DapToggleBreakpoint<CR>", desc = "add breakpoint" },
-			{ "<leader>ds", "<CMD>DapContinue<CR>", desc = "start/continue debug" },
+			{
+				"<leader>db",
+				function()
+					require("dap").toggle_breakpoint()
+				end,
+				mode = "n",
+				desc = "Debug: Add/Remove breakpoint",
+			},
+			{
+				"<leader>ds",
+				function()
+					require("dap").continue()
+				end,
+				mode = "n",
+				desc = "Debug: Start/Continue debug",
+			},
+			{
+				"<leader>dc",
+				function()
+					require("dap").clear_breakpoints()
+				end,
+				mode = "n",
+				desc = "Debug: Clear all breakpoints",
+			},
 		},
 	},
 	{
