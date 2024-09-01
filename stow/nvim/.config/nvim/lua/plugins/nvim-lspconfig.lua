@@ -1,10 +1,11 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		{ "williamboman/mason.nvim", opts = {} },
+		{ "williamboman/mason.nvim", cmd = { "Mason" }, config = true },
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local lsp_servers = {
 			ansiblels = {},
@@ -51,7 +52,7 @@ return {
 		}
 
 		-- this function gets run when an LSP connects to a particular buffer.
-		local on_attach = function(_, bufnr)
+		local on_attach = function(client, bufnr)
 			local nmap = function(mode, keys, func, desc)
 				if desc then
 					desc = "LSP: " .. desc
@@ -64,6 +65,13 @@ return {
 			nmap("n", "ga", vim.lsp.buf.code_action, "Code Action")
 			nmap("n", "K", vim.lsp.buf.hover, "Hover Documentation")
 			nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+
+			-- set up inlay hints if supported by the LSP server
+			if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+				nmap("n", "<leader>ti", function()
+					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
+				end, "Toggle inlay hints")
+			end
 		end
 
 		-- add borders to diagnostics
