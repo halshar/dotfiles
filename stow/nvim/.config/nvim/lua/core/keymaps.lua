@@ -1,37 +1,51 @@
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- general
-map("n", "<C-h>", "<C-w>h", opts)
-map("n", "<C-j>", "<C-w>j", opts)
-map("n", "<C-k>", "<C-w>k", opts)
-map("n", "<C-l>", "<C-w>l", opts)
-map("n", "<leader>o", "<C-w>o", opts)
-map("n", "<leader>hh", "<cmd>nohlsearch<CR>", opts)
-map("n", "<leader>u", "<cmd>bunload<CR>", opts)
-map("n", "<leader>wt", "<cmd>set wrap!<CR>", opts)
-map("n", "<leader>nt", "<cmd>set rnu!<CR>", opts)
-map("n", "<leader>to", "<cmd>terminal<CR>", opts)
-map("n", "<leader>th", "<cmd>split | terminal<CR>", opts)
-map("n", "<leader>tv", "<cmd>vsplit | terminal<CR>", opts)
-map("n", "<leader>tn", "<cmd>tabnew | terminal<CR>", opts)
-map("n", "<leader>sl", "<C-^>", opts)
-map("v", "J", ":m '>+1<CR>gv=gv", opts)
-map("v", "K", ":m '<-2<CR>gv=gv", opts)
-map({ "n", "v" }, "<Space>", "<Nop>", opts)
+-- function to map keys with descriptions
+local function map(mode, key, cmd, desc)
+	local opts = { noremap = true, silent = true }
+	if desc then
+		opts.desc = desc
+	end
+	vim.keymap.set(mode, key, cmd, opts)
+end
 
--- clipboard
-map({ "n", "v" }, "<leader>sy", '"+y')
-map({ "n", "v" }, "<leader>sd", '"+d')
-map("n", "<leader>sp", '"+p')
-map("n", "<leader>sP", '"+P')
+-- window management
+map("n", "<C-h>", "<C-w>h", "Move to window left")
+map("n", "<C-j>", "<C-w>j", "Move to window down")
+map("n", "<C-k>", "<C-w>k", "Move to window up")
+map("n", "<C-l>", "<C-w>l", "Move to window right")
+map("n", "<leader>vh", ":wincmd H<CR>", "Move window to horizontal split left")
+map("n", "<leader>vj", ":wincmd J<CR>", "Move window to horizontal split down")
+map("n", "<leader>vk", ":wincmd K<CR>", "Move window to vertical split up")
+map("n", "<leader>vl", ":wincmd L<CR>", "Move window to vertical split right")
+map("n", "<leader>o", "<C-w>o", "Close other windows")
 
--- vimdiff
-map("n", "<leader>wd", "<cmd>windo diffthis<CR>", opts)
-map("n", "<leader>wo", "<cmd>windo diffoff<CR>", opts)
+-- buffer and file management
+map("n", "<leader>hh", "<cmd>nohlsearch<CR>", "Clear search highlights")
+map("n", "<leader>u", "<cmd>bunload<CR>", "Unload current buffer")
+map("n", "<leader>sl", "<C-^>", "Switch to the alternate file")
+map("n", "<leader>wt", "<cmd>set wrap!<CR>", "Toggle line wrapping")
+map("n", "<leader>nt", "<cmd>set rnu!<CR>", "Toggle relative line numbers")
+map("v", "J", ":m '>+1<CR>gv=gv", "Move selected text down")
+map("v", "K", ":m '<-2<CR>gv=gv", "Move selected text up")
+map({ "n", "v" }, "<Space>", "<Nop>", "Disable space key")
 
--- lazy
-map("n", "<leader>bl", "<cmd>Lazy check<CR>", opts)
+-- clipboard management
+map({ "n", "v" }, "<leader>sy", '"+y', "Copy to system clipboard")
+map({ "n", "v" }, "<leader>sd", '"+d', "Cut to system clipboard")
+map("n", "<leader>sp", '"+p', "Paste after cursor from system clipboard")
+map("n", "<leader>sP", '"+P', "Paste before cursor from system clipboard")
+
+-- terminal management
+map("n", "<leader>to", "<cmd>terminal<CR>", "Open terminal in a new window")
+map("n", "<leader>th", "<cmd>split | terminal<CR>", "Open terminal in a horizontal split")
+map("n", "<leader>tv", "<cmd>vsplit | terminal<CR>", "Open terminal in a vertical split")
+map("n", "<leader>tn", "<cmd>tabnew | terminal<CR>", "Open terminal in a new tab")
+
+-- vimdiff management
+map("n", "<leader>wd", "<cmd>windo diffthis<CR>", "Enable diff mode in all windows")
+map("n", "<leader>wo", "<cmd>windo diffoff<CR>", "Disable diff mode in all windows")
+
+-- miscellaneous
+map("n", "<leader>bl", "<cmd>Lazy check<CR>", "Check Lazy updates")
