@@ -10,15 +10,32 @@ local function map(mode, key, cmd, desc)
 	vim.keymap.set(mode, key, cmd, opts)
 end
 
+-- function to toggle window zoom
+local isZoomed = false
+local function toggle_window_zoom()
+	if isZoomed then
+		vim.cmd("wincmd =") -- restore window sizes
+		isZoomed = false
+	else
+		vim.cmd("wincmd |") -- maximize horizontally
+		vim.cmd("wincmd _") -- maximize vertically
+		isZoomed = true
+	end
+end
+
 -- window management
 map("n", "<C-h>", "<C-w>h", "Move to window left")
 map("n", "<C-j>", "<C-w>j", "Move to window down")
 map("n", "<C-k>", "<C-w>k", "Move to window up")
 map("n", "<C-l>", "<C-w>l", "Move to window right")
-map("n", "<leader>vh", ":wincmd H<CR>", "Move window to horizontal split left")
-map("n", "<leader>vj", ":wincmd J<CR>", "Move window to horizontal split down")
-map("n", "<leader>vk", ":wincmd K<CR>", "Move window to vertical split up")
-map("n", "<leader>vl", ":wincmd L<CR>", "Move window to vertical split right")
+map("n", "<leader>mh", "<cmd>wincmd H<CR>", "Move window to horizontal split left")
+map("n", "<leader>mj", "<cmd>wincmd J<CR>", "Move window to horizontal split down")
+map("n", "<leader>mk", "<cmd>wincmd K<CR>", "Move window to vertical split up")
+map("n", "<leader>ml", "<cmd>wincmd L<CR>", "Move window to vertical split right")
+map("n", "<leader>wh", "<C-w>_", "Maximize horizontal window")
+map("n", "<leader>we", "<C-w>=", "Resize all windows equally")
+map("n", "<leader>wv", "<C-w>|", "Maximize vertical window")
+map("n", "<leader>ww", toggle_window_zoom, "Toggle window zoom")
 map("n", "<leader>o", "<C-w>o", "Close other windows")
 
 -- buffer and file management
