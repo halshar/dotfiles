@@ -16,6 +16,7 @@ return {
 					},
 					i = {
 						["<C-s>"] = "select_vertical",
+						["<C-u>"] = false,
 					},
 				},
 			},
@@ -23,16 +24,19 @@ return {
 				find_files = {
 					hidden = true,
 				},
+				live_grep = {
+					additional_args = function()
+						return { "--hidden", "--glob", "!**/.git/*" }
+					end,
+				},
+				grep_string = {
+					additional_args = function()
+						return { "--hidden", "--glob", "!**/.git/*" }
+					end,
+				},
 			},
 			extensions = {
-				undo = {
-					use_delta = true,
-					side_by_side = true,
-					layout_strategy = "vertical",
-					layout_config = {
-						preview_height = 0.8,
-					},
-				},
+				"fzf",
 			},
 		})
 		require("telescope").load_extension("fzf")
