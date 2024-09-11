@@ -64,6 +64,11 @@
         name: node
       tags: node
 
+    - name: Install python
+      ansible.builtin.import_role:
+        name: python
+      tags: python
+
 - name: Instructions
   hosts: all
   gather_facts: false
