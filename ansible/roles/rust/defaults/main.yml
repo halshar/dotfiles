@@ -1,8 +1,25 @@
 rust_binaries:
+  - --locked bat
+  - --locked difftastic
+  - --locked yazi-fm yazi-cli
   - abhyas
+  - bottom
+  - cargo-update
+  - csvlens
+  - dua-cli
   - fd-find
   - fnm
   - git-delta
+  - just
+  - kondo
+  - mise
+  - nu
+  - onefetch
   - ripgrep
+  - sd
+  - speedtest-rs
   - starship
+  - tealdeer
+  - tokei
+  - tree-sitter-cli
   - tsm
