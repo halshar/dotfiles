@@ -6,27 +6,38 @@
 [core]
   pager = delta
 
+[init]
+  defaultBranch = master
+
+[merge]
+  ff = only
+  conflictstyle = diff3
+
+[fetch]
+  prune = true
+
+[pull]
+  ff = only
+
+[push]
+  forceWithLease = true
+
+[credential]
+  helper = ""
+
+[diff]
+  colorMoved = default
+
 [interactive]
   diffFilter = delta --color-only
 
 [delta]
   navigate = true
   light = false
-  side-by-side = true
+  side-by-side = false
+  hyperlinks = true
   true-color = always
   tabs = 2
-
-[merge]
-  conflictstyle = diff3
-
-[diff]
-  colorMoved = default
-
-[init]
-  defaultBranch = master
-
-[fetch]
-  prune = true
 
 [gpg]
   format = ssh
