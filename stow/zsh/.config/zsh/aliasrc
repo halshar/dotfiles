@@ -9,6 +9,7 @@ alias grep="grep --color=auto"
 alias ds="du -sh ./* | sort -h; du -sh"
 alias myip="curl https://ipinfo.io/ip;echo"
 alias vim="nvim"
+alias gwl="git worktree list"
 
 # Function to create directory and cd into it
 cnc() {
@@ -75,6 +76,53 @@ gdec() {
 fcd() {
   local dir
   dir=$(fd --hidden --type directory "$1" 2>/dev/null | fzf +m --reverse) && cd "$dir" || return
+}
+
+# Function to view specified logs in oneline
+function glog() {
+  local count="${1:-11}"
+  git log --oneline -n "$count"
+}
+
+# Function to push to specified git remote
+function gpush() {
+  local remote="${1:-origin}"
+  git push "$remote" HEAD
+}
+
+# Function to pull from specified git remote
+function gpull() {
+  local remote="${1:-origin}"
+  git pull "$remote"
+}
+
+# Function to rebase to specified git reference
+function gbase() {
+  local ref="${1:-0}"
+  if [[ "$ref" =~ ^[0-9]+$ ]]; then
+    ref="HEAD~$ref"
+  fi
+
+  git rebase -i "$ref"
+}
+
+# Function to create new git worktree
+function gwa() {
+  local dir_name="$1"
+  local ref="${2:-origin/master}"
+
+  if [ -z "$dir_name" ]; then
+    echo "error: directory name is required"
+    return 1
+  fi
+
+  # If branch already exists then use it else create new one
+  if git rev-parse --verify "$dir_name" >/dev/null 2>&1; then
+    echo "Branch '$dir_name' already exists, checking out existing branch"
+    git worktree add "$dir_name" "$dir_name"
+  else
+    git worktree add -b "$dir_name" "$dir_name" "$ref"
+  fi
 }
 
 # Function to preview git commits
