@@ -1,0 +1,16 @@
+# General options
+--no-overwrites
+--concurrent-fragments 10
+--yes-playlist
+--ignore-errors
+--verbose
+
+# Uniform format
+--prefer-ffmpeg
+--merge-output-format mkv
+
+# Replace spaces with underscores in title and uploader metadata
+--replace-in-metadata "title,uploader" " " "_"
+
+# Output format
+--output "%(uploader)s/%(upload_date)s_%(title)s.%(ext)s"
