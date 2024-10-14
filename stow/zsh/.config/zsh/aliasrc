@@ -84,6 +84,12 @@ function glog() {
   git log --oneline -n "$count"
 }
 
+# Function to fetch changes from specified git remote
+function gfetch() {
+  local remote="${1:-origin}"
+  git fetch "$remote"
+}
+
 # Function to push to specified git remote
 function gpush() {
   local remote="${1:-origin}"
@@ -93,7 +99,8 @@ function gpush() {
 # Function to pull from specified git remote
 function gpull() {
   local remote="${1:-origin}"
-  git pull "$remote"
+  local branch="${2:-$(git rev-parse --abbrev-ref HEAD)}"
+  git pull "$remote" "$branch"
 }
 
 # Function to rebase to specified git reference
