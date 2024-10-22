@@ -24,7 +24,7 @@ return {
 			tailwindcss = {},
 			taplo = {},
 			terraformls = {},
-			tsserver = {},
+			ts_ls = {},
 			yamlls = {},
 		}
 
@@ -65,6 +65,7 @@ return {
 			nmap("n", "ga", vim.lsp.buf.code_action, "Code Action")
 			nmap("n", "K", vim.lsp.buf.hover, "Hover Documentation")
 			nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+			nmap("n", "<leader>df", vim.diagnostic.open_float, "Open Diagnostic Float")
 
 			-- set up inlay hints if supported by the LSP server
 			if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
