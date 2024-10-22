@@ -16,8 +16,8 @@ export KEYTIMEOUT=1
 source "$HOME/.config/zsh/aliasrc"
 source "$HOME/.config/private/privaterc"
 
-# node version manager
-eval "$(fnm env --use-on-cd)"
+# setup mise
+eval "$(mise activate zsh)"
 
 # starship prompt
 eval "$(starship init zsh)"

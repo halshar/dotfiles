@@ -1,0 +1,17 @@
+[tools]
+deno = "latest"
+go = "latest"
+node = "lts"
+python = "latest"
+
+[settings]
+paranoid = true
+legacy_version_file = true
+not_found_auto_install = true
+verbose = false
+experimental = false
+go_set_gobin = false
+always_keep_download = false
+always_keep_install = false
+plugin_autoupdate_last_check_duration = "0"
+trusted_config_paths = ["~/projects/dev/"]
