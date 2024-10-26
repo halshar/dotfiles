@@ -1,7 +1,10 @@
 return {
 	"stevearc/oil.nvim",
+	lazy = false,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = {
+		default_file_explorer = true,
+		columns = {},
 		view_options = {
 			show_hidden = true,
 		},
@@ -14,7 +17,11 @@ return {
 		keymaps = {
 			["<C-h>"] = false,
 			["<C-l>"] = false,
-			["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+			["<C-x>"] = {
+				"actions.select",
+				opts = { horizontal = true },
+				desc = "Open the entry in a horizontal split",
+			},
 		},
 	},
 	keys = {
