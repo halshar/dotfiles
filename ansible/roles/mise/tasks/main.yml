@@ -1,0 +1,9 @@
+- name: Install Dev tools
+  ansible.builtin.shell: |
+    source ~/.zprofile
+    mise trust
+    mise install 2>&1
+  args:
+    executable: /bin/bash
+  register: mise_install
+  changed_when: mise_install.stdout != "mise all runtimes are installed"

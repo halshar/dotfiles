@@ -54,6 +54,11 @@
         name: rust
       tags: rust
 
+    - name: Setup Mise
+      ansible.builtin.import_role:
+        name: mise
+      tags: mise
+
     - name: Install Go
       ansible.builtin.import_role:
         name: go

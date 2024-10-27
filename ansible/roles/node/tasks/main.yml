@@ -1,8 +1,8 @@
-- name: Install node lts
+- name: Install node
   ansible.builtin.shell: |
     source ~/.zprofile
-    fnm install --lts
+    mise install node@lts 2>&1
   args:
     executable: /bin/bash
   register: node_install
-  changed_when: node_install.stderr == ""
+  changed_when: "'installed' in node_install.stdout"

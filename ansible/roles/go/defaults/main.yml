@@ -5,6 +5,7 @@ go_binaries:
   - github.com/go-delve/delve/cmd/dlv@latest
   - github.com/gokcehan/lf@master
   - github.com/junegunn/fzf@master
+  - github.com/mikefarah/yq/v4@latest
   - gitlab.com/gitlab-org/cli/cmd/glab@main
   - golang.org/x/tools/gopls@latest
   - sigs.k8s.io/kind@latest

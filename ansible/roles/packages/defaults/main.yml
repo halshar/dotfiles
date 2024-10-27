@@ -1,6 +1,5 @@
 packages_common:
   - alacritty
-  - bat
   - ca-certificates
   - cmake
   - curl
@@ -32,11 +31,13 @@ packages_common:
 packages_debian:
   - build-essential
   - libssl-dev
+  - libyaml-dev
   - lsb-release
 
 packages_redhat:
   - awscli2
   - dnf-plugins-core
+  - libyaml-devel
   - openssl-devel
   - redhat-lsb-core
 

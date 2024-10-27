@@ -9,6 +9,6 @@
   ansible.builtin.shell: stow -vt ~/ * 2>&1
   args:
     executable: /bin/bash
-    chdir: ../stow/
+    chdir: ../../stow/
   register: stow_result
   changed_when: stow_result.stdout != ""
