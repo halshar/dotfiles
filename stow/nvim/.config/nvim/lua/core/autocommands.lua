@@ -32,3 +32,13 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	pattern = "*",
 	command = "setlocal nonumber norelativenumber",
 })
+
+-- update filetype for gitlab-ci file to start gitlab language server
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	desc = "Set filetype to yaml.gitlab for gitlab-ci files",
+	group = vim.api.nvim_create_augroup("gitlab-ci-filetype", { clear = true }),
+	pattern = "*.gitlab-ci*.{yml,yaml}",
+	callback = function()
+		vim.bo.filetype = "yaml.gitlab"
+	end,
+})
