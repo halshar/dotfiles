@@ -6,33 +6,40 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 	config = function()
+		-- Function for additional args to exclude .git directory
+		local function additional_args()
+			return { "--hidden", "--glob", "!**/.git/*" }
+		end
+
+		local action_layout = require("telescope.actions.layout")
+
 		require("telescope").setup({
-			defaults = {
-				layout_strategy = "vertical",
-				layout_config = { height = 0.95, width = 0.95 },
+			defaults = require("telescope.themes").get_ivy({
+				preview = {
+					hide_on_startup = true,
+				},
 				mappings = {
 					n = {
 						["<C-s>"] = "select_vertical",
+						["<C-o>"] = action_layout.toggle_preview,
 					},
 					i = {
-						["<C-s>"] = "select_vertical",
 						["<C-u>"] = false,
+						["<C-s>"] = "select_vertical",
+						["<C-o>"] = action_layout.toggle_preview,
 					},
 				},
-			},
+			}),
 			pickers = {
 				find_files = {
 					hidden = true,
+					find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
 				},
 				live_grep = {
-					additional_args = function()
-						return { "--hidden", "--glob", "!**/.git/*" }
-					end,
+					additional_args = additional_args,
 				},
 				grep_string = {
-					additional_args = function()
-						return { "--hidden", "--glob", "!**/.git/*" }
-					end,
+					additional_args = additional_args,
 				},
 			},
 			extensions = {
