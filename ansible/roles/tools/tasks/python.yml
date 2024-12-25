@@ -1,0 +1,5 @@
+- name: Install useful python packages
+  ansible.builtin.command: "pipx install {{ item }}"
+  loop: "{{ python_pip_packages }}"
+  failed_when: false
+  changed_when: false

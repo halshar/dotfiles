@@ -1,0 +1,11 @@
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+  when: ansible_os_family == "Debian"
+  register: dnf_update
+
+- name: Update dnf cache
+  ansible.builtin.dnf:
+    update_cache: true
+  when: ansible_os_family == "RedHat"
+  register: apt_update

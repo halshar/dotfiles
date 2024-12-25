@@ -1,0 +1,24 @@
+- name: Setup stow
+  ansible.builtin.import_tasks:
+    file: stow.yml
+  tags: stow
+
+- name: Setup rust
+  ansible.builtin.import_tasks:
+    file: rust.yml
+  tags: rust
+
+- name: Setup mise
+  ansible.builtin.import_tasks:
+    file: mise.yml
+  tags: mise
+
+- name: Setup go
+  ansible.builtin.import_tasks:
+    file: go.yml
+  tags: go
+
+- name: Setup python
+  ansible.builtin.import_tasks:
+    file: python.yml
+  tags: python

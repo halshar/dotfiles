@@ -1,4 +1,5 @@
 rust_binaries:
+  - --locked atac
   - --locked bat
   - --locked difftastic
   - --locked yazi-fm yazi-cli
@@ -8,12 +9,10 @@ rust_binaries:
   - csvlens
   - dua-cli
   - fd-find
-  - fnm
   - git-delta
   - just
   - kondo
   - mise
-  - nu
   - onefetch
   - ripgrep
   - sd

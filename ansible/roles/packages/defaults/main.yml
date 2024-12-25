@@ -9,7 +9,7 @@ packages_common:
   - golang
   - helm
   - htop
-  - luajit
+  - lsb-release
   - mpv
   - mupdf
   - neofetch
@@ -32,17 +32,21 @@ packages_debian:
   - build-essential
   - libssl-dev
   - libyaml-dev
-  - lsb-release
 
 packages_redhat:
-  - awscli2
   - dnf-plugins-core
   - libyaml-devel
   - openssl-devel
-  - redhat-lsb-core
 
 packages_redhat_groups:
   - C Development Tools and Libraries
   - Development Tools
   - Fonts
   - VideoLAN Client
+
+docker_packages:
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-ce
+  - docker-ce-cli
+  - docker-compose-plugin

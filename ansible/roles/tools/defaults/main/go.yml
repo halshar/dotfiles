@@ -1,0 +1,6 @@
+go_binaries:
+  - github.com/air-verse/air@latest
+  - github.com/derailed/k9s@latest
+  - github.com/junegunn/fzf@master
+  - github.com/mikefarah/yq/v4@latest
+  - sigs.k8s.io/kind@latest

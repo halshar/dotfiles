@@ -1,4 +1,4 @@
-- name: Install Dev tools
+- name: Install mise core tools
   ansible.builtin.shell: |
     source ~/.zprofile
     mise trust

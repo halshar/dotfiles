@@ -1,8 +1,0 @@
-- name: Install node
-  ansible.builtin.shell: |
-    source ~/.zprofile
-    mise install node@lts 2>&1
-  args:
-    executable: /bin/bash
-  register: node_install
-  changed_when: "'installed' in node_install.stdout"

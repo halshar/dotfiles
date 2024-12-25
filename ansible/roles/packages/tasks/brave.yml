@@ -1,8 +1,3 @@
-- name: Ensure curl is installed
-  ansible.builtin.package:
-    name: curl
-    state: present
-
 - name: Download Brave GPG key - Debian
   ansible.builtin.get_url:
     # yamllint disable-line rule:line-length
@@ -19,10 +14,10 @@
     mode: "0644"
   when: ansible_os_family == "Debian"
 
-- name: Update apt cache
-  ansible.builtin.apt:
-    update_cache: true
-  when: ansible_os_family == "Debian"
+- name: Cache
+  ansible.builtin.import_role:
+    name: update
+    tasks_from: cache
 
 - name: Ensure dnf-plugins-core is installed - RedHat
   ansible.builtin.dnf:

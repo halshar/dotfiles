@@ -33,10 +33,10 @@
     mode: "0644"
   when: ansible_distribution == "Ubuntu"
 
-- name: Update apt cache
-  ansible.builtin.apt:
-    update_cache: true
-  when: ansible_distribution == "Ubuntu"
+- name: Cache
+  ansible.builtin.import_role:
+    name: update
+    tasks_from: cache
 
 - name: Install Docker packages
   ansible.builtin.package:

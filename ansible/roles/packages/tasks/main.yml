@@ -15,16 +15,17 @@
     state: present
   when: ansible_os_family == "RedHat"
 
-- name: Install Redhat package groups
+- name: Install RedHat package groups
   ansible.builtin.dnf:
     name: "@{{ item }}"
     state: present
   loop: "{{ packages_redhat_groups }}"
   when: ansible_os_family == "RedHat"
 
-- name: Remove nodejs and npm packages
-  ansible.builtin.package:
-    name:
-      - nodejs
-      - npm
-    state: absent
+- name: Brave browser
+  ansible.builtin.import_tasks:
+    file: brave.yml
+
+- name: Docker
+  ansible.builtin.import_tasks:
+    file: docker.yml

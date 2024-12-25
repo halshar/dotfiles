@@ -1,10 +1,10 @@
-- name: Gather facts
+- name: Facts
   hosts: localhost
   gather_facts: false
   become: false
   tags: always
   tasks:
-    - name: Run setup module
+    - name: Gather facts manually
       ansible.builtin.setup:
 
 - name: Privileged tasks
@@ -23,16 +23,6 @@
         name: packages
       tags: packages
 
-    - name: Install Brave browser
-      ansible.builtin.import_role:
-        name: brave
-      tags: brave
-
-    - name: Install Docker
-      ansible.builtin.import_role:
-        name: docker
-      tags: docker
-
     - name: Change default shell
       ansible.builtin.import_role:
         name: shell
@@ -44,35 +34,10 @@
   become: false
   tags: nonpriv
   tasks:
-    - name: Setup GNU Stow
+    - name: Setup dev tools
       ansible.builtin.import_role:
-        name: stow
-      tags: stow
-
-    - name: Install Rust
-      ansible.builtin.import_role:
-        name: rust
-      tags: rust
-
-    - name: Setup Mise
-      ansible.builtin.import_role:
-        name: mise
-      tags: mise
-
-    - name: Install Go
-      ansible.builtin.import_role:
-        name: go
-      tags: go
-
-    - name: Install Node
-      ansible.builtin.import_role:
-        name: node
-      tags: node
-
-    - name: Install python
-      ansible.builtin.import_role:
-        name: python
-      tags: python
+        name: tools
+      tags: tools
 
 - name: Instructions
   hosts: all
