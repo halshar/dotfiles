@@ -4,13 +4,17 @@ setopt HIST_IGNORE_SPACE
 setopt INC_APPEND_HISTORY
 
 # autocomplete with case insenstivity
-autoload -Uz +X compinit && compinit
+autoload -Uz +X compinit edit-command-line && compinit
 zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}"
 zstyle ":completion:*" menu select
 
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+
+# keybindings
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
 
 # load the aliases files
 source "$HOME/.config/zsh/aliasrc"

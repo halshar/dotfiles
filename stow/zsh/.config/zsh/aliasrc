@@ -182,3 +182,27 @@ kconf() {
     echo "KUBECONFIG: <empty>"
   fi
 }
+
+# Function to activate the docker shell completion
+sdc() {
+  local completion_file="${HOME}/projects/dev/completions/docker.sh"
+  if [[ -f "${completion_file}" ]]; then
+    # shellcheck disable=SC1090
+    source "${completion_file}"
+    echo "activated docker completion"
+  else
+    echo "file ${completion_file} not found"
+  fi
+}
+
+# Function to activate the kubectl shell completion
+skc() {
+  local completion_file="${HOME}/projects/dev/completions/kubectl.sh"
+  if [[ -f "${completion_file}" ]]; then
+    # shellcheck disable=SC1090
+    source "${completion_file}"
+    echo "activated kubectl completion"
+  else
+    echo "file ${completion_file} not found"
+  fi
+}
