@@ -183,26 +183,22 @@ kconf() {
   fi
 }
 
-# Function to activate the docker shell completion
-sdc() {
-  local completion_file="${HOME}/projects/dev/completions/docker.sh"
-  if [[ -f "${completion_file}" ]]; then
-    # shellcheck disable=SC1090
-    source "${completion_file}"
-    echo "activated docker completion"
-  else
-    echo "file ${completion_file} not found"
-  fi
+# Function to activate docker completions for the given shell
+adsc() {
+  # adsc: Activate Docker Shell Completion
+  # Default shell is zsh
+  local shell="${1:-zsh}"
+  # shellcheck disable=SC1090
+  source <(docker completion "${shell}")
+  echo "activated docker ${shell} completion"
 }
 
-# Function to activate the kubectl shell completion
-skc() {
-  local completion_file="${HOME}/projects/dev/completions/kubectl.sh"
-  if [[ -f "${completion_file}" ]]; then
-    # shellcheck disable=SC1090
-    source "${completion_file}"
-    echo "activated kubectl completion"
-  else
-    echo "file ${completion_file} not found"
-  fi
+# Function to activate kubectl completions for the given shell
+aksc() {
+  # aksc: Activate Kubectl Shell Completion
+  # Default shell is zsh
+  local shell="${1:-zsh}"
+  # shellcheck disable=SC1090
+  source <(kubectl completion "${shell}")
+  echo "activated kubectl ${shell} completion"
 }
