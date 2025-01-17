@@ -1,0 +1,10 @@
+[manager]
+linemode = "size"
+show_symlink = true
+
+[preview]
+tab_size = 2
+cache_dir = "${XDG_CACHE_HOME}/yazi/"
+
+[input]
+cursor_blink = true
