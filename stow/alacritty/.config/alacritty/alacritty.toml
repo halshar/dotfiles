@@ -1,5 +1,5 @@
 [general]
-import = ["~/.config/alacritty/theme.toml"]
+import = ["theme.toml"]
 live_config_reload = true
 
 [env]
@@ -18,9 +18,9 @@ padding = { x = 5, y = 5 }
 
 [font]
 size = 14.0
-normal = { family = "JetBrainsMono Nerd Font Mono", style = "SemiBold" }
-bold = { family = "JetBrainsMono Nerd Font Mono", style = "ExtraBold" }
-italic = { family = "JetBrainsMono Nerd Font Mono", style = "SemiBold Italic" }
+normal = { family = "JetBrainsMono NFM", style = "SemiBold" }
+bold = { family = "JetBrainsMono NFM", style = "ExtraBold" }
+italic = { family = "JetBrainsMono NFM", style = "SemiBold Italic" }
 
 [cursor]
 unfocused_hollow = true
