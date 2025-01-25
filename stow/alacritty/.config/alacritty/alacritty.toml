@@ -12,15 +12,15 @@ multiplier = 3
 [window]
 decorations = "None"
 opacity = 1.0
-startup_mode = "Maximized"
+startup_mode = "Fullscreen"
 class = { general = "Alacritty", instance = "Alacritty" }
 padding = { x = 5, y = 5 }
 
 [font]
 size = 14.0
-normal = { family = "JetBrainsMono NFM", style = "SemiBold" }
-bold = { family = "JetBrainsMono NFM", style = "ExtraBold" }
-italic = { family = "JetBrainsMono NFM", style = "SemiBold Italic" }
+normal = { family = "JetBrainsMono NFM", style = "Regular" }
+bold = { family = "JetBrainsMono NFM", style = "Bold" }
+italic = { family = "JetBrainsMono NFM", style = "Italic" }
 
 [cursor]
 unfocused_hollow = true
