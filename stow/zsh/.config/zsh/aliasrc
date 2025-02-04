@@ -75,7 +75,8 @@ gdec() {
 # Function to search and cd into all directories using fzf
 fcd() {
   local dir
-  dir=$(fd --hidden --type directory "$1" 2>/dev/null | fzf +m --reverse) && cd "$dir" || return
+  dir=$(fd --hidden --type directory "${1:-}" 2>/dev/null | fzf +m --reverse) || return
+  cd "$dir" || return
 }
 
 # Function to view specified logs in oneline
@@ -142,8 +143,7 @@ gci() {
   }
 
   local _gitHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1 | tr -d '\n'"
-  local _viewGitLog="$_gitHash |
-    xargs -I % sh -c 'git show --color=always % | delta --no-gitconfig --tabs 2'"
+  local _viewGitLog="$_gitHash | xargs -I % sh -c 'git show --color=always % | delta'"
 
   _gitLog "$@" |
     fzf --reverse --tiebreak=index --no-multi \
