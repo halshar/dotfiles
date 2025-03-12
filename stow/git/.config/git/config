@@ -1,3 +1,6 @@
+[include]
+  path = "~/.config/git/catppuccin.gitconfig"
+
 [user]
   name = Harshal Jadhav
   email = bestt1315@gmail.com
@@ -38,6 +41,7 @@
   hyperlinks = true
   true-color = always
   tabs = 2
+  features = catppuccin-mocha
 
 [gpg]
   format = ssh
