@@ -12,9 +12,10 @@ zstyle ":completion:*" menu select
 bindkey -v
 export KEYTIMEOUT=1
 
-# keybindings
+# enable command line edit option in insert and normal modes
 zle -N edit-command-line
-bindkey '^X^E' edit-command-line
+bindkey -M viins '^X^E' edit-command-line
+bindkey -M vicmd '^X^E' edit-command-line
 
 # load the aliases files
 source "$HOME/.config/zsh/aliasrc"
