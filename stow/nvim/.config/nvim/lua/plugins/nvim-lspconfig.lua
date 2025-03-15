@@ -19,6 +19,12 @@ return {
 			html = {},
 			jsonls = {},
 			lua_ls = {},
+			powershell_es = {
+				bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
+				filetypes = { "ps1", "psm1", "psd1" },
+				init_options = { enableProfileLoading = false },
+				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
+			},
 			ruff = {},
 			rust_analyzer = { cmd = { "rustup", "run", "stable", "rust-analyzer" } },
 			tailwindcss = {},
@@ -101,6 +107,7 @@ return {
 		-- ensure the lsp servers are installed
 		mason_lspconfig.setup({
 			ensure_installed = vim.tbl_keys(lsp_servers),
+			automatic_installation = false,
 		})
 
 		-- ensure the linters and formatters are installed
@@ -113,12 +120,14 @@ return {
 		-- setup lsp handlers
 		mason_lspconfig.setup_handlers({
 			function(server_name)
-				require("lspconfig")[server_name].setup({
-					capabilities = capabilities,
-					on_attach = on_attach,
-					settings = lsp_servers[server_name],
-					filetypes = (lsp_servers[server_name] or {}).filetypes,
-				})
+				if server_name == "" then
+					return
+				end
+
+				local server = lsp_servers[server_name] or {}
+				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+				server.on_attach = on_attach
+				require("lspconfig")[server_name].setup(server)
 			end,
 		})
 	end,
