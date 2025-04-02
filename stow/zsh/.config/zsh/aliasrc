@@ -114,6 +114,33 @@ function gbase() {
   git rebase -i "$ref"
 }
 
+# Function to clone a bare git repository
+function gbclone() {
+  local repo_url="$1"
+  local repo_name="${2:-$(basename -s .git "$repo_url")}"
+
+  if [ -z "$repo_url" ]; then
+    echo "Error: Repository URL is required"
+    return 1
+  fi
+
+  # clone the repository in bare mode
+  if git clone --bare "$repo_url" "$repo_name"; then
+    echo "Bare clone successful. Updating fetch configuration"
+
+    # change into the cloned directory
+    cd "$repo_name" || return 1
+
+    # update the fetch configuration
+    git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+
+    echo "Fetch configuration updated successfully"
+  else
+    echo "Error: Failed to clone repository"
+    return 1
+  fi
+}
+
 # Function to create new git worktree
 function gwa() {
   local dir_name="$1"
