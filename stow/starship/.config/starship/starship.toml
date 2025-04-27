@@ -7,13 +7,16 @@ $git_state\
 $git_status\
 $git_metrics\
 $python\
+$kubernetes\
 $fill\
 $cmd_duration\
 $line_break\
 $character"""
 
 add_newline = true
-continuation_prompt = "[❮ ](bold #8be9fd)"
+continuation_prompt = "[ऽ ](bold #8be9fd)"
+scan_timeout = 60
+command_timeout = 3600
 
 [username]
 style_user = "bold #8be9fd"
@@ -52,10 +55,17 @@ style = "bold #f1fa8c"
 disabled = false
 
 [character]
-success_symbol = "[❯](bold #bd93f9)"
-error_symbol = "[❯](bold #ff5555)"
-vimcmd_symbol = "[❮](bold #8be9fd)"
+success_symbol = "[ॐ](bold #bd93f9)"
+error_symbol = "[ॐ](bold #ff9933)"
+vimcmd_symbol = "[ऽ](bold #8be9fd)"
 
 [python]
 style = "green bold"
 format = "[$virtualenv]($style) "
+
+[kubernetes]
+disabled = false
+detect_files = []
+detect_env_vars = ["KUBECONFIG"]
+style = "bold blue"
+format = '[$context \($namespace\)]($style) '
