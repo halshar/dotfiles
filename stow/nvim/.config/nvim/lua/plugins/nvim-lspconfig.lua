@@ -88,14 +88,7 @@ return {
 			},
 		})
 
-		-- add borders to lsp hover and signature help
-		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-			border = "rounded",
-		})
-
-		vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-			border = "rounded",
-		})
+		vim.diagnostic.config({ virtual_text = true })
 
 		-- capabilities for auto-completion
 		local capabilities = vim.lsp.protocol.make_client_capabilities()

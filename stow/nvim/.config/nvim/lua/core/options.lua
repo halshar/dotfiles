@@ -22,6 +22,7 @@ set.colorcolumn = "80"
 set.signcolumn = "yes"
 set.completeopt = "menuone,noselect"
 set.spelllang = { "en" }
+set.winborder = "rounded"
 
 set.tabstop = 2
 set.softtabstop = 2
