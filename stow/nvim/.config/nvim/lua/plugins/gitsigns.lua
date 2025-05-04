@@ -4,13 +4,7 @@ return {
 	config = function()
 		require("gitsigns").setup({
 			current_line_blame = false,
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
+			signs_staged_enable = true,
 			on_attach = function(bufnr)
 				local gitsigns = require("gitsigns")
 
@@ -26,7 +20,7 @@ return {
 					if vim.wo.diff then
 						vim.cmd.normal({ "]c", bang = true })
 					else
-						gitsigns.next_hunk()
+						gitsigns.nav_hunk("next")
 					end
 				end, { desc = "Git: Go to next hunk" })
 
@@ -34,7 +28,7 @@ return {
 					if vim.wo.diff then
 						vim.cmd.normal({ "[c", bang = true })
 					else
-						gitsigns.prev_hunk()
+						gitsigns.nav_hunk("prev")
 					end
 				end, { desc = "Git: Go to previous hunk" })
 
@@ -51,9 +45,10 @@ return {
 				end, { desc = "Git: Reset selected hunk" })
 
 				map("n", "<leader>hS", gitsigns.stage_buffer, { desc = "Git: Stage entire buffer" })
-				map("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "Git: Undo stage hunk" })
+				map("n", "<leader>hU", gitsigns.reset_buffer_index, { desc = "Git: Unstage entire buffer" })
 				map("n", "<leader>hR", gitsigns.reset_buffer, { desc = "Git: Reset entire buffer" })
 				map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Git: Preview hunk" })
+				map("n", "<leader>hi", gitsigns.preview_hunk_inline, { desc = "Git: Preview hunk inline" })
 
 				map("n", "<leader>hb", function()
 					gitsigns.blame_line({ full = true })
@@ -65,8 +60,6 @@ return {
 				map("n", "<leader>hD", function()
 					gitsigns.diffthis("~")
 				end, { desc = "Git: Diff against previous commit" })
-
-				map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "Git: Toggle deleted lines" })
 
 				-- text object
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Git: Select hunk" })
