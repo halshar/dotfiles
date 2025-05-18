@@ -42,3 +42,35 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 		vim.bo.filetype = "yaml.gitlab"
 	end,
 })
+
+-- language server mappings
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLSConfig", { clear = true }),
+	callback = function(event)
+		local nmap = function(mode, keys, func, desc)
+			if desc then
+				desc = "LS: " .. desc
+			end
+
+			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
+		end
+
+		nmap("n", "gR", vim.lsp.buf.rename, "Rename")
+		nmap("n", "ga", vim.lsp.buf.code_action, "Code Action")
+		nmap("n", "K", vim.lsp.buf.hover, "Hover Documentation")
+		nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+		nmap("n", "<leader>df", vim.diagnostic.open_float, "Open Diagnostic Float")
+
+		local function client_supports_method(client, method, bufnr)
+			return client:supports_method(method, bufnr)
+		end
+
+		-- set up inlay hints if supported by the language server
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+			nmap("n", "<leader>ti", function()
+				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+			end, "Toggle inlay hints")
+		end
+	end,
+})

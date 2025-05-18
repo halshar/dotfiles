@@ -1,13 +1,15 @@
 return {
-	"neovim/nvim-lspconfig",
+	"mason-org/mason-lspconfig.nvim",
 	dependencies = {
-		{ "williamboman/mason.nvim", cmd = { "Mason" }, config = true },
-		"williamboman/mason-lspconfig.nvim",
+		{ "mason-org/mason.nvim", opts = {} },
+		"neovim/nvim-lspconfig",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		"j-hui/fidget.nvim",
+		"saghen/blink.cmp",
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local lsp_servers = {
+		local servers = {
 			ansiblels = {},
 			bashls = {},
 			cssls = {},
@@ -27,18 +29,15 @@ return {
 			},
 			ruff = {},
 			rust_analyzer = { cmd = { "rustup", "run", "stable", "rust-analyzer" } },
-			tailwindcss = {},
 			taplo = {},
-			terraformls = {},
+			terraformls = { filetypes = { "hcl", "terraform", "terraform-vars" } },
 			ts_ls = {},
 			yamlls = {},
 		}
 
-		local non_lsp = {
+		local non_servers = {
 			"ansible-lint",
 			"checkmake",
-			"debugpy",
-			"delve",
 			"eslint_d",
 			"gofumpt",
 			"goimports",
@@ -57,71 +56,42 @@ return {
 			"yamllint",
 		}
 
-		-- this function gets run when an LSP connects to a particular buffer.
-		local on_attach = function(client, bufnr)
-			local nmap = function(mode, keys, func, desc)
-				if desc then
-					desc = "LSP: " .. desc
-				end
-
-				vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
-			end
-
-			nmap("n", "gR", vim.lsp.buf.rename, "Rename")
-			nmap("n", "ga", vim.lsp.buf.code_action, "Code Action")
-			nmap("n", "K", vim.lsp.buf.hover, "Hover Documentation")
-			nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-			nmap("n", "<leader>df", vim.diagnostic.open_float, "Open Diagnostic Float")
-
-			-- set up inlay hints if supported by the LSP server
-			if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-				nmap("n", "<leader>ti", function()
-					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
-				end, "Toggle inlay hints")
-			end
-		end
-
-		-- add borders to diagnostics
+		-- diagnostics config
 		vim.diagnostic.config({
-			float = {
-				border = "rounded",
-			},
+			severity_sort = true,
+			float = { border = "rounded", source = true },
+			underline = { severity = vim.diagnostic.severity.ERROR },
+			virtual_text = { spacing = 2, source = "if_many" },
 		})
-
-		vim.diagnostic.config({ virtual_text = true })
-
-		-- capabilities for auto-completion
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_tool = require("mason-tool-installer")
 
-		-- ensure the lsp servers are installed
-		mason_lspconfig.setup({
-			ensure_installed = vim.tbl_keys(lsp_servers),
-			automatic_installation = false,
-		})
-
-		-- ensure the linters and formatters are installed
+		-- ensure all tools are installed
+		local ensure_installed = vim.tbl_keys(servers)
+		vim.list_extend(ensure_installed, non_servers)
 		mason_tool.setup({
-			ensure_installed = non_lsp,
+			ensure_installed = ensure_installed,
 			auto_update = false,
 			run_on_start = false,
+			integrations = {
+				["mason-lspconfig"] = true,
+				["mason-null-ls"] = false,
+				["mason-nvim-dap"] = false,
+			},
 		})
 
-		-- setup lsp handlers
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				if server_name == "" then
-					return
-				end
-
-				local server = lsp_servers[server_name] or {}
-				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-				server.on_attach = on_attach
-				require("lspconfig")[server_name].setup(server)
-			end,
+		mason_lspconfig.setup({
+			ensure_installed = {},
+			automatic_enable = true,
 		})
+
+		-- overwrite language server configuration
+		for server, config in pairs(servers) do
+			vim.lsp.config(server, config)
+		end
+
+		-- enable the language servers
+		vim.lsp.enable(vim.tbl_keys(servers))
 	end,
 }
