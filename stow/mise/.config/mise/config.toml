@@ -3,6 +3,8 @@ deno = "latest"
 go = "latest"
 node = "lts"
 python = "latest"
+terraform = "latest"
+zig = "latest"
 
 [settings]
 paranoid = true
