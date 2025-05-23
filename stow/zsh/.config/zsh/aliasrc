@@ -88,7 +88,7 @@ function glog() {
 # Function to fetch changes from specified git remote
 function gfetch() {
   local remote="${1:-origin}"
-  git fetch "$remote"
+  git fetch --prune --prune-tags "$remote"
 }
 
 # Function to push to specified git remote
@@ -210,10 +210,16 @@ kconf() {
   fi
 }
 
+# Function to activate podman completions for the given shell
+apsc() {
+  local shell="${1:-zsh}"
+  # shellcheck disable=SC1090
+  source <(podman completion "${shell}")
+  echo "activated podman ${shell} completion"
+}
+
 # Function to activate docker completions for the given shell
 adsc() {
-  # adsc: Activate Docker Shell Completion
-  # Default shell is zsh
   local shell="${1:-zsh}"
   # shellcheck disable=SC1090
   source <(docker completion "${shell}")
@@ -222,8 +228,6 @@ adsc() {
 
 # Function to activate kubectl completions for the given shell
 aksc() {
-  # aksc: Activate Kubectl Shell Completion
-  # Default shell is zsh
   local shell="${1:-zsh}"
   # shellcheck disable=SC1090
   source <(kubectl completion "${shell}")
