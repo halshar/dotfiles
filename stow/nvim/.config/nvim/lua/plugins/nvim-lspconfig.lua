@@ -56,12 +56,12 @@ return {
 			"yamllint",
 		}
 
-		-- diagnostics config
+		-- diagnostic config
 		vim.diagnostic.config({
 			severity_sort = true,
+			underline = false,
 			float = { border = "rounded", source = true },
-			underline = { severity = vim.diagnostic.severity.ERROR },
-			virtual_text = { spacing = 2, source = "if_many" },
+			virtual_text = { spacing = 2, source = true },
 		})
 
 		local mason_lspconfig = require("mason-lspconfig")
@@ -90,8 +90,5 @@ return {
 		for server, config in pairs(servers) do
 			vim.lsp.config(server, config)
 		end
-
-		-- enable the language servers
-		vim.lsp.enable(vim.tbl_keys(servers))
 	end,
 }
