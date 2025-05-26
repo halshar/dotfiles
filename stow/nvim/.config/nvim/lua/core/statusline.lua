@@ -1,11 +1,5 @@
 local fmt = string.format
 
--- Return the current mode
---- @return string
-local function get_mode()
-	return fmt("%s ", vim.api.nvim_get_mode().mode)
-end
-
 -- Return [[RO]] if the current buffer is readonly else empty string
 --- @return string
 local function get_readonly()
@@ -32,7 +26,7 @@ end
 -- buffer name, and modifiable flags
 --- @return string
 local function get_filepath()
-	local path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":~")
+	local path = vim.fn.expand("%:.")
 	local flags = table.concat({ get_readonly(), get_modified() })
 	if flags ~= "" then
 		flags = " " .. flags
@@ -132,7 +126,6 @@ end
 --- @return string
 StatusLine = function()
 	local statusline = {
-		get_mode(),
 		get_filepath(),
 		get_branch(),
 		"%=",
