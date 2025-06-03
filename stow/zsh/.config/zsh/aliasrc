@@ -79,10 +79,15 @@ fcd() {
   cd "$dir" || return
 }
 
-# Function to view specified logs in oneline
-function glog() {
+# Function to view specified logs count in oneline
+function glogo() {
   local count="${1:-11}"
   git log --oneline -n "$count"
+}
+
+# Function to view git logs with name status for current branch
+function glog() {
+  git log --decorate=full --name-status "$(git rev-parse --abbrev-ref HEAD)"
 }
 
 # Function to fetch changes from specified git remote
