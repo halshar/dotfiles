@@ -32,7 +32,7 @@ return {
 			taplo = {},
 			terraformls = { filetypes = { "hcl", "terraform", "terraform-vars" } },
 			ts_ls = {},
-			yamlls = {},
+			yamlls = { settings = { yaml = { customTags = { "!reference sequence" } } } },
 		}
 
 		local non_servers = {
