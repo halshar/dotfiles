@@ -9,6 +9,7 @@ export BROWSER="firefox"
 export VIDEO="mpv"
 export IMAGE="sxiv"
 export READER="mupdf"
+export MANPAGER="nvim +Man!"
 
 # zsh
 export HISTSIZE=50000
