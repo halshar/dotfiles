@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi"
+
+# search for directories
+PROJECT=$(fd --hidden --absolute-path --type d --base-directory ~/projects/ | fzf +m --tmux bottom --layout reverse)
+
+# caculate shortname based on parent and current directory
+PARENT_DIR=$(basename "$(dirname "${PROJECT}")")
+PROJECT_DIR=$(basename "${PROJECT}")
+SHORT_NAME="${PARENT_DIR}/${PROJECT_DIR}"
+
+# if the operation is cancelled then abort the script
+if [[ -z "$PROJECT" ]]; then
+  exit 0
+fi
+
+# if the session to-be-created doesn't exist then create one in detached mode
+if ! tmux has-session -t="$SHORT_NAME" 2>/dev/null; then
+  tmux new-session -ds "$SHORT_NAME" -c "$PROJECT"
+fi
+
+# switch to the selected session
+tmux switch-client -t "$SHORT_NAME"
