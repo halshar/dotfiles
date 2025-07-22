@@ -81,14 +81,16 @@ return {
 			},
 		})
 
+		-- overwrite language server configuration
+		for server, config in pairs(servers) do
+			if not vim.tbl_isempty(config) then
+				vim.lsp.config(server, config)
+			end
+		end
+
 		mason_lspconfig.setup({
 			ensure_installed = {},
 			automatic_enable = true,
 		})
-
-		-- overwrite language server configuration
-		for server, config in pairs(servers) do
-			vim.lsp.config(server, config)
-		end
 	end,
 }

@@ -9,6 +9,7 @@ return {
 				git_icons = false,
 				file_icons = false,
 				color_icons = false,
+				hidden = true,
 			},
 			actions = {
 				files = {
@@ -19,7 +20,7 @@ return {
 			},
 			fzf_opts = { ["--cycle"] = true },
 			winopts = { preview = { hidden = true, title = false } },
-			buffers = { show_unloaded = false, sort_lastused = false },
+			buffers = { show_unloaded = false, sort_lastused = true },
 			keymap = { builtin = { ["<c-o>"] = "toggle-preview" }, fzf = { ["ctrl-q"] = "select-all+accept" } },
 		})
 	end,
