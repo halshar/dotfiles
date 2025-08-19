@@ -74,3 +74,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 	end,
 })
+
+-- set colorcolumn to empty for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+	desc = "Disable colorcolumn in markdown files",
+	group = vim.api.nvim_create_augroup("markdown-no-colorcolumn", { clear = true }),
+	pattern = "markdown",
+	callback = function()
+		vim.opt_local.colorcolumn = ""
+	end,
+})
