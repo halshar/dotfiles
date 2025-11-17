@@ -12,17 +12,21 @@ multiplier = 3
 [window]
 decorations = "None"
 opacity = 1.0
-startup_mode = "Fullscreen"
+startup_mode = "Maximized"
 class = { general = "Alacritty", instance = "Alacritty" }
 padding = { x = 5, y = 5 }
 
 [font]
-size = 14.0
-normal = { family = "JetBrainsMono NFM", style = "Regular" }
-bold = { family = "JetBrainsMono NFM", style = "Bold" }
-italic = { family = "JetBrainsMono NFM", style = "Italic" }
+size = 17.0
+normal = { family = "Iosevka NFM", style = "Regular" }
+bold = { family = "Iosevka NFM", style = "Bold" }
+italic = { family = "Iosevka NFM", style = "Italic" }
+bold_italic = { family = "Iosevka NFM", style = "Bold Italic" }
 
 [cursor]
 unfocused_hollow = true
 style = { blinking = "On", shape = "Block" }
 vi_mode_style = { blinking = "On", shape = "Block" }
+
+[keyboard]
+bindings = [{ key = "Enter", mods = "Control", action = "ToggleFullscreen" }]
