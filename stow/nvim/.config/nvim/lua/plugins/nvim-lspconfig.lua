@@ -20,7 +20,7 @@ return {
 			helm_ls = { settings = { ["helm-ls"] = { yamlls = { path = "yaml-language-server" } } } },
 			html = {},
 			jsonls = {},
-			lua_ls = {},
+			lua_ls = { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } },
 			powershell_es = {
 				bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
 				filetypes = { "ps1", "psm1", "psd1" },
