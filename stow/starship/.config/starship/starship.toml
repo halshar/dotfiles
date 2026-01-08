@@ -55,8 +55,8 @@ style = "bold #f1fa8c"
 disabled = false
 
 [character]
-success_symbol = "[ॐ](bold #bd93f9)"
-error_symbol = "[ॐ](bold #ff9933)"
+success_symbol = "[ॐ ](bold #bd93f9)"
+error_symbol = "[ॐ ](bold #ff9933)"
 vimcmd_symbol = "[ऽ](bold #8be9fd)"
 
 [python]
