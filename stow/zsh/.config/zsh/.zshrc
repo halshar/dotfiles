@@ -8,6 +8,9 @@ autoload -Uz +X compinit edit-command-line && compinit
 zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}"
 zstyle ":completion:*" menu select
 
+# enable reverse completion selection
+bindkey '^[[Z' reverse-menu-complete
+
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
