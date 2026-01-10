@@ -6,9 +6,11 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"j-hui/fidget.nvim",
 		"saghen/blink.cmp",
+		"b0o/schemastore.nvim",
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
+		local schema_store = require("schemastore")
 		local servers = {
 			ansiblels = {},
 			bashls = {},
@@ -19,7 +21,7 @@ return {
 			gopls = { settings = { gopls = { analyses = { unusedparams = true } } } },
 			helm_ls = { settings = { ["helm-ls"] = { yamlls = { path = "yaml-language-server" } } } },
 			html = {},
-			jsonls = {},
+			jsonls = { settings = { json = { schemas = schema_store.json.schemas(), validate = { enable = true } } } },
 			lua_ls = { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } },
 			powershell_es = {
 				bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
@@ -32,7 +34,15 @@ return {
 			taplo = {},
 			terraformls = { filetypes = { "hcl", "terraform", "terraform-vars" } },
 			ts_ls = {},
-			yamlls = { settings = { yaml = { customTags = { "!reference sequence" } } } },
+			yamlls = {
+				settings = {
+					yaml = {
+						schemaStore = { enable = false, url = "" },
+						schemas = schema_store.yaml.schemas(),
+						customTags = { "!reference sequence" },
+					},
+				},
+			},
 		}
 
 		local non_servers = {
