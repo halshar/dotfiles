@@ -23,11 +23,17 @@ local function toggle_window_zoom()
 	end
 end
 
+-- function to toggle background
+local function toggle_background()
+	local bg_colour = vim.o.background
+	if bg_colour == "dark" then
+		vim.o.background = "light"
+	else
+		vim.o.background = "dark"
+	end
+end
+
 -- window management
-map("n", "<C-h>", "<C-w>h", "Move to window left")
-map("n", "<C-j>", "<C-w>j", "Move to window down")
-map("n", "<C-k>", "<C-w>k", "Move to window up")
-map("n", "<C-l>", "<C-w>l", "Move to window right")
 map("n", "<leader>mh", "<cmd>wincmd H<CR>", "Move window to horizontal split left")
 map("n", "<leader>mj", "<cmd>wincmd J<CR>", "Move window to horizontal split down")
 map("n", "<leader>mk", "<cmd>wincmd K<CR>", "Move window to vertical split up")
@@ -36,7 +42,7 @@ map("n", "<leader>wh", "<C-w>_", "Maximize horizontal window")
 map("n", "<leader>we", "<C-w>=", "Resize all windows equally")
 map("n", "<leader>wv", "<C-w>|", "Maximize vertical window")
 map("n", "<leader>ww", toggle_window_zoom, "Toggle window zoom")
-map("n", "<leader>o", "<C-w>o", "Close other windows")
+map("n", "<leader>wc", toggle_background, "Toggle window background")
 
 -- buffer and file management
 map("n", "<leader>hh", "<cmd>nohlsearch<CR>", "Clear search highlights")
