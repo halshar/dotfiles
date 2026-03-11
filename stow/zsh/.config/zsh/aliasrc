@@ -165,6 +165,11 @@ function gwa() {
   fi
 }
 
+# Function to delete git local branches(except the currently active one)
+function gdlb {
+  git branch --merged | grep -v "^\*" | xargs git branch -d
+}
+
 # Function to preview git commits
 gci() {
   _gitLog() {
