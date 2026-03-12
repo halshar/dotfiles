@@ -1,5 +1,6 @@
 go_binaries:
-  - github.com/derailed/k9s@latest
+  - github.com/charmbracelet/glow/v2@latest
   - github.com/junegunn/fzf@latest
   - github.com/mikefarah/yq/v4@latest
+  - github.com/reteps/dockerfmt@latest
   - sigs.k8s.io/kind@latest
