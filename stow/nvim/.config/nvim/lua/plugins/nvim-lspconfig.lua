@@ -19,7 +19,7 @@ return {
 			dockerls = {},
 			gitlab_ci_ls = {},
 			gopls = { settings = { gopls = { analyses = { unusedparams = true } } } },
-			helm_ls = { settings = { ["helm-ls"] = { yamlls = { path = "yaml-language-server" } } } },
+			helm_ls = {},
 			html = {},
 			jsonls = { settings = { json = { schemas = schema_store.json.schemas(), validate = { enable = true } } } },
 			lua_ls = { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } },
