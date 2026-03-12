@@ -1,5 +1,5 @@
 [general]
-import = ["theme.toml"]
+import = ["vague.toml"]
 live_config_reload = true
 
 [env]

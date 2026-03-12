@@ -1,5 +1,5 @@
 [include]
-  path = "~/.config/git/catppuccin.gitconfig"
+  path = "~/.config/git/vague.gitconfig"
 
 [user]
   name = Harshal Jadhav
@@ -41,7 +41,6 @@
   hyperlinks = true
   true-color = always
   tabs = 2
-  features = catppuccin-mocha
 
 [gpg]
   format = ssh
