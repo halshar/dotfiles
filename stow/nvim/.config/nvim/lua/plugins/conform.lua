@@ -1,6 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
 	config = function()
 		local conform = require("conform")
 		conform.setup({
@@ -9,9 +10,11 @@ return {
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 					return
 				end
-				return { timeout_ms = 1000, lsp_format = "fallback" }
+				return { async = false, lsp_format = "fallback", timeout_ms = 1000 }
 			end,
+			default_format_opts = { lsp_format = "fallback" },
 			formatters_by_ft = {
+				docker = { "dockerfmt" },
 				go = { "goimports", "gofumpt" },
 				javascript = { "prettier", "rustywind" },
 				typescript = { "prettier", "rustywind" },
@@ -20,6 +23,7 @@ return {
 				html = { "prettier", "rustywind" },
 				css = { "prettier" },
 				json = { "jq" },
+				just = { "just" },
 				markdown = { "prettier" },
 				python = { "ruff_format" },
 				lua = { "stylua" },
