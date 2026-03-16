@@ -147,21 +147,28 @@ function gbclone() {
 }
 
 # Function to create new git worktree
-function gwa() {
-  local dir_name="$1"
+function gwa {
+  local dir_name="${1}"
   local ref="${2:-origin/master}"
 
-  if [ -z "$dir_name" ]; then
+  if [[ -z "${dir_name}" ]]; then
     echo "error: directory name is required"
     return 1
   fi
 
-  # If branch already exists then use it else create new one
-  if git rev-parse --verify "$dir_name" >/dev/null 2>&1; then
-    echo "Branch '$dir_name' already exists, checking out existing branch"
-    git worktree add "$dir_name" "$dir_name"
+  # detect empty repository (no commits yet)
+  if ! git rev-parse --verify HEAD >/dev/null 2>&1; then
+    echo "info: repository has no commits, creating orphan branch"
+    git worktree add --orphan "${dir_name}"
+    return
+  fi
+
+  # if branch already exists then use it else create new one
+  if git rev-parse --verify "${dir_name}" >/dev/null 2>&1; then
+    echo "info: branch ${dir_name} already exists, checking out existing branch"
+    git worktree add "${dir_name}" "${dir_name}"
   else
-    git worktree add -b "$dir_name" "$dir_name" "$ref"
+    git worktree add -b "${dir_name}" "${dir_name}" "${ref}"
   fi
 }
 
