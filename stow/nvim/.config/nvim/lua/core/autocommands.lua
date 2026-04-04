@@ -48,10 +48,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
 		end
 
-		nmap("n", "gR", vim.lsp.buf.rename, "Rename")
-		nmap("n", "ga", vim.lsp.buf.code_action, "Code Action")
-		nmap("n", "K", vim.lsp.buf.hover, "Hover Documentation")
 		nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+		nmap("n", "grd", vim.lsp.buf.definition, "Goto Definition")
 		nmap("n", "<leader>df", vim.diagnostic.open_float, "Open Diagnostic Float")
 
 		local function client_supports_method(client, method, bufnr)
