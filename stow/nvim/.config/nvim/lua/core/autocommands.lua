@@ -48,6 +48,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
 		end
 
+		nmap("n", "K", vim.lsp.buf.hover, "Hover Documentation")
 		nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 		nmap("n", "grd", vim.lsp.buf.definition, "Goto Definition")
 		nmap("n", "<leader>df", vim.diagnostic.open_float, "Open Diagnostic Float")
@@ -73,5 +74,15 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "markdown",
 	callback = function()
 		vim.opt_local.colorcolumn = ""
+	end,
+})
+
+-- download blink fuzzy matching engine
+vim.api.nvim_create_autocmd("User", {
+	pattern = "PackPostUpdate",
+	callback = function(args)
+		if args.data.name == "blink.cmp" then
+			vim.system({ "cargo", "build", "--release" }, { cwd = args.data.path }):wait()
+		end
 	end,
 })

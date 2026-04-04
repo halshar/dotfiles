@@ -33,6 +33,25 @@ local function toggle_background()
 	end
 end
 
+-- function to format buffer
+local function format_buffer()
+	require("conform").format({
+		async = false,
+		lsp_format = "fallback",
+		timeout_ms = 1000,
+	})
+end
+
+-- function to toggle oil
+local function toggle_oil()
+	local oil = require("oil")
+	if vim.bo.filetype == "oil" then
+		oil.close()
+	else
+		oil.toggle_float()
+	end
+end
+
 -- window management
 map("n", "<leader>mh", "<cmd>wincmd H<CR>", "Move window to horizontal split left")
 map("n", "<leader>mj", "<cmd>wincmd J<CR>", "Move window to horizontal split down")
@@ -70,5 +89,21 @@ map("n", "<leader>tn", "<cmd>tabnew | terminal<CR>", "Open terminal in a new tab
 map("n", "<leader>wd", "<cmd>windo diffthis<CR>", "Enable diff mode in all windows")
 map("n", "<leader>wo", "<cmd>windo diffoff<CR>", "Disable diff mode in all windows")
 
--- miscellaneous
-map("n", "<leader>bl", "<cmd>Lazy check<CR>", "Check Lazy updates")
+-- fzf management
+map("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", "Fzf: Open Buffers")
+map("n", "<leader>ff", "<cmd>FzfLua files<CR>", "Fzf: Find Files")
+map("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", "Fzf: Live Grep")
+map("n", "<leader>fw", "<cmd>FzfLua grep_cword<CR>", "Fzf: Grep Word Under Cursor")
+map("n", "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>", "Fzf: LSP Document Symbols")
+map("n", "<leader>fc", "<cmd>FzfLua git_commits<CR>", "Fzf: Git Commits")
+map("n", "<leader>fm", "<cmd>FzfLua spell_suggest<CR>", "Fzf: Spell Suggest")
+map("n", "<leader>fk", "<cmd>FzfLua keymaps<CR>", "Fzf: Keymaps")
+map("n", "<leader>fh", "<cmd>FzfLua helptags<CR>", "Fzf: Help Tags")
+map("n", "<leader>tt", "<cmd>FzfLua diagnostics_document<CR>", "Fzf: Document Diagnostics")
+map("n", "<leader>tw", "<cmd>FzfLua diagnostics_workspace<CR>", "Fzf: Workspace Diagnostics")
+
+-- conform
+map({ "n", "v" }, "<leader>mf", format_buffer, "Format buffer")
+
+-- oil
+map("n", "<leader>fo", toggle_oil, "Toggle Oil")
