@@ -27,14 +27,14 @@ PROJECT_DIR=$(basename "${PROJECT}")
 SHORT_NAME="${PARENT_DIR}/${PROJECT_DIR}"
 
 # if the operation is cancelled then abort the script
-if [[ -z "$PROJECT" ]]; then
+if [[ -z "${PROJECT}" ]]; then
   exit 0
 fi
 
 # if the session to-be-created doesn't exist then create one in detached mode
-if ! tmux has-session -t="$SHORT_NAME" 2>/dev/null; then
-  tmux new-session -ds "$SHORT_NAME" -c "$PROJECT"
+if ! tmux has-session -t="${SHORT_NAME}" 2>/dev/null; then
+  tmux new-session -ds "${SHORT_NAME}" -c "${PROJECT}"
 fi
 
 # switch to the selected session
-tmux switch-client -t "$SHORT_NAME"
+tmux switch-client -t "${SHORT_NAME}"
