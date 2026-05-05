@@ -174,7 +174,14 @@ function gwa {
 
 # Function to delete git local branches(except the currently active one)
 function gdlb {
-  git branch --merged | grep -v "^\*" | xargs git branch -d
+  local branches
+  branches=$(git branch --merged | grep -v "^\*")
+
+  if [ -n "${branches}" ]; then
+    echo "${branches}" | xargs git branch -d
+  else
+    echo "info: no local branches to delete"
+  fi
 }
 
 # Function to preview git commits
