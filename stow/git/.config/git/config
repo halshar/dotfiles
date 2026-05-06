@@ -15,6 +15,10 @@
 [merge]
   ff = only
   conflictstyle = diff3
+  tool = nvimdiff
+
+[mergetool]
+  keepBackup = false
 
 [fetch]
   prune = true

@@ -10,6 +10,7 @@ alias ds="du -sh ./* | sort -h; du -sh"
 alias myip="curl https://ipinfo.io/ip;echo"
 alias vim="nvim"
 alias gwl="git worktree list"
+alias gmt="git mergetool"
 
 # Function to create directory and cd into it
 cnc() {
