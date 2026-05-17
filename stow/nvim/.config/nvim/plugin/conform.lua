@@ -19,6 +19,7 @@ conform.setup({
 		typescript = { "prettier", "rustywind" },
 		html = { "prettier", "rustywind" },
 		css = { "prettier" },
+		helm = { "helmfmt" },
 		json = { "jq" },
 		just = { "just" },
 		markdown = { "prettier" },
@@ -30,5 +31,12 @@ conform.setup({
 		toml = { "taplo" },
 		terraform = { "terraform_fmt" },
 		yaml = { "yamlfmt" },
+	},
+	formatters = {
+		helmfmt = {
+			command = "helmfmt",
+			args = { "--files", "$FILENAME", "--stdout" },
+			stdin = true,
+		},
 	},
 })
