@@ -93,7 +93,8 @@ map("n", "<leader>wo", "<cmd>windo diffoff<CR>", "Disable diff mode in all windo
 map("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", "Fzf: Open Buffers")
 map("n", "<leader>ff", "<cmd>FzfLua files<CR>", "Fzf: Find Files")
 map("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", "Fzf: Live Grep")
-map("n", "<leader>fw", "<cmd>FzfLua grep_cword<CR>", "Fzf: Grep Word Under Cursor")
+map("n", "<leader>fw", "<cmd>FzfLua grep_cWORD<CR>", "Fzf: Search Word Under Cursor")
+map("x", "<leader>fv", "<cmd>FzfLua grep_visual<CR>", "Fzf: Search Visual Selection")
 map("n", "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>", "Fzf: LSP Document Symbols")
 map("n", "<leader>fc", "<cmd>FzfLua git_commits<CR>", "Fzf: Git Commits")
 map("n", "<leader>fm", "<cmd>FzfLua spell_suggest<CR>", "Fzf: Spell Suggest")
@@ -107,3 +108,6 @@ map({ "n", "v" }, "<leader>mf", format_buffer, "Format buffer")
 
 -- oil
 map("n", "<leader>fo", toggle_oil, "Toggle Oil")
+
+-- diagnostic
+map("n", "<leader>df", vim.diagnostic.open_float, "Open Diagnostic Float")
