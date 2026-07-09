@@ -52,6 +52,12 @@ local function toggle_oil()
 	end
 end
 
+-- function to toggle diagnostic virtual text
+local function toggle_diagnostic()
+	local current_value = vim.diagnostic.config().virtual_text
+	vim.diagnostic.config({ virtual_text = not current_value })
+end
+
 -- window management
 map("n", "<leader>mh", "<cmd>wincmd H<CR>", "Move window to horizontal split left")
 map("n", "<leader>mj", "<cmd>wincmd J<CR>", "Move window to horizontal split down")
@@ -111,3 +117,4 @@ map("n", "<leader>fo", toggle_oil, "Toggle Oil")
 
 -- diagnostic
 map("n", "<leader>df", vim.diagnostic.open_float, "Open Diagnostic Float")
+map("n", "<leader>dt", toggle_diagnostic, "Toggle diagnostic virtual text")
