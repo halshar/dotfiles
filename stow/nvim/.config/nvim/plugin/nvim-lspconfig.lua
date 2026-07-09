@@ -7,9 +7,20 @@ vim.pack.add({
 })
 
 require("mason").setup({})
-require("mason-tool-installer").setup({})
 
 local schema_store = require("schemastore")
+local mason_lspconfig = require("mason-lspconfig")
+local mason_tool = require("mason-tool-installer")
+local blink = require("blink.cmp")
+
+vim.diagnostic.config({
+	severity_sort = true,
+	underline = false,
+	update_in_insert = false,
+	float = { border = "rounded", source = true },
+	virtual_text = { spacing = 2, source = true },
+})
+
 local servers = {
 	ansiblels = {},
 	bashls = {},
@@ -20,12 +31,23 @@ local servers = {
 	gopls = { settings = { gopls = { analyses = { unusedparams = true } } } },
 	helm_ls = {},
 	html = {},
-	jsonls = { settings = { json = { schemas = schema_store.json.schemas(), validate = { enable = true } } } },
-	lua_ls = { settings = { Lua = { workspace = { library = vim.api.nvim_get_runtime_file("", true) } } } },
+	jsonls = {
+		settings = { json = { schemas = schema_store.json.schemas(), validate = { enable = true } } },
+	},
+	lua_ls = {
+		settings = {
+			Lua = {
+				workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
+				telemetry = { enable = false },
+			},
+		},
+	},
 	powershell_es = {
-		bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services/",
+		bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
 		filetypes = { "ps1", "psm1", "psd1" },
-		init_options = { enableProfileLoading = false },
+		init_options = {
+			enableProfileLoading = false,
+		},
 		settings = {
 			powershell = {
 				codeFormatting = {
@@ -45,7 +67,7 @@ local servers = {
 		},
 	},
 	ruff = {},
-	rust_analyzer = { cmd = { "rustup", "run", "stable", "rust-analyzer" } },
+	rust_analyzer = {},
 	taplo = {},
 	terraformls = { filetypes = { "hcl", "terraform", "terraform-vars" } },
 	ts_ls = {},
@@ -81,20 +103,9 @@ local non_servers = {
 	"yamllint",
 }
 
--- diagnostic config
-vim.diagnostic.config({
-	severity_sort = true,
-	underline = false,
-	float = { border = "rounded", source = true },
-	virtual_text = { spacing = 2, source = true },
-})
-
-local mason_lspconfig = require("mason-lspconfig")
-local mason_tool = require("mason-tool-installer")
-
--- ensure all tools are installed
 local ensure_installed = vim.tbl_keys(servers)
 vim.list_extend(ensure_installed, non_servers)
+
 mason_tool.setup({
 	ensure_installed = ensure_installed,
 	auto_update = false,
@@ -106,11 +117,9 @@ mason_tool.setup({
 	},
 })
 
--- overwrite language server configuration
 for server, config in pairs(servers) do
-	if not vim.tbl_isempty(config) then
-		vim.lsp.config(server, config)
-	end
+	config.capabilities = blink.get_lsp_capabilities(config.capabilities)
+	vim.lsp.config(server, config)
 end
 
 mason_lspconfig.setup({
