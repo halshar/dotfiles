@@ -1,3 +1,6 @@
+-- enable faster startup by caching compiled lua modules
+vim.loader.enable()
+
 local set = vim.opt
 local gset = vim.g
 
@@ -23,6 +26,8 @@ set.signcolumn = "yes"
 set.completeopt = "menuone,noselect"
 set.spelllang = { "en" }
 set.winborder = "rounded"
+set.cmdheight = 0
+set.updatetime = 1500
 
 set.tabstop = 2
 set.softtabstop = 2
