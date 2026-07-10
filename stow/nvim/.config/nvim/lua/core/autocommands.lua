@@ -52,16 +52,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		nmap("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 		nmap("n", "grd", vim.lsp.buf.definition, "Goto Definition")
 
-		local function client_supports_method(client, method, bufnr)
-			return client:supports_method(method, bufnr)
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if not client then
+			return
 		end
 
 		-- set up inlay hints if supported by the language server
-		local client = vim.lsp.get_client_by_id(event.data.client_id)
-		if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+		if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
 			nmap("n", "<leader>ti", function()
 				vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
 			end, "Toggle inlay hints")
+		end
+
+		-- set up document colors if supported by the language server
+		if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentColor, event.buf) then
+			nmap("n", "<leader>tc", function()
+				local enabled = vim.lsp.document_color.is_enabled({ bufnr = event.buf })
+				vim.lsp.document_color.enable(not enabled, { bufnr = event.buf })
+			end, "Toggle document colors")
 		end
 	end,
 })
