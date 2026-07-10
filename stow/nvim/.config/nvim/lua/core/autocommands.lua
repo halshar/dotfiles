@@ -7,23 +7,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- toggle formatter
+-- toggle conform formatter
 vim.api.nvim_create_user_command("FormatDisable", function(args)
 	if args.bang then
 		-- FormatDisable! will disable formatting for all buffers
 		vim.g.disable_autoformat = true
 	else
+		-- FormatDisable will disable formatting for current buffer
 		vim.b.disable_autoformat = true
 	end
 end, {
-	desc = "Disable autoformat-on-save",
+	desc = "Disable format-on-save",
 	bang = true,
 })
 vim.api.nvim_create_user_command("FormatEnable", function()
-	vim.b.disable_autoformat = false
-	vim.g.disable_autoformat = false
+	vim.b.disable_autoformat = nil
+	vim.g.disable_autoformat = nil
 end, {
-	desc = "Re-enable autoformat-on-save",
+	desc = "Enable format-on-save",
 })
 
 -- update filetype for gitlab-ci file to start gitlab language server

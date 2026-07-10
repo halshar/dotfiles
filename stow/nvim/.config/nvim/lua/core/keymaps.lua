@@ -38,7 +38,7 @@ local function format_buffer()
 	require("conform").format({
 		async = false,
 		lsp_format = "fallback",
-		timeout_ms = 1000,
+		timeout_ms = 2000,
 	})
 end
 

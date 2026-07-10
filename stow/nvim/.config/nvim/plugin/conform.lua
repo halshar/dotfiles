@@ -5,31 +5,30 @@ vim.pack.add({
 local conform = require("conform")
 conform.setup({
 	format_on_save = function(bufnr)
-		-- Disable with a global or buffer-local variable
+		-- disable with a global or buffer-local variable
 		if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
 			return
 		end
-		return { async = false, lsp_format = "fallback", timeout_ms = 1000 }
+		return { async = false, lsp_format = "fallback", timeout_ms = 2000 }
 	end,
-	default_format_opts = { lsp_format = "fallback" },
 	formatters_by_ft = {
+		bash = { "shellcheck", "shfmt" },
+		css = { "prettier" },
 		docker = { "dockerfmt" },
 		go = { "goimports", "gofumpt" },
-		javascript = { "prettier", "rustywind" },
-		typescript = { "prettier", "rustywind" },
-		html = { "prettier", "rustywind" },
-		css = { "prettier" },
 		helm = { "helmfmt" },
+		html = { "prettier", "rustywind" },
+		javascript = { "prettier", "rustywind" },
 		json = { "jq" },
 		just = { "just" },
+		lua = { "stylua" },
 		markdown = { "prettier" },
 		python = { "ruff_format" },
-		lua = { "stylua" },
 		rust = { "rustfmt" },
-		bash = { "shellcheck", "shfmt" },
 		sh = { "shellcheck", "shfmt" },
-		toml = { "taplo" },
 		terraform = { "terraform_fmt" },
+		toml = { "taplo" },
+		typescript = { "prettier", "rustywind" },
 		yaml = { "yamlfmt" },
 	},
 	formatters = {
