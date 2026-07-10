@@ -58,6 +58,64 @@ local function toggle_diagnostic()
 	vim.diagnostic.config({ virtual_text = not current_value })
 end
 
+-- function to show the lsp, formatter, and linter details
+local function show_buffer_tools_details()
+	local bufnr = vim.api.nvim_get_current_buf()
+	local lines = {}
+
+	-- attached LSP clients
+	table.insert(lines, "LSP:")
+
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	if #clients > 0 then
+		for _, client in ipairs(clients) do
+			table.insert(lines, "- " .. client.name)
+		end
+	else
+		table.insert(lines, "- none")
+	end
+
+	-- formatters (conform.nvim)
+	local ok, conform = pcall(require, "conform")
+	if ok then
+		local formatters = conform.list_formatters(bufnr)
+
+		table.insert(lines, "")
+		table.insert(lines, "Formatters:")
+
+		if #formatters > 0 then
+			for _, formatter in ipairs(formatters) do
+				table.insert(lines, "- " .. formatter.name)
+			end
+		else
+			table.insert(lines, "- none")
+		end
+	end
+
+	-- linters (nvim-lint)
+	local ok_lint, lint = pcall(require, "lint")
+	if ok_lint then
+		table.insert(lines, "")
+		table.insert(lines, "Linters:")
+
+		local ft = vim.bo[bufnr].filetype
+		local linters = lint._resolve_linter_by_ft(ft)
+
+		if linters and #linters > 0 then
+			for _, name in ipairs(linters) do
+				table.insert(lines, "- " .. name)
+			end
+		else
+			table.insert(lines, "- none")
+		end
+	end
+
+	vim.lsp.util.open_floating_preview(lines, "markdown", {
+		border = "rounded",
+		focusable = false,
+	})
+end
+
 -- window management
 map("n", "<leader>mh", "<cmd>wincmd H<CR>", "Move window to horizontal split left")
 map("n", "<leader>mj", "<cmd>wincmd J<CR>", "Move window to horizontal split down")
@@ -118,3 +176,4 @@ map("n", "<leader>fo", toggle_oil, "Toggle Oil")
 -- diagnostic
 map("n", "<leader>df", vim.diagnostic.open_float, "Open Diagnostic Float")
 map("n", "<leader>dt", toggle_diagnostic, "Toggle diagnostic virtual text")
+map("n", "<leader>di", show_buffer_tools_details, "Show attached LSP, formatter, and linter details")
