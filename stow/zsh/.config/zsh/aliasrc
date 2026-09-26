@@ -218,6 +218,17 @@ gufc() {
   git config --local "remote.${remote}.fetch" "+refs/heads/*:refs/remotes/${remote}/*"
 }
 
+# Function to cd into the root of git repository
+gcdr() {
+  local repo_root_path
+  repo_root_path="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+    echo "error: not inside a git repo :("
+    return 2
+  }
+
+  cd "${repo_root_path}" || return 1
+}
+
 # Function to select the kubernetes configuration file
 kconf() {
   local selected_file
