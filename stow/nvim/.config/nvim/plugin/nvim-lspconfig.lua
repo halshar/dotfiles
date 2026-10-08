@@ -23,12 +23,25 @@ vim.diagnostic.config({
 
 local servers = {
 	ansiblels = {},
-	bashls = {},
+	bashls = { filetypes = { "bash", "sh", "zsh" } },
 	cssls = {},
 	docker_compose_language_service = {},
 	dockerls = {},
 	gitlab_ci_ls = {},
-	gopls = { settings = { gopls = { analyses = { unusedparams = true } } } },
+	gopls = {
+		settings = {
+			gopls = {
+				analyses = {
+					unusedparams = true,
+					unusedwrite = true,
+					shadow = true,
+					nilness = true,
+				},
+				staticcheck = true,
+				completeUnimported = true,
+			},
+		},
+	},
 	helm_ls = {},
 	html = {},
 	jsonls = {
@@ -75,6 +88,9 @@ local servers = {
 	yamlls = {
 		settings = {
 			yaml = {
+				validate = true,
+				hover = true,
+				completion = true,
 				schemaStore = { enable = false, url = "" },
 				schemas = schema_store.yaml.schemas(),
 				customTags = { "!reference sequence" },
@@ -99,6 +115,8 @@ local non_servers = {
 	"shfmt",
 	"stylelint",
 	"stylua",
+	"tflint",
+	"trivy",
 	"yamlfmt",
 	"yamllint",
 }
