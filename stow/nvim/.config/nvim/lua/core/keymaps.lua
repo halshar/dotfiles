@@ -11,15 +11,14 @@ local function map(mode, key, cmd, desc)
 end
 
 -- function to toggle window zoom
-local isZoomed = false
 local function toggle_window_zoom()
-	if isZoomed then
-		vim.cmd("wincmd =") -- restore window sizes
-		isZoomed = false
+	if vim.t.zoom_restore then
+		vim.cmd(vim.t.zoom_restore)
+		vim.t.zoom_restore = nil
 	else
-		vim.cmd("wincmd |") -- maximize horizontally
-		vim.cmd("wincmd _") -- maximize vertically
-		isZoomed = true
+		vim.t.zoom_restore = vim.fn.winrestcmd()
+		vim.cmd("wincmd |")
+		vim.cmd("wincmd _")
 	end
 end
 
@@ -54,8 +53,9 @@ end
 
 -- function to toggle diagnostic virtual text
 local function toggle_diagnostic()
-	local current_value = vim.diagnostic.config().virtual_text
-	vim.diagnostic.config({ virtual_text = not current_value })
+	local config = vim.diagnostic.config() or {}
+	local enabled = config.virtual_text ~= false
+	vim.diagnostic.config({ virtual_text = not enabled })
 end
 
 -- function to show the lsp, formatter, and linter details
@@ -99,7 +99,7 @@ local function show_buffer_tools_details()
 		table.insert(lines, "Linters:")
 
 		local ft = vim.bo[bufnr].filetype
-		local linters = lint._resolve_linter_by_ft(ft)
+		local linters = lint.linters_by_ft[ft] or {}
 
 		if linters and #linters > 0 then
 			for _, name in ipairs(linters) do
@@ -125,7 +125,8 @@ map("n", "<leader>wh", "<C-w>_", "Maximize horizontal window")
 map("n", "<leader>we", "<C-w>=", "Resize all windows equally")
 map("n", "<leader>wv", "<C-w>|", "Maximize vertical window")
 map("n", "<leader>ww", toggle_window_zoom, "Toggle window zoom")
-map("n", "<leader>wc", toggle_background, "Toggle window background")
+map("n", "<leader>wc", toggle_background, "Toggle editor background")
+map("n", "<leader>wq", "<cmd>cclose<CR>", "Close the quickfix window")
 
 -- buffer and file management
 map("n", "<leader>hh", "<cmd>nohlsearch<CR>", "Clear search highlights")
