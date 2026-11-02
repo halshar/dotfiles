@@ -106,8 +106,14 @@ function gpush() {
 # Function to pull from specified git remote
 function gpull() {
   local remote="${1:-origin}"
-  local branch="${2:-$(git rev-parse --abbrev-ref HEAD)}"
-  git pull "$remote" "$branch"
+  local branch="${2:-$(git branch --show-current)}"
+
+  if [[ -z "${branch}" ]]; then
+    echo "error: HEAD is detached so cannot determine the current branch"
+    return 1
+  fi
+
+  git pull "${remote}" "${branch}"
 }
 
 # Function to rebase to specified git reference
@@ -174,13 +180,25 @@ function gwa {
   fi
 }
 
-# Function to delete git local branches(except the currently active one)
-function gdlb {
+# Function to delete merged branches
+function gdlb() {
+  local current_branch
   local branches
-  branches=$(git branch --merged | grep -v "^\*")
 
-  if [ -n "${branches}" ]; then
-    echo "${branches}" | xargs git branch -d
+  current_branch="$(git branch --show-current)"
+
+  branches="$(
+    git for-each-ref \
+      --format='%(refname:short)' \
+      --merged HEAD \
+      refs/heads/ |
+      grep -vxF "${current_branch}"
+  )"
+
+  if [[ -n "${branches}" ]]; then
+    echo "${branches}" | while IFS= read -r branch; do
+      git branch -d "${branch}"
+    done
   else
     echo "info: no local branches to delete"
   fi
