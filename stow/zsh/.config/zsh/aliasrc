@@ -94,7 +94,7 @@ function glog() {
 # Function to fetch changes from specified git remote
 function gfetch() {
   local remote="${1:-origin}"
-  git fetch --prune --prune-tags "$remote"
+  git fetch --prune --prune-tags --force "${remote}"
 }
 
 # Function to push to specified git remote
